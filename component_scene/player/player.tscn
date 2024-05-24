@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://0eq5l5tts562"]
+[gd_scene load_steps=7 format=3 uid="uid://bl84hsqo81gm1"]
 
-[ext_resource type="Script" path="res://Player_movement.gd" id="1_amd1i"]
+[ext_resource type="Script" path="res://scripts/player/Player_movement.gd" id="1_ypiqm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fifl6"]
 
@@ -17,7 +17,7 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_jpbw6")
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_amd1i")
+script = ExtResource("1_ypiqm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_fifl6")
