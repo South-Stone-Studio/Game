@@ -20,7 +20,6 @@ func create_room(type:room.room_types):
 			instantiate_room(boss)
 
 func instantiate_room(r: PackedScene):
-	print("new room")
 	loaded_scene = r.instantiate()
 	root.add_child(loaded_scene)
 

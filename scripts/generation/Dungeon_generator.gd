@@ -9,7 +9,6 @@ var graph: Gnode
 @export var min_room_count: int = 17
 @export var max_room_count: int = 22
 @export var max_depth: int = 10
-@onready var room_generator: Room_Generator = $Room_Generator
 var _cur_index: int = max_main_length + 1
 var rooms = []
 
@@ -51,6 +50,7 @@ func create_sub_path(_depth: int, _origin: Gnode):
 		var _new = Gnode.new(_cur_index, room.room_types.normal)
 		create_connection(_origin, _new)
 		_cur_index += 1
+		@warning_ignore("integer_division")
 		_depth = generator.randi_range(_depth/2, _depth)
 		create_sub_path(_depth - 1, _new)
 
@@ -76,3 +76,6 @@ func create_dungeon():
 		var _a: int = len(debug_graph(graph, []))
 		if max_room_count >= _a and _a >=  min_room_count:
 			break
+	
+func get_rooms():
+	return graph

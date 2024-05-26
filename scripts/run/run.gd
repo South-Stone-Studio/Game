@@ -10,6 +10,5 @@ func _ready():
 	current_room = generator.get_rooms()
 	spawn.create_room(current_room.room_type)
 	var _room:Room = spawn.get_ref()
-	print(player)
 	_room.spawn_player(player)
 	
