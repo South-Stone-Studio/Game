@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8llqrw4wxnln"]
+
+[ext_resource type="PackedScene" uid="uid://cxscpoi0k2kpw" path="res://component_scene/procedural_generation/dungeon_generator.tscn" id="1_cmuna"]
+[ext_resource type="Script" path="res://scripts/generation/room_generator.gd" id="2_7d4fn"]
+
+[node name="RunScene" type="Node3D"]
+
+[node name="DungeonGenerator" parent="." instance=ExtResource("1_cmuna")]
+max_connections = 4
+min_main_length = 6
+max_main_length = 10
+min_room_count = 17
+max_room_count = 22
+max_depth = 10
+
+[node name="Room_Generator2" type="Node3D" parent="DungeonGenerator" node_paths=PackedStringArray("root")]
+script = ExtResource("2_7d4fn")
+root = NodePath("../..")
