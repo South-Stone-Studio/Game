@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxscpoi0k2kpw"]
+[gd_scene load_steps=6 format=3 uid="uid://cxscpoi0k2kpw"]
 
-[ext_resource type="Script" path="res://scripts/generation/Dungeon_generator.gd" id="1_bfnhj"]
+[ext_resource type="Script" path="res://scripts/generation/dungeon_generator.gd" id="1_bfnhj"]
+[ext_resource type="Script" path="res://scripts/generation/room_generator.gd" id="2_eq3c4"]
+[ext_resource type="PackedScene" uid="uid://dmibhor2e2173" path="res://component_scene/procedural_generation/rooms/start_room.tscn" id="3_7d2xj"]
+[ext_resource type="PackedScene" uid="uid://b1xdjus2ov7ml" path="res://component_scene/procedural_generation/rooms/room.tscn" id="4_vl5bj"]
+[ext_resource type="PackedScene" uid="uid://bsyktv52nl20n" path="res://component_scene/procedural_generation/rooms/boos_room.tscn" id="5_ffay2"]
 
-[node name="Dungeon_generator" type="Node"]
+[node name="DungeonGenerator" type="Node"]
 script = ExtResource("1_bfnhj")
+
+[node name="Room_Generator" type="Node3D" parent="."]
+script = ExtResource("2_eq3c4")
+start = ExtResource("3_7d2xj")
+normal = ExtResource("4_vl5bj")
+boos = ExtResource("5_ffay2")
