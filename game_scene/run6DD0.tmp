@@ -30,4 +30,4 @@ boss = ExtResource("6_6ajk4")
 [node name="Player" parent="." instance=ExtResource("7_easf7")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.965926, -0.25, 0.0669873, 0, 0.258819, 0.965926, -0.258819, -0.933013, 0.25, 0, 20.5182, 25.588)
+transform = Transform3D(1, 0, 0, 0, 0.594823, 0.803857, 0, -0.803857, 0.594823, 0, 20.5182, 12.9075)
