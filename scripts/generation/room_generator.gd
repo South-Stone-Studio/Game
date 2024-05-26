@@ -5,11 +5,27 @@ extends Node3D
 
 @export var start: PackedScene 
 @export var normal: PackedScene
-@export var boos: PackedScene
+@export var boss: PackedScene
+var loaded_scene: Node3D
 func _ready():
 	pass
 
 func create_room(type:room.room_types):
 	match type:
 		room.room_types.start:
-			pass
+			instantiate_room(start)
+		room.room_types.normal:
+			instantiate_room(normal)
+		room.room_types.boss:
+			instantiate_room(boss)
+
+func instantiate_room(r: PackedScene):
+	print("new room")
+	loaded_scene = r.instantiate()
+	root.add_child(loaded_scene)
+
+func get_ref():
+	return loaded_scene
+
+func delete_room():
+	loaded_scene.free()
