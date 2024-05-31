@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://b1xdjus2ov7ml"]
+[gd_scene load_steps=6 format=3 uid="uid://b1xdjus2ov7ml"]
 
-[node name="Room" type="Node3D"]
+[ext_resource type="Script" path="res://scripts/generation/room_generation/procedural_room.gd" id="1_0sv0h"]
+[ext_resource type="PackedScene" uid="uid://s2sgq8a1yn4f" path="res://component_scene/wall/wall.tscn" id="2_rigtu"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bav8e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix3tw"]
+albedo_color = Color(2.93598e-06, 0.634478, 0.341752, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xwqog"]
+material = SubResource("StandardMaterial3D_ix3tw")
+size = Vector2(100, 100)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("spawn")]
+script = ExtResource("1_0sv0h")
+wall = ExtResource("2_rigtu")
+spawn = NodePath("Spawnpoint")
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_bav8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_xwqog")
+
+[node name="Spawnpoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
