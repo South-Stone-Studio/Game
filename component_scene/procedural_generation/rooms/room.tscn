@@ -14,7 +14,7 @@ albedo_color = Color(2.93598e-06, 0.634478, 0.341752, 1)
 material = SubResource("StandardMaterial3D_ix3tw")
 size = Vector2(100, 100)
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("spawn")]
+[node name="Room" type="Node3D" node_paths=PackedStringArray("spawn")]
 script = ExtResource("1_0sv0h")
 wall = ExtResource("2_a3o0o")
 asset_types = Array[PackedScene]([ExtResource("3_dl3jy"), ExtResource("4_wohqb")])
