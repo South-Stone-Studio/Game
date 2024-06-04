@@ -59,7 +59,7 @@ func create_grid():
 		grid.append(_tab)
 
 func calculate_obstacles():
-	var obstacle_value: int = 200
+	var obstacle_value: int = 50
 	for i in assets:
 		var val: int = i.space.x * i.space.y
 		var num: int = randi_range(0, obstacle_value/2/val)
