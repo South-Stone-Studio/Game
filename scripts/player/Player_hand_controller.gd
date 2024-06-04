@@ -20,11 +20,12 @@ func pick_up_item(object:Node3D):
 
 func drop_item():
 	var object :Node3D = hand.get_child(0)
-	hand.remove_child(object)
-	object.disable_mode = 1
-	object.disable_colision()
-	object.freeze = false
-	object.picked = false
-	object.position = get_parent().get_parent().position + Vector3(0,-0.5,1.5)
-	weapon = type.none
-	get_tree().get_current_scene().add_child(object)
+	if object != null:
+		hand.remove_child(object)
+		object.disable_mode = 1
+		object.disable_colision()
+		object.freeze = false
+		object.picked = false
+		object.position = get_parent().get_parent().position + Vector3(0,-0.5,1.5)
+		weapon = type.none
+		get_tree().get_current_scene().add_child(object)
