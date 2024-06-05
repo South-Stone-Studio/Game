@@ -1,4 +1,5 @@
 extends Node3D
+
 @onready var bullet := preload("res://component_scene/weapons/sample_gun/bullet.tscn")
 @export var picked : bool = false
 @onready var AimPoint : Marker3D = $AimPoint

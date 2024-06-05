@@ -47,7 +47,7 @@ func _physics_process(delta):
 		self.look_at(Vector3(pos.x, pos.y, pos.z), Vector3(0, 1, 0))
 
 		# get object under mouse
-		var obj_under_mouse: Node3D = get_node("../"+intersection.collider.name)
+		var obj_under_mouse: Node3D = intersection.collider
 
 		# check if pickable and pick up an weapon 
 		if Input.is_action_just_pressed("pick_up") and obj_under_mouse != null and obj_under_mouse.is_in_group("weapons") and position.distance_to(obj_under_mouse.position) <= grab_items_area:

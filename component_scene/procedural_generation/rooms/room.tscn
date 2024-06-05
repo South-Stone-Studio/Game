@@ -7,11 +7,11 @@
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bav8e"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix3tw"]
-albedo_color = Color(2.93598e-06, 0.634478, 0.341752, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcs42"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xwqog"]
-material = SubResource("StandardMaterial3D_ix3tw")
+material = SubResource("StandardMaterial3D_hcs42")
 size = Vector2(100, 100)
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("spawn")]
@@ -19,9 +19,10 @@ script = ExtResource("1_0sv0h")
 wall = ExtResource("2_a3o0o")
 asset_types = Array[PackedScene]([ExtResource("3_dl3jy"), ExtResource("4_wohqb")])
 space_of_asset = Array[Vector2i]([Vector2i(1, 1), Vector2i(2, 2)])
-spawn = NodePath("Spawnpoint")
+spawn = NodePath("")
 
 [node name="Floor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 500)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
@@ -31,6 +32,3 @@ shape = SubResource("WorldBoundaryShape3D_bav8e")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_xwqog")
-
-[node name="Spawnpoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
