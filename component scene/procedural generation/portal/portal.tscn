@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/generation/Portal.gd" id="1_s7i1f"]
 
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u51py"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_i7bdy"]

@@ -1,11 +1,35 @@
 class_name Blaziken
 
 extends BaseWeapon
-@export var atack_speed: float
+
+var primary_active = false
+var cur_ammo: Callable
+@export var bullet_scene: PackedScene
+@export var nozle: Node3D
+var bullet_node: Bullet
+
 # SMG Vibes
-# Quick fire rate
-# Small mag
-# constant reload
-# low damage
-func primary():
-	pass
+func _ready():
+	bullet_node = bullet_scene.instantiate()
+	bullet_node.damage = damage
+	bullet_node.v = bullet_velocity
+func primary(can: Callable, start: bool = true):
+	cur_ammo = can
+	primary_active = start
+
+func shoot():
+	if cur_ammo.call():
+		var _bullet: Bullet = bullet_node.duplicate()
+		get_tree().current_scene.add_child(_bullet)
+		_bullet.global_position = nozle.global_position
+		_bullet.global_transform.basis = nozle.global_transform.basis
+		print("shoot")
+	else:
+		print("require reload")
+
+func _process(delta):
+	if cur > 0:
+		cur -= delta
+	elif primary_active:
+		shoot()
+		cur = time_between_shoots

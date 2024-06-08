@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bl84hsqo81gm1"]
 
-[ext_resource type="Script" path="res://scripts/player/PlayerMovement.gd" id="1_ypiqm"]
-[ext_resource type="Script" path="res://scripts/player/HandController.gd" id="2_eg2jr"]
+[ext_resource type="Script" path="res://scripts/player/PlayerMovement.gd" id="1_4kaxg"]
+[ext_resource type="Script" path="res://scripts/player/HandController.gd" id="2_10rkx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fifl6"]
 
@@ -20,7 +20,7 @@ material = SubResource("StandardMaterial3D_jpbw6")
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand_controller")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 disable_mode = 2
-script = ExtResource("1_ypiqm")
+script = ExtResource("1_4kaxg")
 hand_controller = NodePath("Body/HandController")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -36,7 +36,7 @@ mesh = SubResource("BoxMesh_gcbsr")
 skeleton = NodePath("")
 
 [node name="HandController" type="Node" parent="Body" node_paths=PackedStringArray("hand")]
-script = ExtResource("2_eg2jr")
+script = ExtResource("2_10rkx")
 hand = NodePath("../../Hand")
 
 [node name="Hand" type="Marker3D" parent="."]

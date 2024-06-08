@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbx6wt666bwdl"]
+[gd_scene load_steps=9 format=3 uid="uid://dbx6wt666bwdl"]
 
 [ext_resource type="Script" path="res://scripts/weapons and items/Weapon.gd" id="1_ie5wi"]
 [ext_resource type="Script" path="res://scripts/weapons and items/ammo types/Bullets.gd" id="2_64iq1"]
 [ext_resource type="Script" path="res://scripts/weapons and items/weapon types/Blaziken.gd" id="3_tjmsk"]
+[ext_resource type="PackedScene" uid="uid://cw8np2svde38t" path="res://component scene/weapons/projectiles/Bullet.tscn" id="4_w45rf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rllsy"]
-size = Vector3(0.633789, 0.691406, 1.2771)
+size = Vector3(0.6, 0.6, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3pqo"]
 albedo_color = Color(1, 0, 0, 1)
@@ -37,13 +38,17 @@ metadata/_edit_pinned_properties_ = [&"Color_Mesh", &"weapon", &"ammo"]
 
 [node name="Bullets" type="Node" parent="."]
 script = ExtResource("2_64iq1")
-mags = 10
-reload_time = 0.25
+mags = 5
+reload_time = 0.7
 capacity = 13
 
-[node name="Blaziken" type="Node" parent="."]
+[node name="Blaziken" type="Node" parent="." node_paths=PackedStringArray("nozle")]
 script = ExtResource("3_tjmsk")
-atack_speed = 0.25
+bullet_scene = ExtResource("4_w45rf")
+nozle = NodePath("../Nozzle")
+time_between_shoots = 0.05
+damage = 7
+bullet_velocity = 12.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 process_mode = 4
@@ -57,6 +62,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000512719, 1.19209e-07, 0.
 visible = false
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_v1gc6")
+
+[node name="Nozzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
