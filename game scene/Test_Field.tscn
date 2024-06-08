@@ -1,7 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8ex63tflk1ge"]
 
-[ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component_scene/player/player.tscn" id="1_rdgeh"]
-[ext_resource type="PackedScene" uid="uid://dphe63n4kvc2" path="res://component_scene/weapons/sample_gun/sample_gun.tscn" id="2_s440b"]
+[ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="1_rdgeh"]
+[ext_resource type="PackedScene" path="res://component_scene/weapons/sample_gun/sample_gun.tscn" id="2_s440b"]
+
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y56q6"]
 

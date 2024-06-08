@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dbx6wt666bwdl"]
 
-[ext_resource type="Script" path="res://scripts/weapons_and_items/Weapon.gd" id="1_iy8qx"]
-[ext_resource type="Script" path="res://scripts/weapons_and_items/ammo types/Bullets.gd" id="2_u7xl8"]
-[ext_resource type="Script" path="res://scripts/weapons_and_items/weapon types/Blaziken.gd" id="3_biyic"]
+[ext_resource type="Script" path="res://scripts/weapons and items/Weapon.gd" id="1_ie5wi"]
+[ext_resource type="Script" path="res://scripts/weapons and items/ammo types/Bullets.gd" id="2_64iq1"]
+[ext_resource type="Script" path="res://scripts/weapons and items/weapon types/Blaziken.gd" id="3_tjmsk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rllsy"]
 size = Vector3(0.633789, 0.691406, 1.2771)
@@ -29,20 +29,20 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [node name="Weapon" type="RigidBody3D" node_paths=PackedStringArray("Color_Mesh", "weapon", "ammo")]
-script = ExtResource("1_iy8qx")
+script = ExtResource("1_ie5wi")
 Color_Mesh = NodePath("CollisionShape3D/MeshInstance3D/MeshInstance3D")
 weapon = NodePath("Blaziken")
 ammo = NodePath("Bullets")
 metadata/_edit_pinned_properties_ = [&"Color_Mesh", &"weapon", &"ammo"]
 
 [node name="Bullets" type="Node" parent="."]
-script = ExtResource("2_u7xl8")
+script = ExtResource("2_64iq1")
 mags = 10
 reload_time = 0.25
 capacity = 13
 
 [node name="Blaziken" type="Node" parent="."]
-script = ExtResource("3_biyic")
+script = ExtResource("3_tjmsk")
 atack_speed = 0.25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/run/Run.gd" id="1_tmahc"]
 [ext_resource type="Script" path="res://scripts/generation/RoomGenerator.gd" id="2_7d4fn"]
 [ext_resource type="Script" path="res://scripts/generation/DungeonGenerator.gd" id="2_fonkv"]
-[ext_resource type="PackedScene" uid="uid://dmibhor2e2173" path="res://component_scene/procedural_generation/rooms/start_room.tscn" id="3_ty6ke"]
-[ext_resource type="PackedScene" uid="uid://b1xdjus2ov7ml" path="res://component_scene/procedural_generation/rooms/room.tscn" id="4_qk3ag"]
-[ext_resource type="PackedScene" uid="uid://bsyktv52nl20n" path="res://component_scene/procedural_generation/rooms/boss_room.tscn" id="6_6ajk4"]
-[ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component_scene/player/player.tscn" id="7_easf7"]
-[ext_resource type="PackedScene" uid="uid://d3lsh8nnts3op" path="res://component_scene/procedural_generation/portal/portal.tscn" id="8_nbbqj"]
-[ext_resource type="PackedScene" uid="uid://dbx6wt666bwdl" path="res://component_scene/weapons/blaziken/blaziken.tscn" id="9_q1xyc"]
+[ext_resource type="PackedScene" uid="uid://dmibhor2e2173" path="res://component scene/procedural generation/rooms/start_room.tscn" id="3_ty6ke"]
+[ext_resource type="PackedScene" uid="uid://b1xdjus2ov7ml" path="res://component scene/procedural generation/rooms/room.tscn" id="4_qk3ag"]
+[ext_resource type="PackedScene" uid="uid://bsyktv52nl20n" path="res://component scene/procedural generation/rooms/boss_room.tscn" id="6_6ajk4"]
+[ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="7_easf7"]
+[ext_resource type="PackedScene" uid="uid://d3lsh8nnts3op" path="res://component scene/procedural generation/portal/portal.tscn" id="8_nbbqj"]
+[ext_resource type="PackedScene" uid="uid://dbx6wt666bwdl" path="res://component scene/weapons/blaziken/blaziken.tscn" id="9_q1xyc"]
 
 [node name="RunScene" type="Node3D" node_paths=PackedStringArray("dun_generator", "room_generator", "player", "portals")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120904, -4.76837e-07, -0.00751209)

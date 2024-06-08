@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://b1xdjus2ov7ml"]
 
-[ext_resource type="Script" path="res://scripts/generation/room_generation/ProceduralRoom.gd" id="1_0sv0h"]
-[ext_resource type="PackedScene" uid="uid://s2sgq8a1yn4f" path="res://component_scene/props/wall/wall.tscn" id="2_a3o0o"]
-[ext_resource type="PackedScene" uid="uid://bkp7j2eki1j5p" path="res://component_scene/props/box/box.tscn" id="3_dl3jy"]
-[ext_resource type="PackedScene" uid="uid://dg4dm0dwcxmqf" path="res://component_scene/props/large_box/large_box.tscn" id="4_wohqb"]
+[ext_resource type="Script" path="res://scripts/generation/room generation/ProceduralRoom.gd" id="1_0sv0h"]
+[ext_resource type="PackedScene" uid="uid://s2sgq8a1yn4f" path="res://component scene/props/wall/wall.tscn" id="2_a3o0o"]
+[ext_resource type="PackedScene" uid="uid://bkp7j2eki1j5p" path="res://component scene/props/box/box.tscn" id="3_dl3jy"]
+[ext_resource type="PackedScene" uid="uid://dg4dm0dwcxmqf" path="res://component scene/props/large_box/large_box.tscn" id="4_wohqb"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bav8e"]
 
