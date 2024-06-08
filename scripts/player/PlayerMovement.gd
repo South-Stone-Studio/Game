@@ -1,13 +1,6 @@
-class_name Player_movement
+class_name PlayerMovement
 
 extends CharacterBody3D
-
-func _ready():
-	pass
-
-@warning_ignore("unused_parameter")
-func _process(delta):
-	velocity = Vector3()
 
 # --------------------------- # MOVEMENT AND LOOKING # --------------------------- #
 @onready var camera: Camera3D = $"../Camera3D"
@@ -17,12 +10,13 @@ var rayEnd: Vector3 = Vector3()
 var accel: int = 20
 var friction: int = 10
 var input: Vector2 = Vector2.ZERO
-@onready var hand_controller: = $Body/HandController
+@export var hand_controller: HandController
 var grab_items_area :int = 5
 @export var Mouse_Gobal_Position : Vector3 = Vector3.ZERO
 
 func _physics_process(delta):
 	# Look at cursor
+	velocity = Vector3()
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
 	rayOrigin = camera.project_ray_origin(mouse_position)
@@ -50,9 +44,8 @@ func _physics_process(delta):
 		var obj_under_mouse: Node3D = intersection.collider
 
 		# check if pickable and pick up an weapon 
-		if Input.is_action_just_pressed("pick_up") and obj_under_mouse != null and obj_under_mouse.is_in_group("weapons") and position.distance_to(obj_under_mouse.position) <= grab_items_area:
+		if Input.is_action_just_pressed("pick_up") and obj_under_mouse != null and position.distance_to(obj_under_mouse.position) <= grab_items_area:
 			hand_controller.pick_up_item(obj_under_mouse)
-			obj_under_mouse.picked = true
 		
 		elif Input.is_action_just_pressed("drop"):
 			hand_controller.drop_item()

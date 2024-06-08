@@ -1,4 +1,4 @@
-class_name Room_Generator
+class_name RoomGenerator
 
 extends Node3D
 @export var root: Node3D

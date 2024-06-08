@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3lsh8nnts3op"]
 
-[ext_resource type="Script" path="res://scripts/generation/portal.gd" id="1_s7i1f"]
+[ext_resource type="Script" path="res://scripts/generation/Portal.gd" id="1_s7i1f"]
+
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u51py"]
 

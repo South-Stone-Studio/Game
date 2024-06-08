@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmibhor2e2173"]
 
-[ext_resource type="Script" path="res://scripts/room/room.gd" id="1_3cpf3"]
+[ext_resource type="Script" path="res://scripts/room/Room.gd" id="1_3cpf3"]
+
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_juvee"]
 
