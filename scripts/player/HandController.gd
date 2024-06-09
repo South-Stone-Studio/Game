@@ -8,6 +8,8 @@ var weapon : Weapon
 @export var hand : Node3D
 
 func pick_up_item(object:Node3D):
+	if weapon != null:
+		drop_item()
 	if is_instance_of(object, Weapon):
 		object.picked = true
 		weapon = object
