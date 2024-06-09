@@ -14,8 +14,7 @@ func _ready():
 
 	
 func primary(can:Callable, start: bool = true):
-	print("priamry")
-	if cur <= 0:
+	if cur <= 0 and start:
 		if can.call():
 			cur = time_between_shoots
 			shoot()
@@ -23,7 +22,6 @@ func primary(can:Callable, start: bool = true):
 			explosion()
 
 func shoot():
-	print("shoot")
 	var _bullet: Node3D = bullet.duplicate()
 	get_tree().current_scene.add_child(_bullet)
 	_bullet.global_position = nozle.global_position
