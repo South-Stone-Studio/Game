@@ -10,35 +10,15 @@ func _process(delta):
 
 # --------------------------- # MOVEMENT AND LOOKING # --------------------------- #
 @onready var camera: Camera3D = $"../Camera3D"
-var rayOrigin: Vector3 = Vector3()
-var rayEnd: Vector3 = Vector3()
 @export var max_speed: int = 10
 var accel: int = 20
 var friction: int = 10
 var input: Vector2 = Vector2.ZERO
 @onready var hand_controller: = $Body/HandController
 var grab_items_area :int = 5
-@export var Mouse_Gobal_Position : Vector3 = Vector3.ZERO
 
 func _physics_process(delta):
-	# Look at cursor
-	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var mouse_position: Vector2 = get_viewport().get_mouse_position()
-	rayOrigin = camera.project_ray_origin(mouse_position)
-	var ray_normal:= camera.project_ray_normal(mouse_position)
-	ray_normal = ray_normal.limit_length(1)
-	rayEnd = rayOrigin + ray_normal * 2000
-
-	# Camera operations / Camera follow cursor / Camera offset from player
-	camera.position = position
-	camera.position += ray_normal*4
-	camera.position.y = 10
-	camera.position.z += 2
-
-	var ray_parameters: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin,rayEnd)
-	var intersection: Dictionary = space_state.intersect_ray(ray_parameters)
-	Mouse_Gobal_Position = ray_normal
-
+	var intersection : Dictionary = camera.get_intersection()
 	# cursor position 
 	if not intersection.is_empty():
 		var pos: Vector3 = intersection.position
@@ -46,7 +26,7 @@ func _physics_process(delta):
 		self.look_at(Vector3(pos.x, pos.y, pos.z), Vector3(0, 1, 0))
 
 		# get object under mouse 
-		var obj_under_mouse: Node3D = get_node("../"+intersection.collider.name)
+		var obj_under_mouse: Node3D = intersection.collider
 
 		# check if pickable and pick up an weapon 
 		if Input.is_action_just_pressed("pick_up") and obj_under_mouse.is_in_group("weapons") and position.distance_to(obj_under_mouse.position) <= grab_items_area:
