@@ -1,21 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbx6wt666bwdl"]
+[gd_scene load_steps=9 format=3 uid="uid://c1xqqww0a15x"]
 
-[ext_resource type="Script" path="res://scripts/weapons and items/Weapon.gd" id="1_ie5wi"]
-[ext_resource type="Script" path="res://scripts/weapons and items/ammo types/Bullets.gd" id="2_64iq1"]
-[ext_resource type="Script" path="res://scripts/weapons and items/weapon types/Blaziken.gd" id="3_tjmsk"]
-[ext_resource type="PackedScene" uid="uid://cw8np2svde38t" path="res://component scene/weapons/projectiles/bullet.tscn" id="4_w45rf"]
+[ext_resource type="Script" path="res://scripts/weapons and items/Weapon.gd" id="1_3lr7w"]
+[ext_resource type="Script" path="res://scripts/weapons and items/weapon types/Needler.gd" id="2_jb5pc"]
+[ext_resource type="PackedScene" uid="uid://bg1kvt1gqewq3" path="res://component scene/weapons/projectiles/bullet_bomb.tscn" id="3_0p8nb"]
+[ext_resource type="Script" path="res://scripts/weapons and items/ammo types/Bullets.gd" id="3_ub4x5"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rllsy"]
-size = Vector3(0.6, 0.6, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gj341"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3pqo"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjjvr"]
+albedo_color = Color(0, 0.730097, 0.563809, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_u7qdp"]
-material = SubResource("StandardMaterial3D_e3pqo")
-size = Vector3(0.385, 0.5, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_ip6de"]
+material = SubResource("StandardMaterial3D_pjjvr")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_v1gc6"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_h67of"]
 _surfaces = [{
 "aabb": AABB(-0.250235, -0.307735, -0.557735, 0.50047, 0.61548, 1.11548),
 "attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 171, 170, 42, 63, 0, 0, 0, 0, 171, 170, 170, 62, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 0, 171, 170, 170, 62, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 128, 63, 171, 170, 170, 62, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 171, 170, 42, 63, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 171, 170, 170, 62, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 128, 63, 171, 170, 42, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63),
@@ -29,42 +27,40 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[node name="Weapon" type="RigidBody3D" node_paths=PackedStringArray("Color_Mesh", "weapon", "ammo")]
-script = ExtResource("1_ie5wi")
-Color_Mesh = NodePath("CollisionShape3D/MeshInstance3D/MeshInstance3D")
-weapon = NodePath("Blaziken")
+[node name="Gun" type="RigidBody3D" node_paths=PackedStringArray("Color_Mesh", "weapon", "ammo")]
+script = ExtResource("1_3lr7w")
+Color_Mesh = NodePath("MeshInstance3D/MeshInstance3D")
+weapon = NodePath("Needler")
 ammo = NodePath("Bullets")
-metadata/_edit_pinned_properties_ = [&"Color_Mesh", &"weapon", &"ammo"]
 
-[node name="Bullets" type="Node" parent="."]
-script = ExtResource("2_64iq1")
-mags = 10
-reload_time = 1.0
-capacity = 20
-
-[node name="Blaziken" type="Node" parent="." node_paths=PackedStringArray("nozle")]
-script = ExtResource("3_tjmsk")
-bullet_scene = ExtResource("4_w45rf")
-nozle = NodePath("../Nozzle")
-time_between_shoots = 0.001
-damage = 7
+[node name="Needler" type="Node" parent="." node_paths=PackedStringArray("nozle")]
+script = ExtResource("2_jb5pc")
+nozle = NodePath("../Nozle")
+bullet_scene = ExtResource("3_0p8nb")
+explosion_damage = 20
+time_between_shoots = 0.2
+damage = 10
 bullet_velocity = 15.0
 
+[node name="Bullets" type="Node" parent="."]
+script = ExtResource("3_ub4x5")
+mags = 5
+reload_time = 1.0
+capacity = 7
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-process_mode = 4
-shape = SubResource("BoxShape3D_rllsy")
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_gj341")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("BoxMesh_u7qdp")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_ip6de")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000512719, 1.19209e-07, 0.00244021)
 visible = false
 cast_shadow = 0
-mesh = SubResource("ArrayMesh_v1gc6")
+mesh = SubResource("ArrayMesh_h67of")
 
-[node name="Nozzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="Nozle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

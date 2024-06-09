@@ -13,6 +13,7 @@ func _ready():
 	bullet_node = bullet_scene.instantiate()
 	bullet_node.damage = damage
 	bullet_node.v = bullet_velocity
+	
 func primary(can: Callable, start: bool = true):
 	cur_ammo = can
 	primary_active = start

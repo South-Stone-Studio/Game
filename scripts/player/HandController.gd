@@ -26,6 +26,6 @@ func drop_item():
 		object.disable_colision()
 		object.freeze = false
 		object.picked = false
-		object.position = get_parent().get_parent().position + Vector3(0,-0.5,1.5)
+		object.position = hand.position + Vector3(0,-0.5,1.5)
 		object.reparent(get_tree().current_scene)
 		weapon = null

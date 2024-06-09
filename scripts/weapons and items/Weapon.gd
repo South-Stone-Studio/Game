@@ -4,11 +4,14 @@ extends RigidBody3D
 
 enum weapon_type{basic, continious}
 
+signal force_reload
+
 @export var Color_Mesh : MeshInstance3D
 @export var picked : bool = false
 @export var weapon: BaseWeapon
 @export var ammo: Ammo
 @export var type: weapon_type = weapon_type.basic
+
 func _ready():
 	if weapon == null:
 		push_error("Node not specified: BaseWeapon, can find nodes inside weapon types.")
@@ -25,6 +28,7 @@ func _input(event):
 	if Input.is_action_just_pressed("reload"):
 		if ammo.relodable:
 			print("reloading")
+			force_reload.emit()
 			ammo.reload()
 	if Input.is_action_just_pressed("alternative"):
 		weapon.alternative()

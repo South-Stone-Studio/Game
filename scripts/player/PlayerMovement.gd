@@ -1,5 +1,6 @@
 class_name PlayerMovement
 
+
 extends CharacterBody3D
 
 # --------------------------- # MOVEMENT AND LOOKING # --------------------------- #
@@ -23,7 +24,7 @@ func _physics_process(delta):
 	var ray_normal:= camera.project_ray_normal(mouse_position)
 	ray_normal = ray_normal.limit_length(1)
 	rayEnd = rayOrigin + ray_normal * 2000
-
+	
 	# Camera operations / Camera follow cursor / Camera offset from player
 	camera.position = position
 	camera.position += ray_normal*4
