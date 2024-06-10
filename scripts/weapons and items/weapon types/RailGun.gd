@@ -12,7 +12,7 @@ func _ready():
 	pass
 
 func primary(can: Callable, start: bool = true):
-	if can.call():
+	if can.call() and !active:
 		print("charging up!")
 		active = true
 		set_time_between_shot(time_between_shoots)
