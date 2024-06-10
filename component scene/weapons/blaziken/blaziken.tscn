@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/weapons and items/Weapon.gd" id="1_ie5wi"]
 [ext_resource type="Script" path="res://scripts/weapons and items/ammo types/Bullets.gd" id="2_64iq1"]
 [ext_resource type="Script" path="res://scripts/weapons and items/weapon types/Blaziken.gd" id="3_tjmsk"]
-[ext_resource type="PackedScene" uid="uid://cw8np2svde38t" path="res://component scene/weapons/projectiles/bullet.tscn" id="4_w45rf"]
+[ext_resource type="PackedScene" uid="uid://cw8np2svde38t" path="res://component scene/weapons/projectiles/Bullet.tscn" id="4_w45rf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rllsy"]
 size = Vector3(0.6, 0.6, 1)

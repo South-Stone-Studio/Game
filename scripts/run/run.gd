@@ -6,6 +6,7 @@ extends Node3D
 @export var room_generator: RoomGenerator
 @export var player: Node3D
 @export var portals: Array[Portal]
+
 var current_room: Gnode
 func _ready():
 	var c: int = 0

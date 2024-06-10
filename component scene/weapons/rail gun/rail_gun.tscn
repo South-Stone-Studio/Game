@@ -13,9 +13,9 @@ size = Vector3(0.2, 0.2, 1)
 [node name="RailGun" type="RigidBody3D" node_paths=PackedStringArray("weapon", "ammo")]
 script = ExtResource("1_0lakq")
 picked = null
-type = null
 weapon = NodePath("LaserCanon")
 ammo = NodePath("Bullets")
+type = null
 
 [node name="LaserCanon" type="Node" parent="." node_paths=PackedStringArray("nozle")]
 script = ExtResource("2_xcfgh")
