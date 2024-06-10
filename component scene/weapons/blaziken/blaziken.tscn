@@ -32,8 +32,10 @@ blend_shape_mode = 0
 [node name="Weapon" type="RigidBody3D" node_paths=PackedStringArray("Color_Mesh", "weapon", "ammo")]
 script = ExtResource("1_ie5wi")
 Color_Mesh = NodePath("CollisionShape3D/MeshInstance3D/MeshInstance3D")
+picked = null
 weapon = NodePath("Blaziken")
 ammo = NodePath("Bullets")
+type = 1
 metadata/_edit_pinned_properties_ = [&"Color_Mesh", &"weapon", &"ammo"]
 
 [node name="Bullets" type="Node" parent="."]

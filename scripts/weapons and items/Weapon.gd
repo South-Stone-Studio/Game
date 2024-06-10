@@ -22,8 +22,8 @@ func _input(event):
 	if not picked:
 		return
 	if Input.is_action_just_pressed("attack"):
-		weapon.primary(ammo.can_shoot, true)
-	if Input.is_action_just_released("attack"):
+		weapon.primary(ammo.can_shoot)
+	if Input.is_action_just_released("attack") and type == weapon_type.continious:
 		weapon.primary(ammo.can_shoot, false)
 	if Input.is_action_just_pressed("reload"):
 		if ammo.relodable:

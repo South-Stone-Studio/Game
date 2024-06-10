@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg1i51sby2012"]
+[gd_scene load_steps=12 format=3 uid="uid://dg1i51sby2012"]
 
 [ext_resource type="Script" path="res://scripts/run/Run.gd" id="1_tmahc"]
 [ext_resource type="Script" path="res://scripts/generation/RoomGenerator.gd" id="2_7d4fn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d3lsh8nnts3op" path="res://component scene/procedural generation/portal/portal.tscn" id="8_nbbqj"]
 [ext_resource type="PackedScene" uid="uid://dbx6wt666bwdl" path="res://component scene/weapons/blaziken/blaziken.tscn" id="9_q1xyc"]
 [ext_resource type="PackedScene" uid="uid://c1xqqww0a15x" path="res://component scene/weapons/needler/needler.tscn" id="10_38bpe"]
+[ext_resource type="PackedScene" uid="uid://iyd5ftrlhcck" path="res://component scene/weapons/rail gun/rail_gun.tscn" id="11_1nxq0"]
 
 [node name="RunScene" type="Node3D" node_paths=PackedStringArray("dun_generator", "room_generator", "player", "portals")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120904, -4.76837e-07, -0.00751209)
@@ -53,8 +54,11 @@ num = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69444, 1, 4)
 num = 3
 
-[node name="Gun" parent="." instance=ExtResource("9_q1xyc")]
+[node name="Blaziken" parent="." instance=ExtResource("9_q1xyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10611, 2.81031, 1.63979)
 
-[node name="Gun2" parent="." instance=ExtResource("10_38bpe")]
+[node name="Needler" parent="." instance=ExtResource("10_38bpe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.39255, 2.06059, 5.87289)
+
+[node name="LaserCanon" parent="." instance=ExtResource("11_1nxq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 9)

@@ -16,7 +16,7 @@ func _ready():
 func primary(can:Callable, start: bool = true):
 	if cur <= 0 and start:
 		if can.call():
-			cur = time_between_shoots
+			set_time_between_shot(time_between_shoots)
 			shoot()
 		else:
 			explosion()
@@ -35,8 +35,4 @@ func explosion():
 	for orb: BulletBomb in orbs:
 		orb.explode()
 	orbs.clear()
-		
-func _process(delta):
-	if cur >= 0:
-		cur -= delta
 	

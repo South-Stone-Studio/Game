@@ -26,8 +26,7 @@ func shoot():
 		_bullet.v = bullet_velocity
 
 func _process(delta):
-	if cur > 0:
-		cur -= delta
-	elif primary_active:
+	super._process(delta)
+	if primary_active and cur <= 0:
 		shoot()
-		cur = time_between_shoots
+		set_time_between_shot(time_between_shoots)

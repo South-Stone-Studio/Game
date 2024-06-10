@@ -30,8 +30,10 @@ blend_shape_mode = 0
 [node name="Gun" type="RigidBody3D" node_paths=PackedStringArray("Color_Mesh", "weapon", "ammo")]
 script = ExtResource("1_3lr7w")
 Color_Mesh = NodePath("MeshInstance3D/MeshInstance3D")
+picked = null
 weapon = NodePath("Needler")
 ammo = NodePath("Bullets")
+type = null
 
 [node name="Needler" type="Node" parent="." node_paths=PackedStringArray("nozle")]
 script = ExtResource("2_jb5pc")

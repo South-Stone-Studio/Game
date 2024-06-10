@@ -6,7 +6,7 @@ var damage: int
 @export var col: CollisionShape3D
 @export var mes: MeshInstance3D
 @export var max_radius: float = 5
-var expansion_speed: float = 7.5
+var expansion_speed: float = 20
 var current_radius: float = 0.01
 
 func _process(delta):
