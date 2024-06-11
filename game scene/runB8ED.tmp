@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg1i51sby2012"]
+
+[ext_resource type="Script" path="res://scripts/run/run.gd" id="1_tmahc"]
+[ext_resource type="Script" path="res://scripts/generation/room_generator.gd" id="2_7d4fn"]
+[ext_resource type="Script" path="res://scripts/generation/Dungeon_generator.gd" id="2_fonkv"]
+[ext_resource type="PackedScene" uid="uid://dmibhor2e2173" path="res://component_scene/procedural_generation/rooms/start_room.tscn" id="3_ty6ke"]
+[ext_resource type="PackedScene" uid="uid://b1xdjus2ov7ml" path="res://component_scene/procedural_generation/rooms/room.tscn" id="4_qk3ag"]
+[ext_resource type="PackedScene" uid="uid://bsyktv52nl20n" path="res://component_scene/procedural_generation/rooms/boss_room.tscn" id="6_6ajk4"]
+[ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component_scene/player/player.tscn" id="7_easf7"]
+[ext_resource type="PackedScene" uid="uid://d3lsh8nnts3op" path="res://component_scene/procedural_generation/portal/portal.tscn" id="8_nbbqj"]
+[ext_resource type="PackedScene" uid="uid://dbx6wt666bwdl" path="res://component_scene/weapons/blaziken/blaziken.tscn" id="9_q1xyc"]
+
+[node name="RunScene" type="Node3D" node_paths=PackedStringArray("dun_generator", "room_generator", "player", "portals")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120904, -4.76837e-07, -0.00751209)
+script = ExtResource("1_tmahc")
+dun_generator = NodePath("DungeonGenerator")
+room_generator = NodePath("RoomGenerator")
+player = NodePath("Player")
+portals = [NodePath("Portal1"), NodePath("Portal2"), NodePath("Portal3"), NodePath("Portal4")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.580973, -0.775578, 0.246878, 0, 0.303318, 0.952889, -0.813923, -0.553603, 0.17622, 5, 1.27334, 5.72889)
+
+[node name="DungeonGenerator" type="Node" parent="."]
+script = ExtResource("2_fonkv")
+
+[node name="RoomGenerator" type="Node3D" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("2_7d4fn")
+root = NodePath("..")
+start = ExtResource("3_ty6ke")
+normal = ExtResource("4_qk3ag")
+boss = ExtResource("6_6ajk4")
+
+[node name="Player" parent="." instance=ExtResource("7_easf7")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.0205, 0.0152011, 3.99624)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.965926, -0.25, 0.0669873, 0, 0.258819, 0.965926, -0.258819, -0.933013, 0.25, 0, 20.5182, 25.588)
+
+[node name="Portal1" parent="." instance=ExtResource("8_nbbqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 7.09563)
+
+[node name="Portal2" parent="." instance=ExtResource("8_nbbqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52352, 1, 4)
+num = 1
+
+[node name="Portal3" parent="." instance=ExtResource("8_nbbqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 1.34317)
+num = 2
+
+[node name="Portal4" parent="." instance=ExtResource("8_nbbqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69444, 1, 4)
+num = 3
+
+[node name="Gun" parent="." instance=ExtResource("9_q1xyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10611, 2.81031, 1.63979)
