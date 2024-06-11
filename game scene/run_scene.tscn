@@ -12,12 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://c1xqqww0a15x" path="res://component scene/weapons/needler/needler.tscn" id="10_38bpe"]
 [ext_resource type="PackedScene" uid="uid://iyd5ftrlhcck" path="res://component scene/weapons/rail gun/rail_gun.tscn" id="11_1nxq0"]
 
-[node name="Run" type="Node3D" node_paths=PackedStringArray("dun_generator", "room_generator", "player", "portals")]
+[node name="Run" type="Node3D" node_paths=PackedStringArray("dun_generator", "room_generator", "player")]
 script = ExtResource("1_tmahc")
 dun_generator = NodePath("DungeonGenerator")
 room_generator = NodePath("RoomGenerator")
 player = NodePath("Player")
-portals = [NodePath("Portal1"), NodePath("Portal2"), NodePath("Portal3"), NodePath("Portal4")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.580973, -0.775578, 0.246878, 0, 0.303318, 0.952889, -0.813923, -0.553603, 0.17622, 5, 1.27334, 5.72889)
