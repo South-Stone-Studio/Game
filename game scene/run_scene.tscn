@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg1i51sby2012"]
+[gd_scene load_steps=13 format=3 uid="uid://dg1i51sby2012"]
 
 [ext_resource type="Script" path="res://scripts/run/Run.gd" id="1_tmahc"]
 [ext_resource type="Script" path="res://scripts/generation/RoomGenerator.gd" id="2_7d4fn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1xdjus2ov7ml" path="res://component scene/procedural generation/rooms/room.tscn" id="4_qk3ag"]
 [ext_resource type="PackedScene" uid="uid://bsyktv52nl20n" path="res://component scene/procedural generation/rooms/boss_room.tscn" id="6_6ajk4"]
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="7_easf7"]
+[ext_resource type="Script" path="res://scripts/player/Player_camera.gd" id="8_gm1ao"]
 [ext_resource type="PackedScene" uid="uid://d3lsh8nnts3op" path="res://component scene/procedural generation/portal/portal.tscn" id="8_nbbqj"]
 [ext_resource type="PackedScene" uid="uid://dbx6wt666bwdl" path="res://component scene/weapons/blaziken/blaziken.tscn" id="9_q1xyc"]
 [ext_resource type="PackedScene" uid="uid://c1xqqww0a15x" path="res://component scene/weapons/needler/needler.tscn" id="10_38bpe"]
@@ -34,8 +35,11 @@ boss = ExtResource("6_6ajk4")
 [node name="Player" parent="." instance=ExtResource("7_easf7")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.0205, 0.0152011, 3.99624)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(0.965926, -0.25, 0.0669873, 0, 0.258819, 0.965926, -0.258819, -0.933013, 0.25, 0, 20.5182, 25.588)
+script = ExtResource("8_gm1ao")
+target = NodePath("../Player")
+offset = Vector3(0, 10, 0)
 
 [node name="Portal1" parent="." instance=ExtResource("8_nbbqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 7.09563)
