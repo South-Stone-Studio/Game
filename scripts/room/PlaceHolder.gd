@@ -5,10 +5,11 @@ extends Node3D
 enum size{small, medium, big}
 @export var size_of_object: size
 
-func replace(obj: Node3D) -> Node3D:
+func replace(obj: Node3D) -> void:
 	var o = obj.duplicate()
+	self.get_parent().add_child(o)
 	o.global_position = self.global_position
-	return o
+	self.queue_free()
 
-func delete():
+func delete() -> void:
 	self.queue_free()

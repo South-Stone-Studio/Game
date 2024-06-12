@@ -17,6 +17,7 @@ script = ExtResource("2_fonkv")
 max_main_length = 9
 min_room_count = 20
 max_room_count = 25
+max_depth = 5
 max_width = 6
 min_width = 4
 max_height = 5
