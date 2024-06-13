@@ -3,7 +3,7 @@ class_name Gnode
 var index: int
 var connections:Array[Gnode]
 var room_type: room.room_types
-var r: Room
+var r: ProceduralRoom
 
 func _init(_index: int,_room_type:room.room_types) -> void:
 	index = _index

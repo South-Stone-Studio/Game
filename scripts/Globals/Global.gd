@@ -11,6 +11,8 @@ var path_to_normal: String = "res://component scene/procedural generation/tiles/
 var path_to_portal: String = "res://component scene/procedural generation/tiles/portal tiles/"
 var path_to_spawn: String = "res://component scene/procedural generation/tiles/spawn tiles/"
 
+var wall: PackedScene = preload("res://component scene/props/wall/wall.tscn")
+
 func _ready() -> void:
 	normal_tiles = load_tiles(path_to_normal)
 	portal_tiles = load_tiles(path_to_portal)

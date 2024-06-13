@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8in63labn837"]
+[gd_scene load_steps=7 format=3 uid="uid://c8in63labn837"]
 
 [ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_tbr40"]
 [ext_resource type="PackedScene" uid="uid://bkp7j2eki1j5p" path="res://component scene/props/box/box.tscn" id="2_axpu7"]
+[ext_resource type="Material" uid="uid://cq2clvap3dkok" path="res://materials/floor/test_tile.tres" id="3_6tnhw"]
 [ext_resource type="Script" path="res://scripts/room/PlaceHolder.gd" id="3_s8ltx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvoab"]
-albedo_color = Color(0.184314, 0.705882, 0.25098, 1)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_1h1it"]
-material = SubResource("StandardMaterial3D_hvoab")
+material = ExtResource("3_6tnhw")
 size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_opqd4"]
+size = Vector3(10, 1, 10)
 
 [node name="TestTile" type="Node3D" node_paths=PackedStringArray("objects")]
 script = ExtResource("1_tbr40")
@@ -28,3 +29,9 @@ script = ExtResource("3_s8ltx")
 transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -3, 0.5, 3)
 script = ExtResource("3_s8ltx")
 size_of_object = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_opqd4")

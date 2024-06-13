@@ -2,12 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/room/PortalTile.gd" id="1_dm7o0"]
 [ext_resource type="PackedScene" uid="uid://d3lsh8nnts3op" path="res://component scene/procedural generation/portal/portal.tscn" id="2_53qj7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m21ti"]
-albedo_color = Color(0.45098, 0.333333, 0.85098, 1)
+[ext_resource type="Material" uid="uid://cq2clvap3dkok" path="res://materials/floor/test_tile.tres" id="2_mjoyc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8d6v2"]
-material = SubResource("StandardMaterial3D_m21ti")
+material = ExtResource("2_mjoyc")
 size = Vector2(10, 10)
 
 [node name="TestPortalTile" type="Node3D" node_paths=PackedStringArray("portal")]

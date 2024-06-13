@@ -1,6 +1,6 @@
 class_name ProceduralRoom
 
-extends Room
+extends Node3D
 
 
 var width: int = 0
@@ -16,6 +16,7 @@ func _init(portal_count: int, h: Vector2i, w: Vector2i) -> void:
 	var tile_count = (width * height) - portal_count - 1
 	var portal_num := []
 	var m := len(Global.portal_tiles) - 1
+	
 	for i in range(portal_count):
 		portal_num.append(i)
 		tiles.append(Global.portal_tiles[randi_range(0, m)].duplicate())
@@ -26,6 +27,7 @@ func _init(portal_count: int, h: Vector2i, w: Vector2i) -> void:
 		tiles.append(Global.normal_tiles[randi_range(0, m)].duplicate())
 	tiles.shuffle()
 	portal_num.shuffle()
+	
 	for y in range(height):
 		for x in range(width):
 			print(x,y)
@@ -34,4 +36,21 @@ func _init(portal_count: int, h: Vector2i, w: Vector2i) -> void:
 				tile.set_portal(portal_num.pop_back())
 			self.add_child(tile)
 			tile.create(x * 10, y * 10)
+	create_walls()
 	Global.run_script.remove_child(self)
+
+func create_wall(x: int,z: int, _wall: Node3D,rot: float = 0):
+		var _w: Node3D = _wall.duplicate()
+		_w.rotate_y(deg_to_rad(rot))
+		$".".add_child(_w)
+		var pos: Vector3 = _w.position
+		_w.position = Vector3(x*10-5, pos.y, z*10-5)
+
+func create_walls():
+	var _wall: Node3D = Global.wall.instantiate()
+	for x in range(0, width):
+		create_wall(x, 0, _wall)
+		create_wall(width-x, height, _wall, 180)
+	for y in range(0, height):
+		create_wall(width, y, _wall, -90)
+		create_wall(0, height-y, _wall, 90)

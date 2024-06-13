@@ -1,12 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cf66eirjrmban"]
 
 [ext_resource type="Script" path="res://scripts/room/SpawnTile.gd" id="1_vm12n"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuupw"]
-albedo_color = Color(0.981226, 0.117173, 1.92523e-07, 1)
+[ext_resource type="Material" uid="uid://cq2clvap3dkok" path="res://materials/floor/test_tile.tres" id="2_o6ueo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dq7cs"]
-material = SubResource("StandardMaterial3D_uuupw")
+material = ExtResource("2_o6ueo")
 size = Vector2(10, 10)
 
 [node name="TestSpawnTile" type="Node3D" node_paths=PackedStringArray("spawn_point")]
