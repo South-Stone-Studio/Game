@@ -42,7 +42,7 @@ func _init(portal_count: int, h: Vector2i, w: Vector2i) -> void:
 func create_wall(x: int,z: int, _wall: Node3D,rot: float = 0):
 		var _w: Node3D = _wall.duplicate()
 		_w.rotate_y(deg_to_rad(rot))
-		$".".add_child(_w)
+		self.add_child(_w)
 		var pos: Vector3 = _w.position
 		_w.position = Vector3(x*10-5, pos.y, z*10-5)
 

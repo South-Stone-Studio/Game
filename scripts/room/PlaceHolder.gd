@@ -2,7 +2,7 @@ class_name PlaceHolder
 
 extends Node3D
 
-enum size{small, medium, big}
+enum size{small, medium, large}
 @export var size_of_object: size
 
 func replace(obj: Node3D) -> void:

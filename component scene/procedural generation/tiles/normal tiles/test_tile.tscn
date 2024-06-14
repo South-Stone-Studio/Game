@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8in63labn837"]
+[gd_scene load_steps=6 format=3 uid="uid://c8in63labn837"]
 
 [ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_tbr40"]
-[ext_resource type="PackedScene" uid="uid://bkp7j2eki1j5p" path="res://component scene/props/box/box.tscn" id="2_axpu7"]
 [ext_resource type="Material" uid="uid://cq2clvap3dkok" path="res://materials/floor/test_tile.tres" id="3_6tnhw"]
 [ext_resource type="Script" path="res://scripts/room/PlaceHolder.gd" id="3_s8ltx"]
 
@@ -16,7 +15,6 @@ size = Vector3(10, 1, 10)
 script = ExtResource("1_tbr40")
 objects = [NodePath("PlaceHolder"), NodePath("PlaceHolder2")]
 max_objects = 2
-default_object = ExtResource("2_axpu7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_1h1it")

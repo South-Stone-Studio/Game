@@ -15,12 +15,10 @@ func _ready() -> void:
 	print(current_room.r)
 	r = current_room.r
 	add_child(r)
-	
+
 func changeRoom(num) -> void:
 	remove_child(r)
 	if len(current_room.connections) > num:
 		current_room = current_room.connections[num]
 		r = current_room.r
 	add_child(r)
-
-

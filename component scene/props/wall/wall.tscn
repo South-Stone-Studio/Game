@@ -20,21 +20,25 @@ size = Vector3(10, 1, 0.5)
 
 [node name="Wall" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 shape = SubResource("BoxShape3D_h7tcp")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
 mesh = SubResource("BoxMesh_hkd3c")
 skeleton = NodePath("../MeshInstance3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 mesh = SubResource("BoxMesh_2tpwu")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+[node name="StaticBody3D2" type="StaticBody3D" parent="Node3D"]
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D2"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/StaticBody3D2"]
 shape = SubResource("BoxShape3D_7r7j3")
