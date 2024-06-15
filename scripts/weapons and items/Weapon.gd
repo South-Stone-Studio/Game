@@ -18,7 +18,7 @@ func _ready():
 	if ammo == null:
 		push_error("Node not specyfied: Ammo, can find nodes insidoe ammo types.")
 	
-func _input(event):
+func _input(_event):
 	if not picked:
 		return
 	if Input.is_action_just_pressed("attack"):

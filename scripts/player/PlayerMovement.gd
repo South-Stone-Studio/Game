@@ -15,6 +15,10 @@ var input: Vector2 = Vector2.ZERO
 var grab_items_area :int = 5
 @export var Mouse_Gobal_Position : Vector3 = Vector3.ZERO
 
+func _ready() -> void:
+	if Global.player == null:
+		Global.player = self
+		
 func _physics_process(delta):
 	# Look at cursor
 	velocity = Vector3()
