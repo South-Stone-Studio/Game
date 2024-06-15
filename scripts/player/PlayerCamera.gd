@@ -26,8 +26,6 @@ func get_intersection():
 	position += ray_normal*4
 	position.y = offset.y
 	
-	
-	
 	var ray_parameters: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin,rayEnd)
 	
 	return space_state.intersect_ray(ray_parameters)
