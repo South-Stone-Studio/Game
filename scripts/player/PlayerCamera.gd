@@ -1,4 +1,4 @@
-class_name Player_camera
+class_name PlayerCamera
 
 extends Camera3D
 
@@ -7,13 +7,6 @@ extends Camera3D
 var rayOrigin := Vector3.ZERO
 var rayEnd := Vector3.ZERO
 
-func _ready():
-	pass # Replace with function body.
-
-
-func _process(delta):
-	pass
-	
 func get_intersection():
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
