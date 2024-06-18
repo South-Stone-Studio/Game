@@ -4,7 +4,7 @@ extends Bullet
 @export var explosion: PackedScene
 var exp_damage: int = 0
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	v = 0
 
 func explode():

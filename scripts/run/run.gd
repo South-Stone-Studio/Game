@@ -12,7 +12,6 @@ func _ready() -> void:
 		Global.run_script = self
 	dun_generator.create_dungeon()
 	current_room = dun_generator.get_graph()
-	print(current_room.r)
 	r = current_room.r
 	add_child(r)
 

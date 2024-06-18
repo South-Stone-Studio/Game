@@ -15,6 +15,7 @@ var graph: Gnode
 @export_range(1, 100) var min_width: int
 @export_range(1, 100) var max_height: int
 @export_range(1, 100) var min_height: int
+@export var spawn_room_tiles: Array[PackedScene]
 var node_count: int = 0
 var _cur_index: int = max_main_length + 1
 var rooms = []
@@ -72,7 +73,11 @@ func count_nodes(_node: Gnode):
 	node_count += 1
 	
 func create_room(node: Gnode):
-	node.create_room(len(node.connections), Vector2i(min_height,max_height), Vector2i(min_width,max_width))
+	var req_tiles:Array[PackedScene] = []
+	match node.room_type:
+		room.room_types.start:
+			req_tiles.append_array(spawn_room_tiles)
+	node.create_room(len(node.connections), Vector2i(min_height,max_height), Vector2i(min_width,max_width), req_tiles)
 
 func free_graph(node: Gnode, indexes:Array[int]=[]):
 	indexes.append(node.index)

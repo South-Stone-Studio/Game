@@ -6,9 +6,7 @@ extends Node3D
 var width: int = 0
 var height: int = 0
 
-var grid: Array[Array]
-
-func _init(portal_count: int, h: Vector2i, w: Vector2i) -> void:
+func _init(portal_count: int, h: Vector2i, w: Vector2i, t: Array[PackedScene]) -> void:
 	Global.run_script.add_child(self)
 	width = randi_range(w.x, w.y)
 	height = randi_range(h.x, h.y)
@@ -19,18 +17,19 @@ func _init(portal_count: int, h: Vector2i, w: Vector2i) -> void:
 	
 	for i in range(portal_count):
 		portal_num.append(i)
-		tiles.append(Global.portal_tiles[randi_range(0, m)].duplicate())
+		tiles.append(Global.portal_tiles[randi_range(0, m)])
 	m = len(Global.spawn_tiles) - 1
-	tiles.append(Global.spawn_tiles[randi_range(0, m)].duplicate())
+	tiles.append(Global.spawn_tiles[randi_range(0, m)])
 	m = len(Global.normal_tiles) - 1
-	for i in range(tile_count):
-		tiles.append(Global.normal_tiles[randi_range(0, m)].duplicate())
+	for i in range(tile_count- len(t)):
+		tiles.append(Global.normal_tiles[randi_range(0, m)])
+	for i in t:
+		tiles.append(i)
 	tiles.shuffle()
 	portal_num.shuffle()
 	
 	for y in range(height):
 		for x in range(width):
-			print(x,y)
 			var tile: Tile = tiles.pop_back().instantiate()
 			if is_instance_of(tile, PortalTile):
 				tile.set_portal(portal_num.pop_back())
