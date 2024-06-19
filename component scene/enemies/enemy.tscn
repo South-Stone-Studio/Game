@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4s8ow6yghgsm"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_bw6bj"]
+[ext_resource type="PackedScene" uid="uid://dgcdj3etm8epg" path="res://component scene/enemies/cone_to_view_area.tscn" id="2_tbo62"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8j4cn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h8k3"]
+albedo_color = Color(0.823343, 0, 0.201703, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jav3w"]
+material = SubResource("StandardMaterial3D_1h8k3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd8v2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_igcpd"]
+material = SubResource("StandardMaterial3D_yd8v2")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8eksk"]
+points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("vision", "nav_agent")]
+script = ExtResource("1_bw6bj")
+vision = NodePath("vision_area")
+nav_agent = NodePath("NavigationAgent3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8j4cn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_jav3w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.1, 0, 0.5, -0.5)
+mesh = SubResource("BoxMesh_igcpd")
+skeleton = NodePath("../..")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="vision_area" type="Area3D" parent="."]
+
+[node name="Cone" parent="vision_area" instance=ExtResource("2_tbo62")]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -2, 0, 5, -8.74228e-08, 0, 0, -5.5)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vision_area"]
+transform = Transform3D(10, 0, 0, 0, -2.18557e-07, -2, 0, 5, -8.74228e-08, 0, 0, -4.45192)
+shape = SubResource("ConvexPolygonShape3D_8eksk")
+
+[node name="vision_timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="vision_timer" to="." method="_on_vision_timer_timeout"]
