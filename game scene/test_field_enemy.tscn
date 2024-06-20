@@ -65,12 +65,12 @@ skeleton = NodePath("../../StaticBody3D3")
 transform = Transform3D(1, 0, 0, 0, 0.180759, 0.983527, 0, -0.983527, 0.180759, 0, 7.5011, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_wd1gq")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.04901, 6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.04901, 6)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.48081, 9.32931, 9.21049)
 
 [node name="Enemy" parent="." instance=ExtResource("2_246n8")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 2, -8)
-hp = 10
-speed = 50.0
+hp = 2
+speed = 5.0
