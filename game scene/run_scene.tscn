@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg1i51sby2012"]
+[gd_scene load_steps=6 format=3 uid="uid://dg1i51sby2012"]
 
 [ext_resource type="Script" path="res://scripts/run/Run.gd" id="1_tmahc"]
 [ext_resource type="Script" path="res://scripts/generation/DungeonGenerator.gd" id="2_fonkv"]
+[ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="4_7j6o3"]
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="7_easf7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sd1vj"]
@@ -29,8 +30,10 @@ min_height = 3
 [node name="Player" parent="." instance=ExtResource("7_easf7")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.0205, 0.0152011, 3.99624)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(0.965926, -0.25, 0.0669873, 0, 0.258819, 0.965926, -0.258819, -0.933013, 0.25, 0, 20.5182, 25.588)
+script = ExtResource("4_7j6o3")
+target = NodePath("../Player")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
