@@ -2,6 +2,8 @@ extends  Node
 
 var player: PlayerMovement
 var run_script: Run
+var current_room_root: Node3D
+var current_room_gnode: Gnode
 
 var normal_tiles: Array[PackedScene]
 var portal_tiles: Array[PackedScene]

@@ -15,6 +15,7 @@ var graph: Gnode
 @export_range(1, 100) var min_width: int
 @export_range(1, 100) var max_height: int
 @export_range(1, 100) var min_height: int
+
 @export var spawn_room_tiles: Array[PackedScene]
 var node_count: int = 0
 var _cur_index: int = max_main_length + 1
