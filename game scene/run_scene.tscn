@@ -36,6 +36,7 @@ script = ExtResource("4_7j6o3")
 target = NodePath("../Player")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_sd1vj")

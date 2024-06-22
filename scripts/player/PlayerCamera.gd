@@ -7,7 +7,7 @@ extends Camera3D
 var rayOrigin := Vector3.ZERO
 var rayEnd := Vector3.ZERO
 
-func get_intersection():
+func get_intersection() -> Dictionary:
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
 	rayOrigin = self.project_ray_origin(mouse_position)
