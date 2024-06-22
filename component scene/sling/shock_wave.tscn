@@ -17,7 +17,6 @@ outer_radius = 0.5
 script = ExtResource("1_xdp2g")
 colider = NodePath("CollisionShape3D")
 mesh = NodePath("MeshInstance3D")
-max_radius = 9.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_g7lne")

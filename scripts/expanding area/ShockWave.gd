@@ -3,9 +3,9 @@ class_name ShockWave
 extends Area3D
 @export var colider: CollisionShape3D
 @export var mesh: MeshInstance3D 
-@export var width: float = 0.5
+var width: float = 0.5
 var current_radius: float = 0.5
-@export var max_radius: float = 4
+var max_radius: float
 
 func _ready():
 		mesh.mesh.inner_radius = current_radius - width + 0.001
@@ -23,6 +23,5 @@ func _process(delta):
 func _on_body_entered(body):
 	if is_instance_of(body, PlayerMovement):
 		var dist: float = self.global_position.distance_to(body.global_position)
-		print(dist)
 		if dist > current_radius - width*2:
 			print("Player hit!")

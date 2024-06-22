@@ -3,44 +3,67 @@ class_name Sling
 extends CharacterBody3D
 
 
-const SPEED = 5.0
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@export_category("Setup")
 @onready var target: Node3D = Global.player
 @export var shock_vave: PackedScene
 @export var slimy_bomb: PackedScene
-var max_jumps = 5
+
+@export_category("Sling Jumps")
+@export var max_jumps: int = 5
+@export var jumps_in_queue: int = 5
+@export var coldown_after_jump: float = 2
+@export var exhoustion_after_max_jump: float = 4
+@export var speed: float = 5.0
+@export var shock_wave_radius = 4.0
+var current_jumps: int = 5
+
+@export_category("Slimy Barrage")
+@export var barages_in_queue: int = 3 
+@export var number_of_bombs: Vector2i = Vector2i(4, 6)
+@export var coldown_after_barage: float = 1.1
+@export var base_delay: float = 0.5
+@export var added_random_delay: Vector2 = Vector2(0.2, 1.2)
+@export var bomb_speread: float = 5
+
 var coldown: float = 0
 var target_position: Vector3
 
 #sling jump variables
 var is_in_sling_jump: bool
 var create_shock_wave: bool
+
+# randomize moveset with predefined number of atacks
 var queue: Array[Callable]
 var index: int = 0
+
 func _ready():
-	queue.append(sling_jump)
-	queue.append(sling_jump)
-	queue.append(slimy_barage)
-	queue.append(sling_jump)
+	for i in range(jumps_in_queue):
+		queue.append(sling_jump)
+	for i in range(barages_in_queue):
+		queue.append(slimy_barage)
+	queue.shuffle()
 
 func _process(delta: float) -> void:
 	if coldown <= 0:
 		queue[index].call()
 		index += 1
 		index %= len(queue)
+		if index == 0:
+			queue.shuffle()
 	else:
 		coldown -= delta
 
 func sling_jump():
 	velocity.y = 20
-	coldown = 2
+	coldown = coldown_after_jump
 	target_position = target.global_position
-	if max_jumps == 0:
-		coldown = 5
-		max_jumps = 5
+	if current_jumps == 0:
+		coldown = exhoustion_after_max_jump
+		current_jumps = max_jumps
 	else:
-		max_jumps -= 1
+		current_jumps -= 1
 	is_in_sling_jump = true
 
 func slimy_shock():
@@ -48,32 +71,34 @@ func slimy_shock():
 	ex = ex.duplicate()
 	Global.run_script.r.add_child(ex)
 	ex.global_position = self.global_position
+	ex.max_radius = shock_wave_radius
 	is_in_sling_jump = false
 	create_shock_wave = false
 
 func sling_movement():
-	velocity.x = move_toward(0, target_position.x - self.global_position.x, SPEED)
-	velocity.z = move_toward(0, target_position.z - self.global_position.z, SPEED)
+	velocity.x = move_toward(0, target_position.x - self.global_position.x, speed)
+	velocity.z = move_toward(0, target_position.z - self.global_position.z, speed)
 	create_shock_wave = true
 
 func slimy_barage():
 	velocity.y = 10
 	var r: ProceduralRoom = Global.current_room_root
-	var width: Vector2 = Vector2(5, (r.width * 10) - 5)
-	var height: Vector2 = Vector2(5, (r.height * 10) - 5)
+	var width: Vector2 = Vector2(-2, (r.width * 10))
+	var height: Vector2 = Vector2(-2, (r.height * 10))
 	var target_pos := target.global_position
 	
-	for i in range(randi_range(4, 6)):
-		var x: float = randf_range(max(target_pos.x-5, width.x),min(target_pos.x+5, width.y))
-		var y: float = randf_range(max(target_pos.z-5, height.x),min(target_pos.z+5, height.y))
-		var pos: Vector3 = Vector3(x, 0, y)
-		var delay: float = randf_range(0.2, 1.5)
+	for i in range(randi_range(number_of_bombs.x, number_of_bombs.y)):
+		var x: float = randf_range(-bomb_speread, bomb_speread)
+		var y: float = randf_range(-bomb_speread, bomb_speread)
+		var pos: Vector3 = Vector3(
+			min(max(target_pos.x+x,width.x),width.y), 0,
+			min(max(target_pos.z+y,height.x),height.y))
+		var delay: float = randf_range(added_random_delay.x, added_random_delay.y)
 		var o: SlimyBarageBomb = slimy_bomb.instantiate().duplicate()
 		Global.current_room_root.add_child(o)
 		o.global_position = pos
-		print(target.global_position, o.global_position)
-		o.delay = delay + 0.5
-	coldown = 1.2
+		o.delay = delay + base_delay
+	coldown = coldown_after_barage
 	
 func rollin_goo() -> void:
 	pass
@@ -88,7 +113,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		if create_shock_wave and is_in_sling_jump:
 			slimy_shock()
-	
 	move_and_slide()
 
 #on body collision
