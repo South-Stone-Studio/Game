@@ -8,8 +8,8 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export_category("Setup")
 @onready var target: Node3D = Global.player
 @export var shock_vave: PackedScene
-@export var slimy_bomb: PackedScene
-
+@export var slimy_projectile: PackedScene
+@export var show_danger: PackedScene
 @export_category("Sling Jumps")
 @export var max_jumps: int = 5
 @export var jumps_in_queue: int = 5
@@ -23,9 +23,8 @@ var current_jumps: int = 5
 @export var barages_in_queue: int = 3 
 @export var number_of_bombs: Vector2i = Vector2i(4, 6)
 @export var coldown_after_barage: float = 1.1
-@export var base_delay: float = 0.5
-@export var added_random_delay: Vector2 = Vector2(0.2, 1.2)
 @export var bomb_speread: float = 5
+@export var radius_of_barage_strike: float = 5
 
 var coldown: float = 0
 var target_position: Vector3
@@ -85,19 +84,23 @@ func slimy_barage():
 	var r: ProceduralRoom = Global.current_room_root
 	var width: Vector2 = Vector2(-2, (r.width * 10))
 	var height: Vector2 = Vector2(-2, (r.height * 10))
-	var target_pos := target.global_position
 	
 	for i in range(randi_range(number_of_bombs.x, number_of_bombs.y)):
 		var x: float = randf_range(-bomb_speread, bomb_speread)
 		var y: float = randf_range(-bomb_speread, bomb_speread)
 		var pos: Vector3 = Vector3(
-			min(max(target_pos.x+x,width.x),width.y), 0,
-			min(max(target_pos.z+y,height.x),height.y))
-		var delay: float = randf_range(added_random_delay.x, added_random_delay.y)
-		var o: SlimyBarageBomb = slimy_bomb.instantiate().duplicate()
+			min(max(global_position.x+x,width.x),width.y), 0,
+			min(max(global_position.z+y,height.x),height.y))
+		var o: SlimyProjectile = slimy_projectile.instantiate().duplicate()
+		var danger: Node3D = show_danger.instantiate().duplicate()
+		
+		Global.current_room_root.add_child(danger)
 		Global.current_room_root.add_child(o)
-		o.global_position = pos
-		o.delay = delay + base_delay
+		o.global_position = self.global_position + Vector3(0,2,0)
+		danger.global_position = pos
+		o.target_position = pos
+		o.radius = radius_of_barage_strike
+		o.obj_to_delete = danger
 	coldown = coldown_after_barage
 	
 func rollin_goo() -> void:

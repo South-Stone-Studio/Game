@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://0yi2j3am5bo2"]
+
+[ext_resource type="Script" path="res://scripts/sling/SlimyProjectile.gd" id="1_y8oye"]
+[ext_resource type="PackedScene" uid="uid://b2qop06ln8rht" path="res://component scene/sling/shock_wave.tscn" id="2_p3shh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8a18x"]
+radius = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkw0m"]
+albedo_color = Color(0, 0.753506, 0.556888, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7hft7"]
+material = SubResource("StandardMaterial3D_vkw0m")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qthio"]
+radius = 0.4
+
+[node name="SlimyProjectile" type="CharacterBody3D"]
+script = ExtResource("1_y8oye")
+shock_wave = ExtResource("2_p3shh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8a18x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_7hft7")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qthio")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -6,14 +6,15 @@ extends Area3D
 var width: float = 0.5
 var current_radius: float = 0.5
 var max_radius: float
+var speed: float = 5
 
 func _ready():
 		mesh.mesh.inner_radius = current_radius - width + 0.001
 		mesh.mesh.outer_radius = current_radius
 		
-func _process(delta):
+func _physics_process(delta):
 	if current_radius < max_radius:
-		current_radius += delta * 5
+		current_radius += delta * speed
 		mesh.mesh.inner_radius = current_radius - width
 		mesh.mesh.outer_radius = current_radius
 		colider.shape.radius = current_radius

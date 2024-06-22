@@ -23,4 +23,6 @@ func changeRoom(num) -> void:
 	if len(current_room.connections) > num:
 		current_room = current_room.connections[num]
 		r = current_room.r
+		Global.current_room_root = r
+		Global.current_room_gnode = current_room
 	add_child(r)
