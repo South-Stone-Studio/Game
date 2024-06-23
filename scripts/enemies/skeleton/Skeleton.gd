@@ -2,6 +2,9 @@ class_name EnemyMovement
 
 extends Enemy
 
+enum s_types {mele, range, magic}
+@export var sceleton_type : s_types
+
 @export_category("vision")
 @onready var player : CharacterBody3D
 @export var vision : Area3D
@@ -10,13 +13,16 @@ extends Enemy
 var saved_player_position : Vector3
 
 @export_category("patrol options")
-enum patrol {none, hold_position, random_patrol, prepared_patrol}
+enum patrol {hold_position, random_patrol, prepared_patrol}
 @export var patrol_mode : patrol
 @export var patrol_points : Array[Marker3D]
 @export var hold_position_points : Array[Vector3]
 var hunt : bool = false
 var alarmed : bool = false
-@export var alarm_time : float
+
+@export_category("hold_position")
+@export var radius : int
+var d : float = 0.0
 
 func _ready() -> void:
 	super._ready()
@@ -33,8 +39,8 @@ func _process(delta : float) -> void:
 			move_to_pos(saved_player_position)
 		else:
 			alarmed = false
-	else:
-		do_patrol()
+	else:	# if not alarmed or hunting then patrol
+		do_patrol(delta)
 
 func move_to_pos(pos : Vector3) -> void:
 	velocity = Vector3.ZERO
@@ -58,8 +64,15 @@ func _on_vision_timer_timeout() -> void:
 						saved_player_position = player.position
 						hunt = true
 
-func do_patrol() -> void:
+func do_patrol(delta : float) -> void:
 	if patrol_mode == patrol.hold_position:
-		hold_position_points.shuffle()
-		for point in hold_position_points:
-			move_to_pos(position + point)
+		# do circle to hold position
+		d += delta
+		velocity = Vector3(sin(d*speed)*radius, 0, cos(d*speed)*radius)
+		move_to_pos(position+velocity)
+		rotate_y(speed * delta)
+
+	elif patrol_mode == patrol.prepared_patrol:
+		# visit points seted at the start
+		pass
+	
