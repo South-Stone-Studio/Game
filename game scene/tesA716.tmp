@@ -71,4 +71,9 @@ target = NodePath("../Player")
 
 [node name="Enemy2" parent="." instance=ExtResource("2_246n8")]
 transform = Transform3D(-0.80188, 0, 0.597485, 0, 1, 0, -0.597485, 0, -0.80188, 3.18886, 0.935147, -6.61522)
-hold_position_points = Array[Vector3]([Vector3(-3, 0, 5), Vector3(-5, 0, 4), Vector3(5, 0, 5)])
+patrol_mode = {
+"hold_position": 1,
+"none": 0,
+"prepared_patrol": 2,
+"random_patrol": 3
+}
