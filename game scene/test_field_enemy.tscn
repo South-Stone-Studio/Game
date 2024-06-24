@@ -49,6 +49,7 @@ script = ExtResource("2_bjfp0")
 target = NodePath("../Player")
 
 [node name="Enemy2" parent="." instance=ExtResource("2_246n8")]
-transform = Transform3D(-0.80188, 0, 0.597485, 0, 1, 0, -0.597485, 0, -0.80188, -0.0186234, 0.935147, -6.61522)
-slide_on_ceiling = false
-radius = 7
+transform = Transform3D(-0.80188, 0, 0.597485, 0, 1, 0, -0.597485, 0, -0.80188, 3.23419, 0.935147, -6.61522)
+radius = 1
+demage = 4
+attack_speed = 5.0
