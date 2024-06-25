@@ -10,6 +10,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var shock_vave: PackedScene
 @export var slimy_projectile: PackedScene
 @export var show_danger: PackedScene
+
 @export_category("Sling Jumps")
 @export var max_jumps: int = 5
 @export var jumps_in_queue: int = 5
@@ -17,7 +18,8 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var exhoustion_after_max_jump: float = 4
 @export var speed: float = 5.0
 @export var shock_wave_radius = 4.0
-var current_jumps: int = 5
+@export var offset_position: Vector2 = Vector2(0, 0)
+@export var shock_wave_speed: float = 5
 
 @export_category("Slimy Barrage")
 @export var barages_in_queue: int = 3 
@@ -26,14 +28,13 @@ var current_jumps: int = 5
 @export var bomb_speread: float = 5
 @export var radius_of_barage_strike: float = 5
 
+var current_jumps: int = 5
 var coldown: float = 0
 var target_position: Vector3
 
-#sling jump variables
 var is_in_sling_jump: bool
 var create_shock_wave: bool
 
-# randomize moveset with predefined number of atacks
 var queue: Array[Callable]
 var index: int = 0
 
@@ -71,12 +72,13 @@ func slimy_shock():
 	Global.run_script.r.add_child(ex)
 	ex.global_position = self.global_position
 	ex.max_radius = shock_wave_radius
+	ex.speed = shock_wave_speed
 	is_in_sling_jump = false
 	create_shock_wave = false
 
 func sling_movement():
-	velocity.x = move_toward(0, target_position.x - self.global_position.x, speed)
-	velocity.z = move_toward(0, target_position.z - self.global_position.z, speed)
+	velocity.x = move_toward(0, target_position.x - self.global_position.x + offset_position.x, speed)
+	velocity.z = move_toward(0, target_position.z - self.global_position.z + offset_position.y, speed)
 	create_shock_wave = true
 
 func slimy_barage():

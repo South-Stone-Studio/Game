@@ -3,7 +3,7 @@ class_name SlimyProjectile
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED = 10
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var target_position: Vector3
 

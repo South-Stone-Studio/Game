@@ -26,11 +26,11 @@ script = ExtResource("1_0se2r")
 shock_vave = ExtResource("2_6xvho")
 slimy_projectile = ExtResource("3_qygcx")
 show_danger = ExtResource("4_ojx1q")
-jumps_in_queue = 4
+jumps_in_queue = 3
 shock_wave_radius = 10.0
-barages_in_queue = 4
-number_of_bombs = Vector2i(3, 4)
-bomb_speread = 12.0
+shock_wave_speed = 10.0
+number_of_bombs = Vector2i(3, 5)
+bomb_speread = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
