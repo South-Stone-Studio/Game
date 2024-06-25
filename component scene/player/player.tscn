@@ -20,6 +20,8 @@ material = SubResource("StandardMaterial3D_jpbw6")
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand_controller")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 disable_mode = 2
+collision_layer = 8
+collision_mask = 7
 script = ExtResource("1_4kaxg")
 hand_controller = NodePath("Body/HandController")
 

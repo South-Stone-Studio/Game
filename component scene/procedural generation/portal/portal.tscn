@@ -16,6 +16,8 @@ script = ExtResource("1_s7i1f")
 mesh = NodePath("Area3D/CollisionShape3D/MeshInstance3D")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_u51py")
