@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4s8ow6yghgsm"]
+[gd_scene load_steps=12 format=3 uid="uid://c4s8ow6yghgsm"]
 
 [ext_resource type="Script" path="res://scripts/enemies/skeleton/Skeleton.gd" id="1_ncl1y"]
-[ext_resource type="Script" path="res://scripts/enemies/skeleton/SceletonSword.gd" id="2_ano41"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8j4cn"]
 
@@ -35,14 +34,21 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_ncl1y")
+sceleton_type = null
 vision = NodePath("vision_area")
 nav_agent = NodePath("NavigationAgent3D")
 vision_raycast = NodePath("vision_area/RayCast3D")
+patrol_mode = null
+radius = null
 sword = NodePath("Sword")
+sword_demage = null
+attack_speed = null
+bone_demage = null
+bone_throw_speed = null
+bone_heal = null
+hp = null
 speed = 2.0
 metadata/speed = 0.0
-
-[node name="attack_timer" type="Timer" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_8j4cn")
@@ -79,12 +85,9 @@ target_position = Vector3(0, 0, -12)
 collision_mask = 11
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[node name="Sword" type="Area3D" parent="." node_paths=PackedStringArray("attack_timer")]
-transform = Transform3D(0.544639, -0.838671, 0, 0.72631, 0.471671, 0.5, -0.419335, -0.272319, 0.866026, 0, 0, 0)
+[node name="Sword" type="Area3D" parent="."]
+transform = Transform3D(0.463548, -0.873217, 0.150384, 0.72631, 0.471671, 0.5, -0.50754, -0.122549, 0.852869, 0, 0, 0)
 collision_mask = 11
-script = ExtResource("2_ano41")
-sword_speed = 10.0
-attack_timer = NodePath("../attack_timer")
 
 [node name="sword_model" type="MeshInstance3D" parent="Sword"]
 transform = Transform3D(0.1, -1.49012e-08, -7.45058e-09, -9.31323e-09, 1.5, -1.86265e-09, -3.72529e-09, -4.47035e-08, 0.1, -0.3, 1.083, -0.246)

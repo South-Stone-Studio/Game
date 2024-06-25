@@ -3,7 +3,9 @@ class_name EnemyMovement
 extends Enemy
 
 enum s_types {mele, range}
-@export var sceleton_type : s_types
+@export var sceleton_type : s_types 
+@export var attack_timer : Timer
+var is_attacking : bool
 
 @export_category("vision")
 @onready var player : CharacterBody3D
@@ -13,7 +15,7 @@ enum s_types {mele, range}
 var saved_player_position : Vector3
 
 @export_category("patrol")
-enum patrol {hold_position, prepared_patrol}
+enum patrol {hold_position, prepared_patrol, bossfight}
 @export var patrol_mode : patrol
 @export var patrol_points : Array[Marker3D]
 var hunt : bool = false
@@ -25,11 +27,14 @@ var d : float = 0.0
 
 @export_category("mele type")
 @export var sword : Area3D
-@export var demage : int
+@export var sword_demage : int
 @export var attack_speed : float
-var attack_timer : float = 0.0
 
-@export_category("mele type")
+@export_category("range type")
+@export var bone_to_throw : Area3D
+@export var bone_demage : int
+@export var bone_throw_speed : float
+@export var bone_heal : int
 
 func _ready() -> void:
 	super._ready()
@@ -40,19 +45,17 @@ func _ready() -> void:
 func _process(delta : float) -> void:
 	super._process(delta)
 	velocity = Vector3.ZERO
-	# hunting and alarm
-	if hunt:
+	
+	if hunt:	#hunting
 		move_to_pos(player.position)
-		attack_timer += attack_speed * delta
-		if attack_timer >= 100:
-			attack_timer = 0.0
-			attack(delta, demage)
-	elif !hunt and alarmed:
+		if not is_attacking:
+			is_attacking = true
+	elif !hunt and alarmed: 	#alarm
 		if position.distance_to(saved_player_position) >= 1:
 			move_to_pos(saved_player_position)
 		else:
 			alarmed = false
-	else:	# if not alarmed or hunting then patrol
+	else:	# if not alarmed or hunting then selected type of patrol
 		do_patrol(delta)
 
 func move_to_pos(pos : Vector3) -> void:
@@ -71,36 +74,35 @@ func _on_vision_timer_timeout() -> void:
 			if overlap.name == "Player":
 				alarmed = true
 				vision_raycast.force_raycast_update()
-				look_at(Vector3(player.position.x, 0.5, player.position.z), Vector3(0, 1, 0))
 				if vision_raycast.is_colliding():
 					var collider : Object = vision_raycast.get_collider()
 					if collider.name == "Player":
+						look_at(Vector3(player.position.x, 0.5, player.position.z), Vector3(0, 1, 0))
 						saved_player_position = player.position
 						hunt = true
 
 func do_patrol(delta : float) -> void:
 	if patrol_mode == patrol.hold_position:
 		# do circle to hold position
-		d += delta
-		velocity = Vector3(sin(d*speed)*radius, 0, cos(d*speed)*radius)
-		move_to_pos(position+velocity)
-		rotate_y(speed * delta)
-
+		rotate_y(-1 * delta)
 	elif patrol_mode == patrol.prepared_patrol:
 		# visit points seted at the start
 		pass
 
-func attack(delta : float, demage : int) -> void: 
+func attack() -> void:
 	if sceleton_type == s_types.mele:	#mele
 		print("mele")
-		sword.rotate_y(speed * delta)
-		var overlaps = vision.get_overlapping_bodies()
-		if overlaps.size() > 0:
-			for overlap in overlaps:
-				if overlap.name == "Player":
-					print("demage to player")
+		if not sword.do_atc:
+			sword.do_atc = true
 	elif sceleton_type == s_types.range:	#ranged
 		print("range")
+		
 
 func set_type_of_sceleton() -> void:
 	pass
+
+func _on_sword_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		print("demage to player")
+
+
