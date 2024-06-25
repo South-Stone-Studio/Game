@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dejs7m77d4d82"]
+
+[ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_remnp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ehdk"]
+albedo_color = Color(0.275661, 0.38907, 0.145459, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h7uda"]
+material = SubResource("StandardMaterial3D_3ehdk")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wuom"]
+size = Vector3(10, 0, 10)
+
+[node name="PlaneTile" type="Node3D"]
+script = ExtResource("1_remnp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_h7uda")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_3wuom")
