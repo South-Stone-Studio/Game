@@ -23,8 +23,6 @@ func _ready() -> void:
 	damaged = health
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):
-		health -= 10
 	if is_timeout:
 		if damaged > health:
 			damaged = move_toward(damaged, health, 2)

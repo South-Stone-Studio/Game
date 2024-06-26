@@ -1,6 +1,6 @@
 class_name Sling
 
-extends CharacterBody3D
+extends Boss
 
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -39,6 +39,7 @@ var queue: Array[Callable]
 var index: int = 0
 
 func _ready():
+	super._ready()
 	for i in range(jumps_in_queue):
 		queue.append(sling_jump)
 	for i in range(barages_in_queue):

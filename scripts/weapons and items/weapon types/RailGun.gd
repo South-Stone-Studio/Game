@@ -30,5 +30,8 @@ func _physics_process(_delta):
 		print("shoot!")
 		nozle.force_raycast_update()
 		if nozle.is_colliding():
-			print(nozle.get_collider().name)
+			var body = nozle.get_collider()
+			if is_instance_of(body, Boss):
+				body.health -= 30
+			print(body.name)
 		active = false
