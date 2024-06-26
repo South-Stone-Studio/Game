@@ -2,15 +2,16 @@
 
 [ext_resource type="Script" path="res://scripts/ui/HealthBar.gd" id="1_w6kne"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jehr"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwxwg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxu32"]
 bg_color = Color(0.143771, 0.702548, 0.505522, 1)
+border_color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4ss8"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8e2i5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idw4w"]
-bg_color = Color(0.903598, 0.903598, 0.903598, 1)
+bg_color = Color(1, 1, 1, 1)
 
 [node name="HealthGauge" type="ProgressBar" node_paths=PackedStringArray("timer", "damage_bar")]
 z_index = 1
@@ -18,9 +19,8 @@ offset_right = 250.0
 offset_bottom = 27.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_styles/background = SubResource("StyleBoxEmpty_4jehr")
+theme_override_styles/background = SubResource("StyleBoxEmpty_qwxwg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cxu32")
-value = 20.0
 show_percentage = false
 script = ExtResource("1_w6kne")
 timer = NodePath("Timer")
@@ -34,12 +34,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_p4ss8")
+theme_override_styles/background = SubResource("StyleBoxEmpty_8e2i5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_idw4w")
 value = 40.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.6
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

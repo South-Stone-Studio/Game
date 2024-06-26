@@ -30,13 +30,13 @@ script = ExtResource("1_obqyo")
 shock_vave = ExtResource("2_xj8oj")
 slimy_projectile = ExtResource("3_05c8d")
 show_danger = ExtResource("4_qrbw0")
-speed = 7.0
-shock_wave_radius = 6.0
+shock_wave_radius = 9.0
+shock_wave_speed = 7.0
 bomb_speread = 7.0
 radius_of_barage_strike = 6.0
 boss_health_bar = NodePath("CanvasLayer/Control/MarginContainer/HealthGauge")
 label = NodePath("CanvasLayer/Control/MarginContainer/Label")
-max_health = 375
+max_health = 600
 boss_tiles = Array[PackedScene]([ExtResource("5_h5sws")])
 boss_name = "Sling the slime king"
 
@@ -87,5 +87,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.52549)
 theme_override_fonts/font = ExtResource("7_tlidf")
 theme_override_font_sizes/font_size = 55
 text = "Sling the slime sing"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

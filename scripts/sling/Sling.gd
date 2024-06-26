@@ -10,7 +10,10 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var shock_vave: PackedScene
 @export var slimy_projectile: PackedScene
 @export var show_danger: PackedScene
-
+var primary: bool = true
+var my_health: int
+var primal: Sling = null
+var devided: bool = false
 @export_category("Sling Jumps")
 @export var max_jumps: int = 5
 @export var jumps_in_queue: int = 5
@@ -39,7 +42,12 @@ var queue: Array[Callable]
 var index: int = 0
 
 func _ready():
-	super._ready()
+	if primary:
+		super._ready()
+	else:
+		boss_health_bar.visible = false
+		label.visible = false
+		sling_jump()
 	for i in range(jumps_in_queue):
 		queue.append(sling_jump)
 	for i in range(barages_in_queue):
@@ -48,6 +56,11 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if coldown <= 0:
+		if health <= max_health / 2 and !devided:
+			devided = !devided
+			devide_and_slime()
+			coldown = 5
+			return
 		queue[index].call()
 		index += 1
 		index %= len(queue)
@@ -106,9 +119,29 @@ func slimy_barage():
 		o.obj_to_delete = danger
 	coldown = coldown_after_barage
 	
-func rollin_goo() -> void:
-	pass
-	
+func devide_and_slime() -> void:
+	var dople:Sling = self.duplicate()
+	dople.primary = false
+	dople.primal = self
+	self.health /= 2 
+	self.offset_position = Vector2(2,0)
+	dople.offset_position = Vector2(-2,0)
+	dople.health = health
+	dople.devided = true
+	get_parent().add_child(dople)
+	dople.global_position = dople.global_position + Vector3(2, 2, 2)
+	self.my_health /= 2 
+
+func _set_health(val):
+	if !primary:
+		primal.health -= health - val
+		health = min(max_health, max(0, val))
+		print(health, primal.health)
+		if health <= 0:
+			self.queue_free()
+	else:
+		super._set_health(val)
+
 func _physics_process(delta: float) -> void:
 	velocity.x = 0
 	velocity.z = 0

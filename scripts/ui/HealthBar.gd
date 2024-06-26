@@ -21,10 +21,10 @@ func _ready() -> void:
 	health = 100
 	damaged = health
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if is_timeout:
 		if damaged > health:
-			damaged = move_toward(damaged, health, 2)
+			damaged = move_toward(damaged, health, 40 * delta)
 	damage_bar.value = damaged
 
 func _on_timer_timeout() -> void:
