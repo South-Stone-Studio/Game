@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgg0cjypuekf5"]
+[gd_scene load_steps=12 format=3 uid="uid://bgg0cjypuekf5"]
 
 [ext_resource type="Script" path="res://scripts/sling/Sling.gd" id="1_obqyo"]
 [ext_resource type="PackedScene" uid="uid://b2qop06ln8rht" path="res://component scene/boss/components/sling components/shock_wave.tscn" id="2_xj8oj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8eotq8mq00t0" path="res://component scene/boss/components/sling components/show_slimy_danger.tscn" id="4_qrbw0"]
 [ext_resource type="PackedScene" uid="uid://gmuatd0bne5r" path="res://component scene/procedural generation/tiles/boss tiles/plane_boss_tile.tscn" id="5_h5sws"]
 [ext_resource type="PackedScene" uid="uid://bw3a2y8i36yc6" path="res://ui/health_bar.tscn" id="5_wf1ij"]
+[ext_resource type="FontFile" uid="uid://5wmwgirffx66" path="res://fonts/wizzta.ttf" id="7_tlidf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rohma"]
 height = 1.5
@@ -22,7 +23,7 @@ height = 4.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4wteu"]
 radius = 2.0
 
-[node name="Sling" type="CharacterBody3D" node_paths=PackedStringArray("boss_health_bar")]
+[node name="Sling" type="CharacterBody3D" node_paths=PackedStringArray("boss_health_bar", "label")]
 collision_layer = 15
 collision_mask = 15
 script = ExtResource("1_obqyo")
@@ -34,8 +35,10 @@ shock_wave_radius = 6.0
 bomb_speread = 7.0
 radius_of_barage_strike = 6.0
 boss_health_bar = NodePath("CanvasLayer/Control/MarginContainer/HealthGauge")
-max_health = 250
+label = NodePath("CanvasLayer/Control/MarginContainer/Label")
+max_health = 375
 boss_tiles = Array[PackedScene]([ExtResource("5_h5sws")])
+boss_name = "Sling the slime king"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
@@ -55,7 +58,7 @@ shape = SubResource("CylinderShape3D_4wteu")
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 49.0
+offset_bottom = 70.0
 grow_horizontal = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
@@ -71,8 +74,18 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="HealthGauge" parent="CanvasLayer/Control/MarginContainer" instance=ExtResource("5_wf1ij")]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 1
-size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer"]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.52549)
+theme_override_fonts/font = ExtResource("7_tlidf")
+theme_override_font_sizes/font_size = 55
+text = "Sling the slime sing"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
