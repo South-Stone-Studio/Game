@@ -21,5 +21,5 @@ func _process(delta):
 		
 func _on_body_entered(body):
 	if is_instance_of(body, Boss):
-		body.health -= 25
+		body.health -= damage
 	print(body)

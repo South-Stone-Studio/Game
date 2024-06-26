@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://iyd5ftrlhcck"]
+[gd_scene load_steps=6 format=3 uid="uid://iyd5ftrlhcck"]
 
 [ext_resource type="Script" path="res://scripts/weapons and items/Weapon.gd" id="1_0lakq"]
 [ext_resource type="Script" path="res://scripts/weapons and items/weapon types/RailGun.gd" id="2_xcfgh"]
@@ -10,13 +10,6 @@ size = Vector3(0.2, 0.2, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_lv6n0"]
 size = Vector3(0.2, 0.2, 1)
 
-[sub_resource type="Curve3D" id="Curve3D_610yi"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
 [node name="RailGun" type="RigidBody3D" node_paths=PackedStringArray("weapon", "ammo")]
 script = ExtResource("1_0lakq")
 picked = null
@@ -27,9 +20,9 @@ type = null
 [node name="LaserCanon" type="Node" parent="." node_paths=PackedStringArray("nozle")]
 script = ExtResource("2_xcfgh")
 nozle = NodePath("../Nozle")
-charge_up_time = 0.7
+charge_up_time = 0.5
 time_between_shoots = 0.25
-damage = 10
+damage = 20
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_bke50")
@@ -41,11 +34,9 @@ mesh = SubResource("BoxMesh_lv6n0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.501)
 target_position = Vector3(0, 0, 50)
 collision_mask = 15
+hit_from_inside = true
 debug_shape_custom_color = Color(1, 1, 1, 1)
 debug_shape_thickness = 5
-
-[node name="Path3D" type="Path3D" parent="Nozle"]
-curve = SubResource("Curve3D_610yi")
 
 [node name="Bullets" type="Node" parent="."]
 script = ExtResource("3_y2c7e")

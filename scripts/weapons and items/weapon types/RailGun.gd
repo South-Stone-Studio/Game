@@ -32,6 +32,6 @@ func _physics_process(_delta):
 		if nozle.is_colliding():
 			var body = nozle.get_collider()
 			if is_instance_of(body, Boss):
-				body.health -= 30
+				body.health -= damage
 			print(body.name)
 		active = false
