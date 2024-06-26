@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://0yi2j3am5bo2"]
 
 [ext_resource type="Script" path="res://scripts/sling/SlimyProjectile.gd" id="1_y8oye"]
-[ext_resource type="PackedScene" uid="uid://b2qop06ln8rht" path="res://component scene/sling/shock_wave.tscn" id="2_p3shh"]
+[ext_resource type="PackedScene" uid="uid://b2qop06ln8rht" path="res://component scene/boss/components/sling components/shock_wave.tscn" id="2_p3shh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8a18x"]
 radius = 0.01

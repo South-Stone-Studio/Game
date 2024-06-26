@@ -3,6 +3,7 @@ class_name DungeonGeneration
 extends Node
 
 var graph: Gnode
+
 @export_category("Graph")
 @export var max_connections: int = 4
 @export var min_main_length: int = 6
@@ -10,6 +11,7 @@ var graph: Gnode
 @export var min_room_count: int = 17
 @export var max_room_count: int = 22
 @export var max_depth: int = 10
+
 @export_category("Room")
 @export_range(1,100) var max_width: int
 @export_range(1, 100) var min_width: int
@@ -17,6 +19,8 @@ var graph: Gnode
 @export_range(1, 100) var min_height: int
 
 @export var spawn_room_tiles: Array[PackedScene]
+@export var boss_room_tiles: Array[PackedScene]
+
 var node_count: int = 0
 var _cur_index: int = max_main_length + 1
 var rooms = []
@@ -78,7 +82,14 @@ func create_room(node: Gnode):
 	match node.room_type:
 		room.room_types.start:
 			req_tiles.append_array(spawn_room_tiles)
-	node.create_room(len(node.connections), Vector2i(min_height,max_height), Vector2i(min_width,max_width), req_tiles)
+		room.room_types.boss:
+			req_tiles.append_array(boss_room_tiles)
+	node.create_room(
+		len(node.connections), 
+		Vector2i(min_height,max_height), 
+		Vector2i(min_width,max_width), 
+		req_tiles
+	)
 
 func free_graph(node: Gnode, indexes:Array[int]=[]):
 	indexes.append(node.index)
@@ -88,6 +99,7 @@ func free_graph(node: Gnode, indexes:Array[int]=[]):
 	node.free()
 
 func create_dungeon():
+	choose_boss()
 	if graph != null:
 		free_graph(graph)
 	while true:
@@ -100,3 +112,8 @@ func create_dungeon():
 	
 func get_graph():
 	return graph
+
+func choose_boss():
+	var m := randi() % len(Global.first_bosses)
+	Global.current_boss = Global.first_bosses[m].instantiate()
+

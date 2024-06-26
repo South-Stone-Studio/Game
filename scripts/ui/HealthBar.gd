@@ -9,7 +9,6 @@ var is_timeout: bool = true
 @export var damage_bar: ProgressBar
 
 func _set_health(val: float):
-	var prev := health
 	health = min(100, max(val, 0))
 	update_health_bar()
 
@@ -22,7 +21,7 @@ func _ready() -> void:
 	health = 100
 	damaged = health
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_timeout:
 		if damaged > health:
 			damaged = move_toward(damaged, health, 2)
