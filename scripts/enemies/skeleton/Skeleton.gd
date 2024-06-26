@@ -9,9 +9,8 @@ var is_attacking : bool
 
 @export_category("vision")
 @onready var player : CharacterBody3D
-@export var vision : Area3D
 @export var nav_agent : NavigationAgent3D
-@export var vision_raycast : RayCast3D
+@export var vision_controller : Node
 var saved_player_position : Vector3
 
 @export_category("patrol")
@@ -48,8 +47,7 @@ func _process(delta : float) -> void:
 	
 	if hunt:	#hunting
 		move_to_pos(player.position)
-		if not is_attacking:
-			is_attacking = true
+		attack()
 	elif !hunt and alarmed: 	#alarm
 		if position.distance_to(saved_player_position) >= 1:
 			move_to_pos(saved_player_position)
@@ -68,18 +66,11 @@ func move_to_pos(pos : Vector3) -> void:
 
 func _on_vision_timer_timeout() -> void:
 	hunt = false
-	var overlaps = vision.get_overlapping_bodies()
-	if overlaps.size() > 0:
-		for overlap in overlaps:
-			if overlap.name == "Player":
-				alarmed = true
-				vision_raycast.force_raycast_update()
-				if vision_raycast.is_colliding():
-					var collider : Object = vision_raycast.get_collider()
-					if collider.name == "Player":
-						look_at(Vector3(player.position.x, 0.5, player.position.z), Vector3(0, 1, 0))
-						saved_player_position = player.position
-						hunt = true
+	if vision_controller.player_seen:
+		
+		alarmed = true
+		saved_player_position = player.position
+		hunt = true
 
 func do_patrol(delta : float) -> void:
 	if patrol_mode == patrol.hold_position:
@@ -91,12 +82,9 @@ func do_patrol(delta : float) -> void:
 
 func attack() -> void:
 	if sceleton_type == s_types.mele:	#mele
-		print("mele")
-		if not sword.do_atc:
-			sword.do_atc = true
+		sword.do_atc = true
 	elif sceleton_type == s_types.range:	#ranged
 		print("range")
-		
 
 func set_type_of_sceleton() -> void:
 	pass
@@ -105,4 +93,5 @@ func _on_sword_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		print("demage to player")
 
-
+func _on_vision_raycast_controller_player_seen() -> void:
+	look_at(Vector3(player.position.x, 0.5, player.position.z), Vector3(0, 1, 0))

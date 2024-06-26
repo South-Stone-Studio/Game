@@ -1,6 +1,5 @@
 class_name PlayerMovement
 
-
 extends CharacterBody3D
 
 # --------------------------- # MOVEMENT AND LOOKING # --------------------------- #
