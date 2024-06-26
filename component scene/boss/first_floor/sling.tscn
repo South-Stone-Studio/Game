@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgg0cjypuekf5"]
+[gd_scene load_steps=11 format=3 uid="uid://bgg0cjypuekf5"]
 
 [ext_resource type="Script" path="res://scripts/sling/Sling.gd" id="1_obqyo"]
 [ext_resource type="PackedScene" uid="uid://b2qop06ln8rht" path="res://component scene/boss/components/sling components/shock_wave.tscn" id="2_xj8oj"]
 [ext_resource type="PackedScene" uid="uid://0yi2j3am5bo2" path="res://component scene/boss/components/sling components/slimy_projectile.tscn" id="3_05c8d"]
 [ext_resource type="PackedScene" uid="uid://b8eotq8mq00t0" path="res://component scene/boss/components/sling components/show_slimy_danger.tscn" id="4_qrbw0"]
+[ext_resource type="PackedScene" uid="uid://gmuatd0bne5r" path="res://component scene/procedural generation/tiles/boss tiles/plane_boss_tile.tscn" id="5_h5sws"]
 [ext_resource type="PackedScene" uid="uid://bw3a2y8i36yc6" path="res://ui/health_bar.tscn" id="5_wf1ij"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rohma"]
@@ -34,6 +35,7 @@ bomb_speread = 7.0
 radius_of_barage_strike = 6.0
 boss_health_bar = NodePath("CanvasLayer/Control/MarginContainer/HealthGauge")
 max_health = 250
+boss_tiles = Array[PackedScene]([ExtResource("5_h5sws")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg1i51sby2012"]
+[gd_scene load_steps=6 format=3 uid="uid://dg1i51sby2012"]
 
 [ext_resource type="Script" path="res://scripts/run/Run.gd" id="1_tmahc"]
 [ext_resource type="Script" path="res://scripts/generation/DungeonGenerator.gd" id="2_fonkv"]
 [ext_resource type="PackedScene" uid="uid://db5ika5isdcs0" path="res://component scene/procedural generation/tiles/treassure tiles/chest_tile.tscn" id="3_qwmk1"]
-[ext_resource type="PackedScene" uid="uid://gmuatd0bne5r" path="res://component scene/procedural generation/tiles/boss tiles/plane_boss_tile.tscn" id="4_8bek5"]
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="7_easf7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sd1vj"]
@@ -29,7 +28,6 @@ min_width = 4
 max_height = 5
 min_height = 3
 spawn_room_tiles = Array[PackedScene]([ExtResource("3_qwmk1")])
-boss_room_tiles = Array[PackedScene]([ExtResource("4_8bek5")])
 
 [node name="Player" parent="." instance=ExtResource("7_easf7")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.0205, 0.0152011, 3.99624)

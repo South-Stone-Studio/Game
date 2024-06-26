@@ -4,6 +4,7 @@ extends CharacterBody3D
 
 @export var boss_health_bar: HealthBar
 @export_range(1,1000) var max_health: int
+@export var boss_tiles: Array[PackedScene]
 var health: int: set = _set_health
 
 func _ready() -> void:
