@@ -1,12 +1,11 @@
 class_name PlayerMovement
 
-extends CharacterBody3D
+extends Player
 
 # --------------------------- # MOVEMENT AND LOOKING # --------------------------- #
 @onready var camera: Camera3D = $"../Camera3D"
 var rayOrigin: Vector3 = Vector3()
 var rayEnd: Vector3 = Vector3()
-@export var max_speed: int = 10
 var accel: int = 20
 var friction: int = 10
 var input: Vector2 = Vector2.ZERO
@@ -71,6 +70,6 @@ func player_movement(delta):
 	else:
 		input *= accel
 		velocity += Vector3(input.x,0,input.y)
-		velocity = velocity.limit_length(max_speed)
+		velocity = velocity.limit_length(speed)
 	move_and_slide()
 # ---------------------------------------------------------------------- #
