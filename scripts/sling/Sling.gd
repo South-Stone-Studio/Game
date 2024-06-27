@@ -14,6 +14,8 @@ var primary: bool = true
 var my_health: int
 var primal: Sling = null
 var devided: bool = false
+var stasis: bool = false
+var dople: Sling = null
 @export_category("Sling Jumps")
 @export var max_jumps: int = 5
 @export var jumps_in_queue: int = 5
@@ -43,11 +45,13 @@ var index: int = 0
 
 func _ready():
 	if primary:
+		label.visible = true
+		boss_health_bar.visible = true
 		super._ready()
 	else:
-		boss_health_bar.visible = false
 		label.visible = false
-		sling_jump()
+		boss_health_bar.visible = false
+	self.coldown = 2
 	for i in range(jumps_in_queue):
 		queue.append(sling_jump)
 	for i in range(barages_in_queue):
@@ -55,11 +59,13 @@ func _ready():
 	queue.shuffle()
 
 func _process(delta: float) -> void:
+	if stasis:
+		return
 	if coldown <= 0:
 		if health <= max_health / 2 and !devided:
 			devided = !devided
 			devide_and_slime()
-			coldown = 5
+			coldown = 8
 			return
 		queue[index].call()
 		index += 1
@@ -120,25 +126,38 @@ func slimy_barage():
 	coldown = coldown_after_barage
 	
 func devide_and_slime() -> void:
-	var dople:Sling = self.duplicate()
+	dople = self.duplicate(DUPLICATE_SCRIPTS)
+	dople.health = health / 2
 	dople.primary = false
 	dople.primal = self
-	self.health /= 2 
-	self.offset_position = Vector2(2,0)
-	dople.offset_position = Vector2(-2,0)
-	dople.health = health
+	self.my_health = health / 2
+	self.offset_position = Vector2(3,0)
+	dople.offset_position = Vector2(-3,0)
+	dople.my_health = my_health
 	dople.devided = true
 	get_parent().add_child(dople)
-	dople.global_position = dople.global_position + Vector3(2, 2, 2)
-	self.my_health /= 2 
+	print("n: ", dople.my_health)
+	print("p: ", my_health)
+	
+	dople.global_position = self.global_position + Vector3(0, 4, 0)
 
-func _set_health(val):
-	if !primary:
-		primal.health -= health - val
-		health = min(max_health, max(0, val))
-		print(health, primal.health)
-		if health <= 0:
-			self.queue_free()
+func _set_health(val: int):
+	if devided:
+		if primal != null:
+			my_health = val
+			health = val
+			primal.health -= 0
+		else:
+			my_health = my_health - max(health-val, 0)
+			health = my_health + dople.my_health
+			boss_health_bar.health = (health * 100) / max_health
+			if health <= 0:
+				dople.queue_free()
+				queue_free()
+		if my_health <= 0:
+			stasis = !stasis
+			disable_mode = DISABLE_MODE_MAKE_STATIC
+			self.global_position = Vector3(0, -10, 0)
 	else:
 		super._set_health(val)
 
@@ -146,7 +165,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = 0
 	velocity.z = 0
 	if not is_on_floor():
-		velocity.y -= gravity * delta*3 # for faster landing
+		velocity.y -= gravity * delta * 3
 		if is_in_sling_jump:
 			sling_movement()
 	else:

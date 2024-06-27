@@ -36,7 +36,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_8e2i5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_idw4w")
-value = 40.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]

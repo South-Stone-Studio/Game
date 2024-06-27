@@ -17,9 +17,12 @@ var graph: Gnode
 @export_range(1, 100) var min_width: int
 @export_range(1, 100) var max_height: int
 @export_range(1, 100) var min_height: int
-
 @export var spawn_room_tiles: Array[PackedScene]
 
+
+@export_category("Debug")
+@export var boss: PackedScene
+@export var only_boss_room: bool = false
 var node_count: int = 0
 var _cur_index: int = max_main_length + 1
 var rooms = []
@@ -33,6 +36,10 @@ func create_graph():
 	var _main_path_length: int = randi_range(min_main_length, max_main_length)
 	var _origin: Gnode = Gnode.new(0, room.room_types.start)
 	var _graph: Gnode = _origin
+	if only_boss_room:
+		var _boss_room: Gnode = Gnode.new(1 , room.room_types.boss)
+		create_connection(_origin, _boss_room)
+		return _graph
 	var _last_room: Gnode = create_main_path(_origin, _main_path_length)
 	_origin = _last_room.connections[0]
 	while true:
@@ -113,6 +120,8 @@ func get_graph():
 	return graph
 
 func choose_boss():
-	var m := randi() % len(Global.first_bosses)
-	Global.current_boss = Global.first_bosses[m].instantiate()
-
+	if boss == null:
+		var m := randi() % len(Global.first_bosses)
+		Global.current_boss = Global.first_bosses[m].instantiate()
+	else:
+		Global.current_boss = boss.instantiate()

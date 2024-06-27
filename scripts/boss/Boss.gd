@@ -16,6 +16,5 @@ func _ready() -> void:
 func _set_health(val):
 	health = min(max_health,max(0, val))
 	boss_health_bar.health = (health * 100) / max_health
-	print((health / max_health) * 100)
 	if health == 0:
 		self.queue_free()

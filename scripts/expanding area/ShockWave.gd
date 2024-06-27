@@ -4,7 +4,7 @@ extends Area3D
 @export var colider: CollisionShape3D
 @export var mesh: MeshInstance3D 
 var width: float = 0.5
-var current_radius: float = 0.5
+var current_radius: float = 0.51
 var max_radius: float
 var speed: float = 5
 

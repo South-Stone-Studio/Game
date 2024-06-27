@@ -73,12 +73,8 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HealthGauge" parent="CanvasLayer/Control/MarginContainer" instance=ExtResource("5_wf1ij")]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-size_flags_horizontal = 1
-
 [node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer"]
+visible = false
 z_index = 2
 layout_mode = 2
 size_flags_horizontal = 4
@@ -89,5 +85,11 @@ theme_override_font_sizes/font_size = 55
 text = "Sling the slime sing"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HealthGauge" parent="CanvasLayer/Control/MarginContainer" instance=ExtResource("5_wf1ij")]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 1
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
