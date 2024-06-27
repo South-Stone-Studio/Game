@@ -134,8 +134,8 @@ func devide_and_slime() -> void:
 	dople.primary = false
 	dople.primal = self
 	self.my_health = health / 2
-	self.offset_position = Vector2(3,0)
-	dople.offset_position = Vector2(-3,0)
+	self.offset_position = Vector2(6,0)
+	dople.offset_position = Vector2(-6,0)
 	dople.my_health = my_health
 	dople.devided = true
 	get_parent().add_child(dople)
