@@ -47,15 +47,14 @@ var index: int = 0
 
 func _ready():
 	if primary:
-		print("k")
 		label.visible = true
 		boss_health_bar.visible = true
 		super._ready()
 	else:
-		print("d")
-		label.visible = false
-		boss_health_bar.visible = false
+		
+		sling_jump()
 	self.coldown = 2
+	
 	for i in range(jumps_in_queue):
 		queue.append(sling_jump)
 	for i in range(barages_in_queue):
@@ -143,7 +142,7 @@ func devide_and_slime() -> void:
 	print("n: ", dople.my_health)
 	print("p: ", my_health)
 	
-	dople.global_position = self.global_position + Vector3(0, 4, 0)
+	dople.global_position = self.global_position
 
 func _set_health(val: int):
 	if devided:

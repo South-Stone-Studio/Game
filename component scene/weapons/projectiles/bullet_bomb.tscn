@@ -12,6 +12,7 @@ albedo_color = Color(0.755398, 0.459862, 1, 1)
 material = SubResource("StandardMaterial3D_t0076")
 
 [node name="BulletBomb" type="Area3D"]
+collision_mask = 15
 script = ExtResource("1_bgkiv")
 explosion = ExtResource("2_miwyf")
 
