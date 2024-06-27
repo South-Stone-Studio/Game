@@ -10,6 +10,8 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var shock_vave: PackedScene
 @export var slimy_projectile: PackedScene
 @export var show_danger: PackedScene
+@export var my_scene: PackedScene
+
 var primary: bool = true
 var my_health: int
 var primal: Sling = null
@@ -45,10 +47,12 @@ var index: int = 0
 
 func _ready():
 	if primary:
+		print("k")
 		label.visible = true
 		boss_health_bar.visible = true
 		super._ready()
 	else:
+		print("d")
 		label.visible = false
 		boss_health_bar.visible = false
 	self.coldown = 2
@@ -126,7 +130,7 @@ func slimy_barage():
 	coldown = coldown_after_barage
 	
 func devide_and_slime() -> void:
-	dople = self.duplicate(DUPLICATE_SCRIPTS)
+	dople = self.my_scene.instantiate()
 	dople.health = health / 2
 	dople.primary = false
 	dople.primal = self

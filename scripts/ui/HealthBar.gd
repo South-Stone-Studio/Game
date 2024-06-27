@@ -14,7 +14,8 @@ func _set_health(val: float):
 
 func update_health_bar() -> void:
 	is_timeout = false
-	timer.start()
+	if timer.is_inside_tree():
+		timer.start()
 	self.value = health
 
 func _ready() -> void:
