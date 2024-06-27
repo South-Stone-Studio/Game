@@ -19,6 +19,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func handle_death():
+func handle_death() -> void:
+	print("you died")
 	self.queue_free()
 
+func handle_demage(dem : int) -> void:
+	current_hp -= dem

@@ -1,6 +1,6 @@
 class_name SceletonVision
 
-extends Node
+extends Node3D
 
 signal player_seen
 
@@ -10,6 +10,6 @@ func _process(delta: float) -> void:
 	for ray in raycasts:
 		ray.force_raycast_update()
 		if ray.is_colliding():
-			var obj : Object = ray.get_collider()
-			if obj.name == "Player":
-				print("player_seen")
+			if ray.get_collider().name == "Player":
+				player_seen.emit()
+				

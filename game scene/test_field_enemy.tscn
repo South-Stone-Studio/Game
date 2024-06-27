@@ -29,7 +29,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_6r367")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_nav_baker/StaticBody3D"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 5, 0.668, -5.946)
+transform = Transform3D(2, 0, 0, 0, 3.6, 0, 0, 0, 2, 5, 0.091512, -5.946)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MAP_nav_baker/StaticBody3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_c25pi")
@@ -50,6 +50,7 @@ script = ExtResource("2_bjfp0")
 target = NodePath("../Player")
 
 [node name="Enemy2" parent="." instance=ExtResource("2_246n8")]
-transform = Transform3D(-0.80188, 0, 0.597485, 0, 1, 0, -0.597485, 0, -0.80188, 3.23419, 0.935147, -6.61522)
-radius = 1
-attack_speed = 10.0
+transform = Transform3D(-0.80188, 0, 0.597485, 0, 1, 0, -0.597485, 0, -0.80188, 3.23419, 1.00594, -6.60885)
+sceleton_type = 1
+sword_demage = 10
+attack_speed = 5.0
