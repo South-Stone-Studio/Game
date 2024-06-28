@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvjl2kpxaqtnv"]
+
+[ext_resource type="Script" path="res://scripts/chests/Chest.gd" id="1_wwky8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fmsd"]
+albedo_color = Color(0.491728, 0.196823, 0.0459381, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3gl8x"]
+material = SubResource("StandardMaterial3D_4fmsd")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ub5wp"]
+size = Vector3(1, 0.5, 1)
+
+[node name="Chest" type="Node3D" node_paths=PackedStringArray("point")]
+script = ExtResource("1_wwky8")
+point = NodePath("point")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_3gl8x")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_ub5wp")
+
+[node name="point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
