@@ -167,6 +167,9 @@ func _set_health(val: int):
 func _physics_process(delta: float) -> void:
 	velocity.x = 0
 	velocity.z = 0
+	if stasis:
+		velocity.y = 0
+		return
 	if not is_on_floor():
 		velocity.y -= gravity * delta * 3
 		if is_in_sling_jump:
