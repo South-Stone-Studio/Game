@@ -16,7 +16,9 @@ var grab_items_area :int = 5
 func _ready() -> void:
 	if Global.player == null:
 		Global.player = self
-		
+	else:
+		self.free()
+
 func _physics_process(delta):
 	# Look at cursor
 	velocity = Vector3()
@@ -45,9 +47,8 @@ func _physics_process(delta):
 
 		# get object under mouse
 		var obj_under_mouse: Node3D = intersection.collider
-
 		# check if pickable and pick up an weapon 
-		if Input.is_action_just_pressed("pick_up") and obj_under_mouse != null and position.distance_to(obj_under_mouse.position) <= grab_items_area:
+		if Input.is_action_just_pressed("pick_up") and global_position.distance_to(obj_under_mouse.global_position) <= grab_items_area:
 			hand_controller.pick_up_item(obj_under_mouse)
 		
 		elif Input.is_action_just_pressed("drop"):

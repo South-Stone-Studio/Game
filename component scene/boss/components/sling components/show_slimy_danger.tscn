@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8eotq8mq00t0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fm020"]
+albedo_color = Color(1, 0.0697856, 0.0912833, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fblag"]
+material = SubResource("StandardMaterial3D_fm020")
+top_radius = 5.0
+bottom_radius = 5.0
+height = 0.1
+
+[node name="ShowSlimyDanger" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_fblag")

@@ -48,7 +48,7 @@ capacity = 20
 script = ExtResource("3_tjmsk")
 bullet_scene = ExtResource("4_w45rf")
 nozle = NodePath("../Nozzle")
-time_between_shoots = 0.001
+time_between_shoots = 0.05
 damage = 7
 bullet_velocity = 15.0
 

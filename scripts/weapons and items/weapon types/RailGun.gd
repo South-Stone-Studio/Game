@@ -11,7 +11,7 @@ var cur_cut: float
 func _ready():
 	pass
 
-func primary(can: Callable, start: bool = true):
+func primary(can: Callable, _start: bool = true):
 	if !active and can.call():
 		print("charging up!")
 		active = true
@@ -25,10 +25,13 @@ func _process(delta):
 		if cur_cut != 0:
 			cur_cut -= delta
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if active and cur_cut <= 0:
 		print("shoot!")
 		nozle.force_raycast_update()
 		if nozle.is_colliding():
-			print(nozle.get_collider().name)
+			var body = nozle.get_collider()
+			if is_instance_of(body, Boss):
+				body.health -= damage
+			print(body.name)
 		active = false

@@ -7,7 +7,6 @@ extends Node3D
 @export var min_objects: int
 
 func create(x: float, y: float) -> void:
-	print("Game")
 	self.global_position = Vector3(x, 0, y)
 	var num := randi_range(min_objects, max_objects)
 	for val in range(num):
