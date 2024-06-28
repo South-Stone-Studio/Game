@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpgy1ek3iwjet"]
+[gd_scene load_steps=10 format=3 uid="uid://dpgy1ek3iwjet"]
 
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="1_wd1gq"]
 [ext_resource type="PackedScene" uid="uid://c4s8ow6yghgsm" path="res://component scene/enemies/skeleton/skeleton.tscn" id="2_246n8"]
@@ -11,6 +11,9 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q7ws1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6r367"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lf1to"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c25pi"]
 
@@ -27,6 +30,10 @@ physics_material_override = SubResource("PhysicsMaterial_q7ws1")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MAP_nav_baker/StaticBody3D"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_6r367")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MAP_nav_baker/StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lf1to")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_nav_baker/StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 3.6, 0, 0, 0, 2, 5, 0.091512, -5.946)

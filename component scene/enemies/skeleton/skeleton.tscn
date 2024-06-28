@@ -129,7 +129,7 @@ transform = Transform3D(0.1, -1.49012e-08, -7.45058e-09, -9.31323e-09, 1.5, -1.8
 shape = SubResource("ConvexPolygonShape3D_j81o4")
 
 [node name="Bone" type="Marker3D" parent="." node_paths=PackedStringArray("attack_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.767253, 0.417863, -0.726163)
 script = ExtResource("4_hul58")
 bone_scene = ExtResource("5_1l7cx")
 attack_timer = NodePath("attack_timer")

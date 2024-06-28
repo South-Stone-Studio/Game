@@ -12,10 +12,7 @@ material = SubResource("StandardMaterial3D_7qpdf")
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [node name="RigidBody3D" type="RigidBody3D"]
-top_level = true
-collision_layer = 4
 collision_mask = 11
-gravity_scale = 0.5
 script = ExtResource("1_qcbul")
 speed = 5.0
 rotation_speed = 2.0

@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 func handle_death() -> void:
 	self.queue_free()
 
-func heal(heal_value : int) -> void:
+func handle_heal(heal_value : int) -> void:
 	current_hp += heal_value
 
 func handle_demage(dem : int) -> void:
