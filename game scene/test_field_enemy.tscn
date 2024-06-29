@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpgy1ek3iwjet"]
+[gd_scene load_steps=11 format=3 uid="uid://dpgy1ek3iwjet"]
 
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="1_wd1gq"]
-[ext_resource type="PackedScene" uid="uid://c4s8ow6yghgsm" path="res://component scene/enemies/skeleton/skeleton.tscn" id="2_246n8"]
 [ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="2_bjfp0"]
+[ext_resource type="PackedScene" uid="uid://bn4rosv7id4aj" path="res://component scene/enemies/skeleton/mele_sceleton.tscn" id="3_lqi3a"]
+[ext_resource type="PackedScene" uid="uid://br4fbsjq3j4as" path="res://component scene/enemies/skeleton/range_sceleton.tscn" id="4_0gd8p"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_n1qtd"]
 vertices = PackedVector3Array(3.75, 0.5, -7.25, 5.25, 0.5, -7.5, 5.25, 0.5, -9.5, -9.5, 0.5, -9.5, 9.5, 0.5, -4.75, 7, 0.5, -4.75, 6.75, 0.5, -4.25, 9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 6.75, 0.5, -4.25, 3.75, 0.5, -4.5, 3.75, 0.5, -4.5, -9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 3.75, 0.5, -4.5, 3.75, 0.5, -7.25, -9.5, 0.5, -9.5, 5.25, 0.5, -9.5, 5.25, 0.5, -7.5, 7, 0.5, -7.25, 9.5, 0.5, -9.5, 7, 0.5, -7.25, 7, 0.5, -4.75, 9.5, 0.5, -4.75, 9.5, 0.5, -9.5, 4.75, 1.5, -6.5, 4.75, 1.5, -5.25, 6, 1.5, -5.25, 6, 1.5, -6.5)
@@ -52,7 +53,7 @@ mesh = SubResource("BoxMesh_hvm65")
 transform = Transform3D(1, 0, 0, 0, 0.180759, 0.983527, 0, -0.983527, 0.180759, -5767.11, -3254.27, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_wd1gq")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.04901, 6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.04901, 7.75862)
 gravity = 10.0
 speed = 10.0
 
@@ -61,9 +62,8 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.477035, 
 script = ExtResource("2_bjfp0")
 target = NodePath("../Player")
 
-[node name="Enemy2" parent="." instance=ExtResource("2_246n8")]
-transform = Transform3D(-0.80188, 0, 0.597485, 0, 1, 0, -0.597485, 0, -0.80188, 3.23419, 1.00594, -6.60885)
-sceleton_type = 1
-gravity = 2.0
-sword_demage = 10
-attack_speed = 5.0
+[node name="Enemy" parent="." instance=ExtResource("3_lqi3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90046, 1, 0)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_0gd8p")]
+transform = Transform3D(0.268466, 0, 0.963289, 0, 1, 0, -0.963289, 0, 0.268466, 8.63946, 1, 1.93371)

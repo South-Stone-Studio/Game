@@ -23,6 +23,7 @@ script = ExtResource("1_qcbul")
 speed = 5.0
 demage = 10
 heal = 5
+time = 100.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

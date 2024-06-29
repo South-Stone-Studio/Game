@@ -1,9 +1,7 @@
-class_name EnemyMovement
+class_name RangeSceleton
 
 extends Enemy
 
-enum s_types {mele, range}
-@export var sceleton_type : s_types 
 @export var attack_timer : Timer
 @export var gravity : float
 var is_attacking : bool
@@ -21,22 +19,17 @@ enum patrol {hold_position, prepared_patrol, bossfight}
 var hunt : bool = false
 var alarmed : bool = false
 
-@export_category("mele type")
-@export var sword : Area3D
-@export var sword_demage : int
-@export var attack_speed : float
-
 @export_category("range type")
 @export var bone_throw_point : Marker3D
 @export var bone_demage : int
 @export var bone_throw_speed : float
 @export var bone_heal : int
+@export var bone_enemy_demage : int
 
 func _ready() -> void:
 	super._ready()
 	saved_player_position = position
 	player = Global.player
-	set_type_of_sceleton()
 
 func _process(delta : float) -> void:
 	super._process(delta)
@@ -71,17 +64,11 @@ func do_patrol(delta : float) -> void:
 
 # decide attack style 
 func attack() -> void:
-	if sceleton_type == s_types.mele:
-		sword.do_atc = true
-	elif sceleton_type == s_types.range:
-		bone_throw_point.do_atc = true
-
-#decice wich node
-func set_type_of_sceleton() -> void:
-	if sceleton_type == s_types.mele:	#mele
-		bone_throw_point.queue_free()
-	elif sceleton_type == s_types.range:	#ranged
-		sword.queue_free()
+	bone_throw_point.do_atc = true
+	bone_throw_point.demage = bone_demage
+	bone_throw_point.heal = bone_heal
+	bone_throw_point.enemy_demage = bone_enemy_demage
+	bone_throw_point.speed = bone_throw_speed
 
 # on raycast see player
 func _on_vision_raycast_controller_player_seen() -> void:
@@ -89,7 +76,3 @@ func _on_vision_raycast_controller_player_seen() -> void:
 	look_at(Vector3(player.position.x,0.5,player.position.z))
 	alarmed = true
 	saved_player_position = player.position
-
-# sword hit player
-func _on_sword_player_in_sword() -> void:
-	player.handle_demage(sword_demage)

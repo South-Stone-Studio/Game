@@ -1,9 +1,10 @@
 extends RigidBody3D
 
-@export var speed : float
-@export var demage : int
-@export var heal : int
-@export var time : float = 100
+var speed : float
+var demage : int
+var enemy_demage : int
+var heal : int
+var time : float
 
 func _physics_process(delta: float) -> void:
 	if time > 0:
