@@ -9,6 +9,7 @@ var rayEnd: Vector3 = Vector3()
 var accel: int = 20
 var friction: int = 10
 var input: Vector2 = Vector2.ZERO
+@export var gravity : float
 @export var hand_controller: HandController
 var grab_items_area :int = 5
 @export var Mouse_Gobal_Position : Vector3 = Vector3.ZERO
@@ -72,5 +73,6 @@ func player_movement(delta):
 		input *= accel
 		velocity += Vector3(input.x,0,input.y)
 		velocity = velocity.limit_length(speed)
+	velocity.y -= gravity
 	move_and_slide()
 # ---------------------------------------------------------------------- #
