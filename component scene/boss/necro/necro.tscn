@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://omkevete8a34"]
+
+[ext_resource type="Script" path="res://scripts/necro/Necro.gd" id="1_rqcgo"]
+[ext_resource type="PackedScene" uid="uid://bn4rosv7id4aj" path="res://component scene/enemies/skeleton/melee_sceleton.tscn" id="2_bn86v"]
+[ext_resource type="PackedScene" uid="uid://br4fbsjq3j4as" path="res://component scene/enemies/skeleton/range_sceleton.tscn" id="3_p3ljj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f8bi3"]
+radius = 1.0
+height = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1wkqp"]
+size = Vector3(0.2, 3, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f4fks"]
+size = Vector3(2.07788, 5, 2.14355)
+
+[node name="Necro" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "raycast_aim")]
+script = ExtResource("1_rqcgo")
+speed = 5.0
+nav_agent = NodePath("NavigationAgent3D")
+raycast_aim = NodePath("RayCast3D")
+melee_sceleton = ExtResource("2_bn86v")
+ranged_sceleton = ExtResource("3_p3ljj")
+max_health = 1
+boss_name = "Necro"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 0, 10)
+collision_mask = 11
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_f8bi3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+mesh = SubResource("BoxMesh_1wkqp")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159912, 0, 0.0200195)
+shape = SubResource("BoxShape3D_f4fks")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="GhostTimer" type="Timer" parent="Node"]
+wait_time = 2.0
+
+[node name="CatchPlayerTimer" type="Timer" parent="Node"]
+wait_time = 3.0
+
+[node name="AttackTimer" type="Timer" parent="Node"]
+wait_time = 3.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

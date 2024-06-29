@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bn4rosv7id4aj"]
 
-[ext_resource type="Script" path="res://scripts/enemies/skeleton/MeleSkeleton.gd" id="1_25dh5"]
+[ext_resource type="Script" path="res://scripts/enemies/skeleton/MeleeSkeleton.gd" id="1_25dh5"]
 [ext_resource type="Script" path="res://scripts/enemies/skeleton/SceletonVision.gd" id="2_yasu4"]
 [ext_resource type="Script" path="res://scripts/enemies/skeleton/SceletonSword.gd" id="3_ij2o5"]
 

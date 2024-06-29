@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpgy1ek3iwjet"]
+[gd_scene load_steps=10 format=3 uid="uid://dpgy1ek3iwjet"]
 
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="1_wd1gq"]
 [ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="2_bjfp0"]
-[ext_resource type="PackedScene" uid="uid://bn4rosv7id4aj" path="res://component scene/enemies/skeleton/mele_sceleton.tscn" id="3_lqi3a"]
-[ext_resource type="PackedScene" uid="uid://br4fbsjq3j4as" path="res://component scene/enemies/skeleton/range_sceleton.tscn" id="4_0gd8p"]
+[ext_resource type="PackedScene" uid="uid://omkevete8a34" path="res://component scene/boss/necro/necro.tscn" id="3_lxqyd"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_n1qtd"]
-vertices = PackedVector3Array(3.75, 0.5, -7.25, 5.25, 0.5, -7.5, 5.25, 0.5, -9.5, -9.5, 0.5, -9.5, 9.5, 0.5, -4.75, 7, 0.5, -4.75, 6.75, 0.5, -4.25, 9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 6.75, 0.5, -4.25, 3.75, 0.5, -4.5, 3.75, 0.5, -4.5, -9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 3.75, 0.5, -4.5, 3.75, 0.5, -7.25, -9.5, 0.5, -9.5, 5.25, 0.5, -9.5, 5.25, 0.5, -7.5, 7, 0.5, -7.25, 9.5, 0.5, -9.5, 7, 0.5, -7.25, 7, 0.5, -4.75, 9.5, 0.5, -4.75, 9.5, 0.5, -9.5, 4.75, 1.5, -6.5, 4.75, 1.5, -5.25, 6, 1.5, -5.25, 6, 1.5, -6.5)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(17, 16, 15), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27)]
+vertices = PackedVector3Array(3.5, 0.291512, -7.25, 5, 0.291512, -7.5, 5, 0.291512, -9.5, -9.5, 0.291512, -9.5, 3.5, 0.291512, -4.5, -9.5, 0.291512, -9.5, -9.5, 0.291512, 9.5, 9.5, 0.291512, 9.5, 3.5, 0.291512, -4.5, 3.5, 0.291512, -7.25, -9.5, 0.291512, -9.5, 9.5, 0.291512, 9.5, 9.5, 0.291512, -4, 6.25, 0.291512, -4.25, 9.5, 0.291512, 9.5, 6.25, 0.291512, -4.25, 3.5, 0.291512, -4.5, 6.75, 0.291512, -4.5, 6.25, 0.291512, -4.25, 9.5, 0.291512, -4, 5, 0.291512, -9.5, 5, 0.291512, -7.5, 6.75, 0.291512, -7.25, 9.5, 0.291512, -9.5, 6.75, 0.291512, -7.25, 6.75, 0.291512, -4.5, 9.5, 0.291512, -4, 9.5, 0.291512, -9.5, 4.5, 2.29151, -6.5, 4.5, 2.29151, -5.25, 5.5, 2.29151, -5.25, 5.5, 2.29151, -6.5, 4.75, 0.291512, -6.25, 4.75, 0.291512, -5.5, 5.5, 0.291512, -5.5, 5.5, 0.291512, -6.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(13, 12, 11), PackedInt32Array(16, 15, 14), PackedInt32Array(17, 19, 18), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33)]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q7ws1"]
 
@@ -62,8 +61,10 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.477035, 
 script = ExtResource("2_bjfp0")
 target = NodePath("../Player")
 
-[node name="Enemy" parent="." instance=ExtResource("3_lqi3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90046, 1, 0)
-
-[node name="Enemy2" parent="." instance=ExtResource("4_0gd8p")]
-transform = Transform3D(0.268466, 0, 0.963289, 0, 1, 0, -0.963289, 0, 0.268466, 8.63946, 1, 1.93371)
+[node name="Necro" parent="." instance=ExtResource("3_lxqyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 4
+collision_mask = 11
+speed = 8.0
+distance_to_player = 5.0
+rotation_speed = 3.0
