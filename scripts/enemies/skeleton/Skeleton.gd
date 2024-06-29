@@ -5,6 +5,7 @@ extends Enemy
 enum s_types {mele, range}
 @export var sceleton_type : s_types 
 @export var attack_timer : Timer
+@export var gravity : float
 var is_attacking : bool
 
 @export_category("vision")
@@ -40,6 +41,7 @@ func _ready() -> void:
 func _process(delta : float) -> void:
 	super._process(delta)
 	velocity = Vector3.ZERO
+	velocity.y -= gravity * delta
 	if hunt:	#hunting
 		move_to_pos(player.position)
 		attack()

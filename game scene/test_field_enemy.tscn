@@ -24,24 +24,28 @@ points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
 [node name="MAP_nav_baker" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_n1qtd")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MAP_nav_baker"]
+[node name="floor" type="StaticBody3D" parent="MAP_nav_baker"]
+disable_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_q7ws1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MAP_nav_baker/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MAP_nav_baker/floor"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_6r367")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MAP_nav_baker/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MAP_nav_baker/floor"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_lf1to")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MAP_nav_baker/StaticBody3D"]
+[node name="wall" type="StaticBody3D" parent="MAP_nav_baker"]
 transform = Transform3D(2, 0, 0, 0, 3.6, 0, 0, 0, 2, 5, 0.091512, -5.946)
+disable_mode = 1
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MAP_nav_baker/StaticBody3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MAP_nav_baker/wall"]
 shape = SubResource("BoxShape3D_c25pi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MAP_nav_baker/StaticBody3D/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MAP_nav_baker/wall"]
 mesh = SubResource("BoxMesh_hvm65")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -59,5 +63,6 @@ target = NodePath("../Player")
 [node name="Enemy2" parent="." instance=ExtResource("2_246n8")]
 transform = Transform3D(-0.80188, 0, 0.597485, 0, 1, 0, -0.597485, 0, -0.80188, 3.23419, 1.00594, -6.60885)
 sceleton_type = 1
+gravity = 2.0
 sword_demage = 10
 attack_speed = 5.0

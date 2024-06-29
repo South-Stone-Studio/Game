@@ -15,10 +15,9 @@ func _process(delta: float) -> void:
 
 func spawn_bone():
 	var bone : RigidBody3D = bone_scene.instantiate()
-	get_parent().add_child(bone)
+	add_child(bone)
 	main_node.handle_demage(bone_demage_to_enemy)
 	bone_ready = false
-	print("bone")
 
 func _on_attack_timer_timeout() -> void:
 	bone_ready = true
