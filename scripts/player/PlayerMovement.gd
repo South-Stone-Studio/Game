@@ -76,3 +76,6 @@ func player_movement(delta):
 	velocity.y -= gravity
 	move_and_slide()
 # ---------------------------------------------------------------------- #
+
+func _on_death() -> void:
+	self.queue_free()

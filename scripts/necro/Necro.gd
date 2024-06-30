@@ -6,13 +6,17 @@ extends Boss
 @export var touch_demage : int
 @export var spawn_sceletons_frequency : int
 @export var distance_to_player : float
+@export var distance_from_player : float
 @export var ghost_demage : int
 @export var rotation_speed : float
+
+@export var active : bool = false
 
 var ghost_ready : bool = false
 var catch_player_ready : bool = false
 var hp_control : int = health
 
+@export var head : MeshInstance3D
 @export var nav_agent : NavigationAgent3D
 @export var raycast_aim : RayCast3D
 
@@ -25,13 +29,13 @@ func _ready() -> void:
 	player = Global.player
 
 func _physics_process(delta: float) -> void:
-	if position.distance_to(player.position) > distance_to_player:
-		rotate_y(rotation_speed*delta) #	rotate head (with model rotate only head)
-	else:
-		move(player.position)
-
-
-
+	if active and player != null:
+		if position.distance_to(player.position) > distance_to_player:
+			move(player.position+Vector3(0,1,0))
+			head.rotate_y(rotation_speed*delta)
+		elif position.distance_to(player.position) < distance_from_player:
+				move(-player.position+Vector3(0,1,0))
+		look_at(player.position)
 
 func move(pos):
 	velocity = Vector3.ZERO
@@ -44,3 +48,6 @@ func move(pos):
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		body.handle_demage(touch_demage)
+
+func _on_wakeup_timer_timeout() -> void:
+	active = true
