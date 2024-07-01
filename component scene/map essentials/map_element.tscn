@@ -13,20 +13,17 @@ height = 40.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4a80"]
 radius = 50.0
 
-[node name="MapElement" type="Node2D" node_paths=PackedStringArray("rig")]
+[node name="MapElement" type="RigidBody2D"]
+input_pickable = true
+gravity_scale = 0.0
 script = ExtResource("1_blg8i")
-rig = NodePath("RigidBody2D")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("SphereMesh_4fu43")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-input_pickable = true
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r4a80")
 debug_color = Color(0, 0.600091, 0.699477, 0.42)
 
-[connection signal="mouse_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_mouse_entered"]
-[connection signal="mouse_exited" from="RigidBody2D" to="." method="_on_rigid_body_2d_mouse_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -6,7 +6,7 @@ var current_node: MapElement: set = _change_current
 @export var element_scene: PackedScene
 var center_of_gravity: Vector2
 func _ready() -> void:
-	center_of_gravity = get_viewport_rect().size / Vector2(0.5, 0.5)
+	center_of_gravity = get_viewport_rect().size * Vector2(0.5, 0.5)
 	if Global.map == null:
 		Global.map = self
 	else:
@@ -21,7 +21,7 @@ func _change_current(element: MapElement):
 			if con.added_to_map:
 				continue
 			var a := add_to_map(con)
-			a.global_position = element.global_position + Vector2(50, counter*100)
+			a.global_position = element.global_position + Vector2(randf_range(-1,1), randf_range(-1,1))
 			counter += 1
 
 func add_to_map(node: Gnode) -> MapElement:
@@ -38,11 +38,13 @@ func add_to_map(node: Gnode) -> MapElement:
 
 func init_map(node: Gnode) -> void:
 	var a := add_to_map(node)
-	a.global_position = Vector2(50,50)
+	a.global_position = center_of_gravity
+	a.mass = 5
 	current_node = a
 
 func travel(element: MapElement, type: MapElement.point_type) -> bool:
 	current_node.type = type
 	current_node.current = false
 	current_node = element
+	Global.run_script.change_room(element.graph_node)
 	return true

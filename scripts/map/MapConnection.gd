@@ -8,6 +8,7 @@ var point_b: Node2D
 func _init(a: Node2D,b: Node2D) -> void:
 	point_a = a
 	point_b = b
+	self.width = 5
 	self.add_point(a.global_position)
 	self.add_point(b.global_position)
 

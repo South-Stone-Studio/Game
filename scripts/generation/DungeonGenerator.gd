@@ -90,8 +90,7 @@ func create_room(node: Gnode):
 			req_tiles.append_array(spawn_room_tiles)
 		room.room_types.boss:
 			req_tiles.append_array(Global.current_boss.boss_tiles)
-	node.create_room(
-		len(node.connections), 
+	node.create_room( 
 		Vector2i(min_height,max_height), 
 		Vector2i(min_width,max_width), 
 		req_tiles

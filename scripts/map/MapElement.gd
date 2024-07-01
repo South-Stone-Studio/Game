@@ -1,6 +1,6 @@
 class_name MapElement
 
-extends Node2D
+extends RigidBody2D
 
 enum point_type {not_visited, visited, shop, boss, treassure}
 var graph_node: Gnode
@@ -13,11 +13,13 @@ var current: bool = false
 
 func _process(delta: float) -> void:
 	if mouse_hovered and Input.is_action_just_pressed("attack"):
+		print("work")
+		Global.map.visible = false
 		current = Global.map.travel(self, self.type)
 	self.position
 
-func _on_rigid_body_2d_mouse_entered() -> void:
+func _on_mouse_entered() -> void:
 	mouse_hovered = true
 
-func _on_rigid_body_2d_mouse_exited() -> void:
+func _on_mouse_exited() -> void:
 	mouse_hovered = false
