@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://r2x5etmtm26a"]
+
+[ext_resource type="Script" path="res://scripts/map/MapElement.gd" id="1_blg8i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyrfa"]
+albedo_color = Color(0.232267, 0.392746, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4fu43"]
+material = SubResource("StandardMaterial3D_lyrfa")
+radius = 20.0
+height = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4a80"]
+radius = 50.0
+
+[node name="MapElement" type="Node2D" node_paths=PackedStringArray("rig")]
+script = ExtResource("1_blg8i")
+rig = NodePath("RigidBody2D")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("SphereMesh_4fu43")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+input_pickable = true
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_r4a80")
+debug_color = Color(0, 0.600091, 0.699477, 0.42)
+
+[connection signal="mouse_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_mouse_entered"]
+[connection signal="mouse_exited" from="RigidBody2D" to="." method="_on_rigid_body_2d_mouse_exited"]
