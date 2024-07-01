@@ -112,7 +112,7 @@ func create_dungeon():
 		node_count = 0
 		graph = create_graph()
 		map_graph(graph, [], count_nodes)
-		if max_room_count >= node_count and node_count >=  min_room_count or only_boss_room:
+		if (max_room_count >= node_count and node_count >=  min_room_count) or only_boss_room:
 			break
 	map_graph(graph, [], create_room)
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg1i51sby2012"]
+[gd_scene load_steps=7 format=3 uid="uid://dg1i51sby2012"]
 
 [ext_resource type="Script" path="res://scripts/run/Run.gd" id="1_tmahc"]
 [ext_resource type="Script" path="res://scripts/generation/DungeonGenerator.gd" id="2_fonkv"]
 [ext_resource type="PackedScene" uid="uid://db5ika5isdcs0" path="res://component scene/procedural generation/tiles/treassure tiles/chest_tile.tscn" id="3_qwmk1"]
+[ext_resource type="PackedScene" uid="uid://c18m7wc6olo77" path="res://game scene/map.tscn" id="5_eq0wx"]
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="7_easf7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sd1vj"]
@@ -18,6 +19,11 @@ transform = Transform3D(0.580973, -0.775578, 0.246878, 0, 0.303318, 0.952889, -0
 
 [node name="DungeonGenerator" type="Node" parent="."]
 script = ExtResource("2_fonkv")
+min_main_length = 3
+max_main_length = 5
+min_room_count = 10
+max_room_count = 15
+max_depth = 4
 max_width = 6
 min_width = 4
 max_height = 5
@@ -34,3 +40,5 @@ transform = Transform3D(0.965926, -0.25, 0.0669873, 0, 0.258819, 0.965926, -0.25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_sd1vj")
+
+[node name="Map" parent="." instance=ExtResource("5_eq0wx")]

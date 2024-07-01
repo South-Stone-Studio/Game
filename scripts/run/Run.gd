@@ -16,6 +16,7 @@ func _ready() -> void:
 	r = current_room.r
 	Global.current_room_root = r
 	Global.current_room_gnode = current_room
+	Global.map.init_map(current_room)
 	add_child(r)
 
 func changeRoom(num) -> void:
