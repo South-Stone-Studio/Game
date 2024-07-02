@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://gmuatd0bne5r"]
 
 [ext_resource type="Script" path="res://scripts/room/BossTile.gd" id="1_1jcit"]
-[ext_resource type="Material" uid="uid://cq2clvap3dkok" path="res://materials/floor/test_tile.tres" id="2_knwp6"]
+[ext_resource type="Material" uid="uid://cuypv0s4si51q" path="res://materials/green.tres" id="2_o8qik"]
 [ext_resource type="Script" path="res://scripts/room/PlaceHolder.gd" id="3_msmsl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d8rqn"]
-material = ExtResource("2_knwp6")
+material = ExtResource("2_o8qik")
 size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jtaqy"]
@@ -21,12 +21,12 @@ max_objects = 1
 mesh = SubResource("PlaneMesh_d8rqn")
 
 [node name="PlaceHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
 script = ExtResource("3_msmsl")
 size_of_object = 1
 
 [node name="PlaceHolder2" type="Node3D" parent="."]
-transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -3, 0.5, -3)
+transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -3, 0, -3)
 script = ExtResource("3_msmsl")
 size_of_object = 1
 
