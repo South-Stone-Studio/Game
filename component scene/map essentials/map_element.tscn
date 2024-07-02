@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://r2x5etmtm26a"]
+[gd_scene load_steps=9 format=3 uid="uid://r2x5etmtm26a"]
 
 [ext_resource type="Script" path="res://scripts/map/MapElement.gd" id="1_blg8i"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4a80"]
+radius = 50.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyrfa"]
+render_priority = 1
 albedo_color = Color(0.232267, 0.392746, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_4fu43"]
@@ -10,20 +14,41 @@ material = SubResource("StandardMaterial3D_lyrfa")
 radius = 20.0
 height = 40.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r4a80"]
-radius = 50.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58gxl"]
+render_priority = 1
+albedo_color = Color(0.304659, 0.448632, 1, 1)
 
-[node name="MapElement" type="RigidBody2D"]
+[sub_resource type="SphereMesh" id="SphereMesh_pv82q"]
+material = SubResource("StandardMaterial3D_58gxl")
+radius = 20.0
+height = 40.0
+
+[sub_resource type="Gradient" id="Gradient_u0ild"]
+colors = PackedColorArray(0.39205, 0.502032, 1, 1, 0.392157, 0.501961, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yjuj0"]
+gradient = SubResource("Gradient_u0ild")
+
+[node name="MapElement" type="RigidBody2D" node_paths=PackedStringArray("def", "cur")]
 input_pickable = true
 gravity_scale = 0.0
 script = ExtResource("1_blg8i")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-mesh = SubResource("SphereMesh_4fu43")
+def = NodePath("basic")
+cur = NodePath("current")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r4a80")
 debug_color = Color(0, 0.600091, 0.699477, 0.42)
+
+[node name="basic" type="MeshInstance2D" parent="."]
+z_index = 2
+mesh = SubResource("SphereMesh_4fu43")
+
+[node name="current" type="MeshInstance2D" parent="."]
+visible = false
+z_index = 2
+mesh = SubResource("SphereMesh_pv82q")
+texture = SubResource("GradientTexture1D_yjuj0")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
