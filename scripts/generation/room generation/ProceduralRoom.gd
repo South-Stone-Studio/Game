@@ -2,36 +2,37 @@ class_name ProceduralRoom
 
 extends Node3D
 
-enum condition_type{none, kill_enemy}
+
 var width: int = 0
 var height: int = 0
-var nodes: Array[Node3D] = []
-var condition: condition_type
-var enemy: Array[Node3D] = []
-func _init(h: Vector2i, w: Vector2i, req_tiles: Array[PackedScene]) -> void:
+
+func _init(portal_count: int, h: Vector2i, w: Vector2i, t: Array[PackedScene]) -> void:
 	Global.run_script.add_child(self)
 	width = randi_range(w.x, w.y)
 	height = randi_range(h.x, h.y)
 	var tiles: Array[PackedScene] = []
-	var tile_count = (width * height) - 2
-	
+	var tile_count = (width * height) - portal_count - 1
+	var portal_num := []
 	var m := len(Global.portal_tiles) - 1
-	tiles.append(Global.portal_tiles[randi_range(0, m)])
 	
+	for i in range(portal_count):
+		portal_num.append(i)
+		tiles.append(Global.portal_tiles[randi_range(0, m)])
 	m = len(Global.spawn_tiles) - 1
 	tiles.append(Global.spawn_tiles[randi_range(0, m)])
-	
 	m = len(Global.normal_tiles) - 1
-	for i in range(tile_count- len(req_tiles)):
+	for i in range(tile_count- len(t)):
 		tiles.append(Global.normal_tiles[randi_range(0, m)])
-		
-	for tile in req_tiles:
-		tiles.append(tile)
+	for i in t:
+		tiles.append(i)
 	tiles.shuffle()
+	portal_num.shuffle()
 	
 	for y in range(height):
 		for x in range(width):
 			var tile: Tile = tiles.pop_back().instantiate()
+			if is_instance_of(tile, PortalTile):
+				tile.set_portal(portal_num.pop_back())
 			self.add_child(tile)
 			tile.create(x * 10, y * 10)
 	create_walls()
@@ -52,7 +53,3 @@ func create_walls():
 	for y in range(0, height):
 		create_wall(width, y, _wall, -90)
 		create_wall(0, height-y, _wall, 90)
-
-func delete_enemy(node: Node3D):
-	enemy.erase(node)
-	

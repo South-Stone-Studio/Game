@@ -13,11 +13,12 @@ var graph: Gnode
 @export var max_depth: int = 10
 
 @export_category("Room")
-@export var max_width: int
-@export var min_width: int
-@export var max_height: int
-@export var min_height: int
+@export_range(1,100) var max_width: int
+@export_range(1, 100) var min_width: int
+@export_range(1, 100) var max_height: int
+@export_range(1, 100) var min_height: int
 @export var spawn_room_tiles: Array[PackedScene]
+
 
 @export_category("Debug")
 @export var boss: PackedScene
@@ -90,6 +91,7 @@ func create_room(node: Gnode):
 		room.room_types.boss:
 			req_tiles.append_array(Global.current_boss.boss_tiles)
 	node.create_room(
+		len(node.connections), 
 		Vector2i(min_height,max_height), 
 		Vector2i(min_width,max_width), 
 		req_tiles
@@ -103,7 +105,6 @@ func free_graph(node: Gnode, indexes:Array[int]=[]):
 	node.free()
 
 func create_dungeon():
-	print("working")
 	choose_boss()
 	if graph != null:
 		free_graph(graph)
@@ -111,7 +112,7 @@ func create_dungeon():
 		node_count = 0
 		graph = create_graph()
 		map_graph(graph, [], count_nodes)
-		if (max_room_count >= node_count and node_count >=  min_room_count) or only_boss_room:
+		if max_room_count >= node_count and node_count >=  min_room_count or only_boss_room:
 			break
 	map_graph(graph, [], create_room)
 	

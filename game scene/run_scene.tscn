@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg1i51sby2012"]
+[gd_scene load_steps=6 format=3 uid="uid://dg1i51sby2012"]
 
 [ext_resource type="Script" path="res://scripts/run/Run.gd" id="1_tmahc"]
 [ext_resource type="Script" path="res://scripts/generation/DungeonGenerator.gd" id="2_fonkv"]
-[ext_resource type="PackedScene" uid="uid://c18m7wc6olo77" path="res://game scene/map.tscn" id="5_eq0wx"]
-[ext_resource type="PackedScene" uid="uid://db5ika5isdcs0" path="res://component scene/procedural generation/tiles/treassure tiles/chest_tile.tscn" id="5_xo228"]
+[ext_resource type="PackedScene" uid="uid://db5ika5isdcs0" path="res://component scene/procedural generation/tiles/treassure tiles/chest_tile.tscn" id="3_qwmk1"]
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="7_easf7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5f5k"]
@@ -11,11 +10,19 @@ size = Vector3(1000, 1, 1000)
 
 [node name="Run" type="Node3D" node_paths=PackedStringArray("dun_generator", "player")]
 script = ExtResource("1_tmahc")
-dun_generator = NodePath("DungeonGeneration")
+dun_generator = NodePath("DungeonGenerator")
 player = NodePath("Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.580973, -0.775578, 0.246878, 0, 0.303318, 0.952889, -0.813923, -0.553603, 0.17622, 5, 1.27334, 5.72889)
+
+[node name="DungeonGenerator" type="Node" parent="."]
+script = ExtResource("2_fonkv")
+max_width = 6
+min_width = 4
+max_height = 5
+min_height = 3
+spawn_room_tiles = Array[PackedScene]([ExtResource("3_qwmk1")])
 
 [node name="Player" parent="." instance=ExtResource("7_easf7")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.0205, 0.0152011, 3.99624)
@@ -27,17 +34,4 @@ transform = Transform3D(0.965926, -0.25, 0.0669873, 0, 0.258819, 0.965926, -0.25
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-
-shape = SubResource("BoxShape3D_sd1vj")
-
-[node name="Map" parent="." instance=ExtResource("5_eq0wx")]
-visible = false
-
-[node name="DungeonGeneration" type="Node" parent="."]
-script = ExtResource("2_fonkv")
-max_width = 6
-min_width = 3
-max_height = 5
-min_height = 3
-spawn_room_tiles = Array[PackedScene]([ExtResource("5_xo228")])
-
+shape = SubResource("BoxShape3D_n5f5k")

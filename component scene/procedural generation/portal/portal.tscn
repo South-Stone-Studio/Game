@@ -5,27 +5,19 @@
 [ext_resource type="Material" uid="uid://b7gm44lq8cohv" path="res://materials/interactable/interactable.tres" id="2_jhf8q"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u51py"]
-radius = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwv8v"]
 albedo_color = Color(0.989644, 0.653162, 0.667081, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_i7bdy"]
 material = SubResource("StandardMaterial3D_hwv8v")
-top_radius = 2.0
-bottom_radius = 2.0
-height = 0.2
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_fhsqx"]
-height = 0.2
-radius = 2.0
 
 [node name="Portal" type="Node3D" node_paths=PackedStringArray("mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_s7i1f")
 mesh = NodePath("Area3D/CollisionShape3D/MeshInstance3D")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_u51py")
@@ -35,11 +27,4 @@ material_override = ExtResource("2_jhf8q")
 mesh = SubResource("CylinderMesh_i7bdy")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("CylinderShape3D_fhsqx")
-
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

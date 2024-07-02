@@ -30,5 +30,5 @@ func drop_item():
 		object.freeze = false
 		object.picked = false
 		object.position = hand.position + Vector3(0,-0.5,1.5)
-		object.reparent(Global.current_room_root)
+		object.reparent(Global.run_script.r)
 		weapon = null
