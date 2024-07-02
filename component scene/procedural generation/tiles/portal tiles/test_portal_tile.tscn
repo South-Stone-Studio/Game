@@ -16,4 +16,3 @@ material_override = ExtResource("2_uwyiq")
 mesh = SubResource("PlaneMesh_8d6v2")
 
 [node name="Portal" parent="." instance=ExtResource("2_53qj7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
