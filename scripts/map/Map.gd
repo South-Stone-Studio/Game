@@ -14,15 +14,14 @@ func _ready() -> void:
 
 func _change_current(element: MapElement):
 	current_node = element
+	element.current = true
 	if element.type == element.point_type.not_visited and !element.connection_added:
 		element.connection_added = true
-		var counter := 0
 		for con in element.graph_node.connections:
 			if con.added_to_map:
 				continue
 			var a := add_to_map(con)
 			a.global_position = element.global_position + Vector2(randf_range(-1,1), randf_range(-1,1))
-			counter += 1
 
 func add_to_map(node: Gnode) -> MapElement:
 	node.added_to_map = true
@@ -42,9 +41,8 @@ func init_map(node: Gnode) -> void:
 	a.mass = 5
 	current_node = a
 
-func travel(element: MapElement, type: MapElement.point_type) -> bool:
+func travel(element: MapElement, type: MapElement.point_type) -> void:
 	current_node.type = type
 	current_node.current = false
 	current_node = element
 	Global.run_script.change_room(element.graph_node)
-	return true

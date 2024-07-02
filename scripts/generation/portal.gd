@@ -8,7 +8,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		player_colliding = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_colliding and Input.is_action_just_pressed("pick_up"):
 		Global.map.visible = !Global.map.visible
 

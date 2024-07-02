@@ -92,7 +92,7 @@ func sling_jump():
 func slimy_shock():
 	var ex: Node3D = shock_vave.instantiate()
 	ex = ex.duplicate()
-	Global.run_script.r.add_child(ex)
+	Global.current_room_root.add_child(ex)
 	ex.global_position = self.global_position
 	ex.max_radius = shock_wave_radius
 	ex.speed = shock_wave_speed

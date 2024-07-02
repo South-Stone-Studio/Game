@@ -12,6 +12,6 @@ func _init(a: Node2D,b: Node2D) -> void:
 	self.add_point(a.global_position)
 	self.add_point(b.global_position)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	self.points[0] = point_a.global_position
 	self.points[1] = point_b.global_position
