@@ -7,13 +7,15 @@ extends Node3D
 
 var current_room: Gnode
 var r: Node3D
+
 func _ready() -> void:
 	if Global.run_script == null:
 		Global.run_script = self
 	dun_generator.create_dungeon()
 	current_room = dun_generator.get_graph()
-	print(current_room.r)
 	r = current_room.r
+	Global.current_room_root = r
+	Global.current_room_gnode = current_room
 	add_child(r)
 
 func changeRoom(num) -> void:
@@ -21,4 +23,6 @@ func changeRoom(num) -> void:
 	if len(current_room.connections) > num:
 		current_room = current_room.connections[num]
 		r = current_room.r
+		Global.current_room_root = r
+		Global.current_room_gnode = current_room
 	add_child(r)

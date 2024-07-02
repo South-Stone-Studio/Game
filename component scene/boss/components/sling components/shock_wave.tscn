@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2qop06ln8rht"]
+
+[ext_resource type="Script" path="res://scripts/expanding area/ShockWave.gd" id="1_xdp2g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g7lne"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjtlm"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_sx8my"]
+material = SubResource("StandardMaterial3D_bjtlm")
+inner_radius = 0.001
+outer_radius = 0.5
+
+[node name="ShockWave" type="Area3D" node_paths=PackedStringArray("colider", "mesh")]
+script = ExtResource("1_xdp2g")
+colider = NodePath("CollisionShape3D")
+mesh = NodePath("MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_g7lne")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_sx8my")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

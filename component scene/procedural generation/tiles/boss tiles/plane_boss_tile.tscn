@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://gmuatd0bne5r"]
 
 [ext_resource type="Script" path="res://scripts/room/BossTile.gd" id="1_1jcit"]
+
 [ext_resource type="Material" uid="uid://y5lclo5s3uh6" path="res://materials/floor/floor.tres" id="2_3n47c"]
 [ext_resource type="Script" path="res://scripts/room/PlaceHolder.gd" id="3_msmsl"]
 

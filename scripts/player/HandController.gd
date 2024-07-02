@@ -8,6 +8,7 @@ var weapon : Weapon
 @export var hand : Node3D
 
 func pick_up_item(object:Node3D):
+	print(object.name)
 	if weapon != null:
 		drop_item()
 	if is_instance_of(object, Weapon):
@@ -29,5 +30,5 @@ func drop_item():
 		object.freeze = false
 		object.picked = false
 		object.position = hand.position + Vector3(0,-0.5,1.5)
-		object.reparent(get_tree().current_scene)
+		object.reparent(Global.run_script.r)
 		weapon = null

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://brsmxal17c3wh"]
+
+[node name="BossHealthBar" type="CanvasLayer"]

@@ -5,6 +5,7 @@ extends Bullet
 var exp_damage: int = 0
 
 func _on_body_entered(body):
+	call_deferred("reparent", body)
 	v = 0
 
 func explode():

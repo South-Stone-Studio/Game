@@ -20,4 +20,6 @@ func _process(delta):
 		self.queue_free()
 		
 func _on_body_entered(body):
+	if is_instance_of(body, Boss):
+		body.health -= damage
 	print(body)

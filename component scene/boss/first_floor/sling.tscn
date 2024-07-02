@@ -1,0 +1,147 @@
+[gd_scene load_steps=19 format=3 uid="uid://bgg0cjypuekf5"]
+
+[ext_resource type="Script" path="res://scripts/sling/Sling.gd" id="1_obqyo"]
+[ext_resource type="Script" path="res://scripts/expanding area/ShockWave.gd" id="2_t02dt"]
+[ext_resource type="PackedScene" uid="uid://b2qop06ln8rht" path="res://component scene/boss/components/sling components/shock_wave.tscn" id="2_xj8oj"]
+[ext_resource type="PackedScene" uid="uid://0yi2j3am5bo2" path="res://component scene/boss/components/sling components/slimy_projectile.tscn" id="3_05c8d"]
+[ext_resource type="PackedScene" uid="uid://b8eotq8mq00t0" path="res://component scene/boss/components/sling components/show_slimy_danger.tscn" id="4_qrbw0"]
+[ext_resource type="PackedScene" uid="uid://gmuatd0bne5r" path="res://component scene/procedural generation/tiles/boss tiles/plane_boss_tile.tscn" id="5_h5sws"]
+[ext_resource type="PackedScene" uid="uid://bw3a2y8i36yc6" path="res://ui/health_bar.tscn" id="5_wf1ij"]
+[ext_resource type="FontFile" uid="uid://5wmwgirffx66" path="res://fonts/wizzta.ttf" id="7_tlidf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g7lne"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjtlm"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_sx8my"]
+material = SubResource("StandardMaterial3D_bjtlm")
+inner_radius = 0.001
+outer_radius = 0.5
+
+[sub_resource type="PackedScene" id="PackedScene_8iyca"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741827, 1073741826, 12, 11, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("ShockWave", "Area3D", "script", "colider", "mesh", "CollisionShape3D", "CollisionShape3D", "shape", "MeshInstance3D", "MeshInstance3D", "mesh", "_on_body_entered", "body_entered"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 3, 2, 0, 1073741827, 1, 1073741828, 2, 0, 1073741824, 0, 6, 5, -1, 1, 7, 3, 0, 1073741825, 0, 9, 8, -1, 1, 10, 4, 0),
+"variants": [ExtResource("2_t02dt"), NodePath("CollisionShape3D"), NodePath("MeshInstance3D"), SubResource("CylinderShape3D_g7lne"), SubResource("TorusMesh_sx8my")],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_sdoxn"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Sling", "collision_layer", "collision_mask", "script", "shock_vave", "slimy_projectile", "show_danger", "shock_wave_radius", "shock_wave_speed", "bomb_speread", "radius_of_barage_strike", "boss_health_bar", "label", "max_health", "boss_tiles", "boss_name", "CharacterBody3D", "CollisionShape3D", "transform", "shape", "MeshInstance3D", "mesh", "Area3D", "CanvasLayer", "Control", "layout_mode", "anchors_preset", "anchor_right", "offset_bottom", "grow_horizontal", "MarginContainer", "anchor_bottom", "grow_vertical", "theme_override_constants/margin_left", "theme_override_constants/margin_top", "theme_override_constants/margin_right", "theme_override_constants/margin_bottom", "Label", "visible", "z_index", "size_flags_horizontal", "size_flags_vertical", "theme_override_colors/font_shadow_color", "theme_override_fonts/font", "theme_override_font_sizes/font_size", "text", "horizontal_alignment", "vertical_alignment", "HealthGauge", "custom_minimum_size", "_on_area_3d_body_entered", "body_entered"),
+"node_count": 0,
+"node_paths": [],
+"nodes": PackedInt32Array(),
+"variants": [],
+"version": 3
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rohma"]
+height = 1.5
+radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roon4"]
+albedo_color = Color(0.056187, 0.471998, 0.230067, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_55bll"]
+material = SubResource("StandardMaterial3D_roon4")
+radius = 2.0
+height = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4wteu"]
+radius = 2.0
+
+[sub_resource type="PackedScene" id="PackedScene_7r8bg"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(3, 0, 52, 51, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Sling", "collision_layer", "collision_mask", "script", "shock_vave", "slimy_projectile", "show_danger", "my_scene", "shock_wave_radius", "shock_wave_speed", "bomb_speread", "radius_of_barage_strike", "boss_health_bar", "label", "max_health", "boss_tiles", "boss_name", "CharacterBody3D", "CollisionShape3D", "transform", "shape", "MeshInstance3D", "mesh", "Area3D", "CanvasLayer", "Control", "layout_mode", "anchors_preset", "anchor_right", "offset_bottom", "grow_horizontal", "MarginContainer", "anchor_bottom", "grow_vertical", "theme_override_constants/margin_left", "theme_override_constants/margin_top", "theme_override_constants/margin_right", "theme_override_constants/margin_bottom", "Label", "visible", "z_index", "size_flags_horizontal", "size_flags_vertical", "theme_override_colors/font_shadow_color", "theme_override_fonts/font", "theme_override_font_sizes/font_size", "text", "horizontal_alignment", "vertical_alignment", "HealthGauge", "custom_minimum_size", "_on_area_3d_body_entered", "body_entered"),
+"node_count": 10,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 17, 0, -1, 16, 1, 0, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 7, 11, 8, 1073741836, 9, 1073741837, 10, 14, 11, 15, 12, 16, 13, 0, 0, 0, 18, 18, -1, 2, 19, 14, 20, 15, 0, 0, 0, 21, 21, -1, 1, 22, 16, 0, 0, 0, 23, 23, -1, 0, 0, 3, 0, 18, 18, -1, 1, 20, 17, 0, 0, 0, 24, 24, -1, 0, 0, 5, 0, 25, 25, -1, 5, 26, 18, 27, 19, 28, 20, 29, 21, 30, 22, 0, 6, 0, 31, 31, -1, 10, 26, 23, 27, 0, 28, 20, 32, 20, 30, 22, 33, 22, 34, 24, 35, 24, 36, 24, 37, 24, 0, 7, 0, 38, 38, -1, 11, 39, 25, 40, 22, 26, 22, 41, 26, 42, 27, 43, 28, 44, 29, 45, 30, 46, 31, 47, 23, 48, 23, 0, 7, 0, 2147483647, 49, 32, 4, 39, 25, 50, 33, 26, 22, 41, 23, 0),
+"variants": [15, ExtResource("1_obqyo"), ExtResource("2_xj8oj"), ExtResource("3_05c8d"), ExtResource("4_qrbw0"), SubResource("PackedScene_sdoxn"), 9.0, 7.0, 6.0, NodePath("CanvasLayer/Control/MarginContainer/HealthGauge"), NodePath("CanvasLayer/Control/MarginContainer/Label"), 600, Array[PackedScene]([ExtResource("5_h5sws")]), "Sling the slime king", Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0), SubResource("CylinderShape3D_rohma"), SubResource("SphereMesh_55bll"), SubResource("CylinderShape3D_4wteu"), 3, 10, 1.0, 70.0, 2, 1, 8, false, 4, 0, Color(0, 0, 0, 0.52549), ExtResource("7_tlidf"), 55, "Sling the slime sing", ExtResource("5_wf1ij"), Vector2(0, 20)],
+"version": 3
+}
+
+[node name="Sling" type="CharacterBody3D" node_paths=PackedStringArray("boss_health_bar", "label")]
+collision_layer = 9
+collision_mask = 7
+script = ExtResource("1_obqyo")
+shock_vave = SubResource("PackedScene_8iyca")
+slimy_projectile = ExtResource("3_05c8d")
+show_danger = ExtResource("4_qrbw0")
+my_scene = SubResource("PackedScene_7r8bg")
+shock_wave_radius = 9.0
+shock_wave_speed = 7.0
+bomb_speread = 7.0
+radius_of_barage_strike = 6.0
+boss_health_bar = NodePath("CanvasLayer/Control/MarginContainer/HealthGauge")
+label = NodePath("CanvasLayer/Control/MarginContainer/Label")
+max_health = 600
+boss_tiles = Array[PackedScene]([ExtResource("5_h5sws")])
+boss_name = "Sling the slime king"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("CylinderShape3D_rohma")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_55bll")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_4wteu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer"]
+visible = false
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.52549)
+theme_override_fonts/font = ExtResource("7_tlidf")
+theme_override_font_sizes/font_size = 55
+text = "Sling the slime sing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthGauge" parent="CanvasLayer/Control/MarginContainer" instance=ExtResource("5_wf1ij")]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 1
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

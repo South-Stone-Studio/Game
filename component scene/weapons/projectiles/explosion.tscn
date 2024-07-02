@@ -14,6 +14,7 @@ radius = 2.0
 height = 4.0
 
 [node name="Explosion" type="Area3D" node_paths=PackedStringArray("col", "mes")]
+collision_mask = 15
 script = ExtResource("1_so53o")
 col = NodePath("CollisionShape3D")
 mes = NodePath("MeshInstance3D")

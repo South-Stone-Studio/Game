@@ -33,7 +33,6 @@ Color_Mesh = NodePath("MeshInstance3D/MeshInstance3D")
 picked = null
 weapon = NodePath("Needler")
 ammo = NodePath("Bullets")
-type = null
 
 [node name="Needler" type="Node" parent="." node_paths=PackedStringArray("nozle")]
 script = ExtResource("2_jb5pc")

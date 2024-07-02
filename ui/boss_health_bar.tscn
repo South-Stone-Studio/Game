@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://lka3bbxm7ry"]
+
+[node name="BossHealthBar" type="Node2D"]
