@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dejs7m77d4d82"]
+[gd_scene load_steps=5 format=3 uid="uid://dejs7m77d4d82"]
 
 [ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_remnp"]
 [ext_resource type="Material" uid="uid://y5lclo5s3uh6" path="res://materials/floor/floor.tres" id="2_sivkf"]
@@ -10,17 +10,9 @@ albedo_color = Color(0.275661, 0.38907, 0.145459, 1)
 material = SubResource("StandardMaterial3D_3ehdk")
 size = Vector2(10, 10)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3wuom"]
-size = Vector3(10, 0, 10)
-
 [node name="PlaneTile" type="Node3D"]
 script = ExtResource("1_remnp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_sivkf")
 mesh = SubResource("PlaneMesh_h7uda")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_3wuom")
