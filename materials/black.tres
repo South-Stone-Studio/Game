@@ -1,9 +1,9 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ds2vi468m3nug"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://5etgkyn2u7m"]
 
-[ext_resource type="Texture2D" uid="uid://diewiixtjjmng" path="res://materials/imgs/Orange/texture_02.png" id="1_6u5fp"]
+[ext_resource type="Texture2D" uid="uid://bi0e70pubwuv1" path="res://materials/imgs/Dark/texture_01.png" id="1_jaom2"]
 
 [resource]
-albedo_texture = ExtResource("1_6u5fp")
+albedo_texture = ExtResource("1_jaom2")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 uv1_world_triplanar = true
