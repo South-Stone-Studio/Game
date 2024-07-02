@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://04m4i24d3133"]
 
 [ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_l8agi"]
+[ext_resource type="Material" uid="uid://y5lclo5s3uh6" path="res://materials/floor/floor.tres" id="2_0dikw"]
 [ext_resource type="Script" path="res://scripts/room/PlaceHolder.gd" id="3_le2xs"]
-[ext_resource type="Material" uid="uid://cq2clvap3dkok" path="res://materials/floor/test_tile.tres" id="3_p43bl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t7df"]
 albedo_color = Color(1.03481e-06, 0.583177, 0.196779, 1)
@@ -18,7 +18,7 @@ max_objects = 2
 min_objects = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("3_p43bl")
+material_override = ExtResource("2_0dikw")
 mesh = SubResource("PlaneMesh_2326k")
 
 [node name="PlaceHolder" type="Node3D" parent="."]

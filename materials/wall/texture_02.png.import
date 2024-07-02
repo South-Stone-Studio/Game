@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2w0y6flf84j2"
-path.s3tc="res://.godot/imported/PavingStones138_1K-PNG_Displacement.png-acb89381defdae1a0efad39590f57946.s3tc.ctex"
+uid="uid://cqwurolbae3o"
+path.s3tc="res://.godot/imported/texture_02.png-4d1349dc137d45f385c75c03e9d1d3bb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://materials/floor/imsg/PavingStones138_1K-PNG_Displacement.png"
-dest_files=["res://.godot/imported/PavingStones138_1K-PNG_Displacement.png-acb89381defdae1a0efad39590f57946.s3tc.ctex"]
+source_file="res://materials/wall/texture_02.png"
+dest_files=["res://.godot/imported/texture_02.png-4d1349dc137d45f385c75c03e9d1d3bb.s3tc.ctex"]
 
 [params]
 
@@ -24,8 +24,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=7
-roughness/src_normal="res://materials/PavingStones138_1K-PNG_NormalGL.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

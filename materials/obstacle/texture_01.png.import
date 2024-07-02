@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqrk04g5pgn1m"
-path.s3tc="res://.godot/imported/PavingStones138_1K-PNG_Color.png-329e96f6bee35403ce17584a57ad022f.s3tc.ctex"
+uid="uid://cf5kg6scvcv6c"
+path.s3tc="res://.godot/imported/texture_01.png-8ea6f3558b328f1a29067e814f3b6e81.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://materials/floor/imsg/PavingStones138_1K-PNG_Color.png"
-dest_files=["res://.godot/imported/PavingStones138_1K-PNG_Color.png-329e96f6bee35403ce17584a57ad022f.s3tc.ctex"]
+source_file="res://materials/obstacle/texture_01.png"
+dest_files=["res://.godot/imported/texture_01.png-8ea6f3558b328f1a29067e814f3b6e81.s3tc.ctex"]
 
 [params]
 

@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg4dm0dwcxmqf"]
+[gd_scene load_steps=5 format=3 uid="uid://dg4dm0dwcxmqf"]
+
+[ext_resource type="Material" uid="uid://bgvfgj1bkwdso" path="res://materials/obstacle/obstacle.tres" id="1_8a5q2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mic2f"]
 
@@ -20,4 +22,5 @@ shape = SubResource("BoxShape3D_mic2f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+material_override = ExtResource("1_8a5q2")
 mesh = SubResource("BoxMesh_aiira")

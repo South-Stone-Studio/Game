@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/room/PortalTile.gd" id="1_dm7o0"]
 [ext_resource type="PackedScene" uid="uid://d3lsh8nnts3op" path="res://component scene/procedural generation/portal/portal.tscn" id="2_53qj7"]
-[ext_resource type="Material" uid="uid://cq2clvap3dkok" path="res://materials/floor/test_tile.tres" id="2_mjoyc"]
+[ext_resource type="Material" uid="uid://y5lclo5s3uh6" path="res://materials/floor/floor.tres" id="2_uwyiq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8d6v2"]
-material = ExtResource("2_mjoyc")
 size = Vector2(10, 10)
 
 [node name="TestPortalTile" type="Node3D" node_paths=PackedStringArray("portal")]
@@ -13,6 +12,7 @@ script = ExtResource("1_dm7o0")
 portal = NodePath("Portal")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_uwyiq")
 mesh = SubResource("PlaneMesh_8d6v2")
 
 [node name="Portal" parent="." instance=ExtResource("2_53qj7")]

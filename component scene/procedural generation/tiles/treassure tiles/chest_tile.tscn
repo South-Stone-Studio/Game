@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://db5ika5isdcs0"]
+
+[ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_kofyw"]
+[ext_resource type="PackedScene" uid="uid://dvjl2kpxaqtnv" path="res://component scene/props/placable/static/chest.tscn" id="2_iwjc2"]
+[ext_resource type="Material" uid="uid://y5lclo5s3uh6" path="res://materials/floor/floor.tres" id="3_d2gy3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vquul"]
+load_path = "res://.godot/imported/PavingStones138_1K-PNG_NormalGL.png-18a1a21bea8c6f18857cc68461f1a93a.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_taou0"]
+load_path = "res://.godot/imported/PavingStones138_1K-PNG_AmbientOcclusion.png-e746822bcfde36a3b3e58907bfab0956.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q6qrr"]
+load_path = "res://.godot/imported/PavingStones138_1K-PNG_Displacement.png-acb89381defdae1a0efad39590f57946.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uc66q"]
+load_path = "res://.godot/imported/PavingStones138_1K-PNG_Roughness.png-56d6fa999f6fa39c477d3a07c64b3bc2.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rb2v6"]
+disable_ambient_light = true
+albedo_texture = SubResource("CompressedTexture2D_vquul")
+roughness_texture = SubResource("CompressedTexture2D_uc66q")
+normal_enabled = true
+normal_scale = 1.4
+normal_texture = SubResource("CompressedTexture2D_vquul")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = SubResource("CompressedTexture2D_taou0")
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = SubResource("CompressedTexture2D_q6qrr")
+grow_amount = -2.8
+proximity_fade_distance = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ri2sv"]
+material = SubResource("StandardMaterial3D_rb2v6")
+size = Vector2(10, 10)
+
+[node name="ChestTile" type="Node3D"]
+script = ExtResource("1_kofyw")
+
+[node name="Chest" parent="." instance=ExtResource("2_iwjc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_d2gy3")
+mesh = SubResource("PlaneMesh_ri2sv")

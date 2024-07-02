@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://gmuatd0bne5r"]
+
+[ext_resource type="Script" path="res://scripts/room/BossTile.gd" id="1_1jcit"]
+[ext_resource type="Material" uid="uid://y5lclo5s3uh6" path="res://materials/floor/floor.tres" id="2_3n47c"]
+[ext_resource type="Script" path="res://scripts/room/PlaceHolder.gd" id="3_msmsl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d8rqn"]
+material = ExtResource("2_3n47c")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtaqy"]
+size = Vector3(10, 1, 10)
+
+[node name="PlaneBossTile" type="Node3D" node_paths=PackedStringArray("boss_spawn", "objects")]
+script = ExtResource("1_1jcit")
+boss_spawn = NodePath("BossSpawn")
+objects = [NodePath("PlaceHolder"), NodePath("PlaceHolder2")]
+max_objects = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_d8rqn")
+
+[node name="PlaceHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 3)
+script = ExtResource("3_msmsl")
+size_of_object = 1
+
+[node name="PlaceHolder2" type="Node3D" parent="."]
+transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -3, 0.5, -3)
+script = ExtResource("3_msmsl")
+size_of_object = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_jtaqy")
+
+[node name="BossSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
