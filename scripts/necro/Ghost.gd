@@ -1,11 +1,16 @@
-extends Node
+extends Area3D
 
+@export var speed : float
+@export var demage : int
+var death_timer : float = 10.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	translate(Vector3(0,0,-speed*delta))
+	death_timer -= 0.1
+	if death_timer <= 0:
+		self.queue_free()
+
+func _on_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		Global.player.handle_demage(demage)
+	

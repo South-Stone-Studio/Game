@@ -25,3 +25,4 @@ func handle_death() -> void:
 
 func handle_demage(dem : int) -> void:
 	current_hp -= dem
+	
