@@ -8,15 +8,24 @@ extends Boss
 @export var distance_to_player : float
 @export var distance_from_player : float
 @export var rotation_speed : float
-
 @export var active : bool = false
-
 var ghost_ready : bool = false
 var catch_player_ready : bool = false
 var hp_control : int = health
 
+@export_category("Catch Attack")
+@export var catch_demage : int
+@export var stunn_time : float
+@export var stunn_delay_time : float
+@export var catch_scene : PackedScene
+
+@export_category('Ghost Attack')
 @export var ghost_spawner : Marker3D
 @export var ghost_scene : PackedScene
+@export var ghost_speed : float
+@export var ghost_demage : int
+
+@export_category("Rest")
 @export var head : MeshInstance3D
 @export var nav_agent : NavigationAgent3D
 @export var raycast_aim : RayCast3D
@@ -28,6 +37,7 @@ var player : CharacterBody3D
 
 func _ready() -> void:
 	player = Global.player
+	spawn_sceletons()
 
 func _physics_process(delta: float) -> void:
 	if active and player != null:
@@ -36,7 +46,7 @@ func _physics_process(delta: float) -> void:
 			move(player.position+Vector3(0,1,0))
 			head.rotate_y(rotation_speed*delta)
 		elif position.distance_to(player.position) < distance_from_player:
-			move(Vector3())
+			move(Vector3())	 #move in opposite way from player 
 		
 		#attacks
 		if catch_player_ready:
@@ -46,12 +56,17 @@ func _physics_process(delta: float) -> void:
 			ghost_attack()
 			ghost_ready = !ghost_ready
 		
+		if (max_health - health)% 20 == 0:
+			spawn_sceletons()
+		
 		look_at(player.position)
 
+func spawn_sceletons() -> void:
+	print('Spown')
+
 func catch_attack() -> void:
-	print("catch attack")
-	#var catch_area_worning = catch_area_node
-	#player.add_sibling(catch_area_worning)
+	var catch : Area3D = catch_scene.instantiate()
+	self.add_child(catch)
 
 func ghost_attack() -> void:
 	var ghost : Area3D = ghost_scene.instantiate()

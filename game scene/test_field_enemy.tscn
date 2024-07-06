@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpgy1ek3iwjet"]
+[gd_scene load_steps=11 format=3 uid="uid://dpgy1ek3iwjet"]
 
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="1_wd1gq"]
 [ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="2_bjfp0"]
 [ext_resource type="PackedScene" uid="uid://omkevete8a34" path="res://component scene/boss/necro/necro.tscn" id="3_lxqyd"]
+[ext_resource type="PackedScene" uid="uid://dbx6wt666bwdl" path="res://component scene/weapons/base/blaziken.tscn" id="4_mw8bh"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_n1qtd"]
 vertices = PackedVector3Array(3.5, 0.291512, -7.25, 5, 0.291512, -7.5, 5, 0.291512, -49.5, -49.5, 0.291512, -49.5, -49.5, 0.291512, -5.75, -49.5, 0.291512, -5.75, 3.5, 0.291512, -5.75, 3.5, 0.291512, -7.25, 5, 0.291512, -49.5, 5, 0.291512, -7.5, 6.5, 0.291512, -7.5, 6.5, 0.291512, -7.5, 6.75, 0.291512, -5.75, 49.5, 0.291512, -5.75, 49.5, 0.291512, -49.5, 5, 0.291512, -49.5, 4.5, 2.29151, -6.5, 4.5, 2.29151, -5.25, 5.5, 2.29151, -5.25, 5.5, 2.29151, -6.5, 4.75, 0.291512, -6.25, 4.75, 0.291512, -5.5, 5.5, 0.291512, -5.5, 5.5, 0.291512, -6.25, 3.5, 0.291512, -4.5, 3.5, 0.291512, -5.75, -49.5, 0.291512, -5.75, 5, 0.291512, 49.5, 5, 0.291512, -4.25, 3.5, 0.291512, -4.5, -49.5, 0.291512, -5.75, -49.5, 0.291512, 49.5, 49.5, 0.291512, -5.75, 6.75, 0.291512, -5.75, 6.5, 0.291512, -4.25, 5, 0.291512, 49.5, 49.5, 0.291512, 49.5, 6.5, 0.291512, -4.25, 5, 0.291512, -4.25, 5, 0.291512, 49.5)
@@ -38,7 +39,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_lf1to")
 
 [node name="wall" type="StaticBody3D" parent="MAP_nav_baker"]
-transform = Transform3D(2, 0, 0, 0, 3.6, 0, 0, 0, 2, 5, 0.091512, -5.946)
+transform = Transform3D(2, 0, 0, 0, 3.6, 0, 0, 0, 2, 5.01206, 0.091512, -5.946)
 disable_mode = 1
 collision_layer = 2
 collision_mask = 2
@@ -58,14 +59,18 @@ gravity = 10.0
 speed = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.477035, 9.33125, 9.20534)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 8, 0)
 script = ExtResource("2_bjfp0")
 target = NodePath("../Player")
+offset = Vector3(0, 10, 0)
 
 [node name="Necro" parent="." instance=ExtResource("3_lxqyd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03657, 0)
 collision_layer = 4
 collision_mask = 11
 rotation_speed = 3.0
+
+[node name="Weapon" parent="." instance=ExtResource("4_mw8bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 22)
 
 [connection signal="death" from="Player" to="Player" method="_on_death"]

@@ -11,6 +11,7 @@ var current_hp : int :
 		if value <= 0: death.emit()
 		current_hp = max(0 ,min(value,hp))
 @export var speed : float
+@export var stunned : bool = false
 
 func _ready() -> void:
 	death.connect(handle_death)

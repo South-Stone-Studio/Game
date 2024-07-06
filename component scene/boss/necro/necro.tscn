@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://omkevete8a34"]
+[gd_scene load_steps=12 format=3 uid="uid://omkevete8a34"]
 
 [ext_resource type="Script" path="res://scripts/necro/Necro.gd" id="1_rqcgo"]
 [ext_resource type="PackedScene" uid="uid://bn4rosv7id4aj" path="res://component scene/enemies/skeleton/melee_sceleton.tscn" id="2_bn86v"]
-[ext_resource type="PackedScene" uid="uid://dyo5l5oeqk1ny" path="res://component scene/boss/necro/ghost.tscn" id="2_uqxwk"]
+[ext_resource type="PackedScene" uid="uid://dyo5l5oeqk1ny" path="res://component scene/boss/necro/ghost_attack.tscn" id="2_uqxwk"]
+[ext_resource type="PackedScene" uid="uid://hxgrnftjgvhl" path="res://component scene/boss/necro/catch_attack.tscn" id="2_x6503"]
 [ext_resource type="PackedScene" uid="uid://br4fbsjq3j4as" path="res://component scene/enemies/skeleton/range_sceleton.tscn" id="3_p3ljj"]
+[ext_resource type="FontFile" uid="uid://5wmwgirffx66" path="res://fonts/wizzta.ttf" id="6_lm4ul"]
+[ext_resource type="PackedScene" uid="uid://bw3a2y8i36yc6" path="res://ui/health_bar.tscn" id="7_ag53w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f4fks"]
 size = Vector3(2.07788, 5, 2.14355)
@@ -17,7 +20,7 @@ size = Vector3(0.2, 3, 0.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xh1et"]
 
-[node name="Necro" type="CharacterBody3D" node_paths=PackedStringArray("ghost_spawner", "head", "nav_agent", "raycast_aim")]
+[node name="Necro" type="CharacterBody3D" node_paths=PackedStringArray("ghost_spawner", "head", "nav_agent", "raycast_aim", "boss_health_bar", "label")]
 script = ExtResource("1_rqcgo")
 speed = 5.0
 touch_demage = 10
@@ -25,16 +28,22 @@ spawn_sceletons_frequency = 10
 distance_to_player = 5.0
 distance_from_player = 4.0
 rotation_speed = 20.0
-active = null
+catch_demage = 2
+stunn_time = 5.0
+stunn_delay_time = 2.0
+catch_scene = ExtResource("2_x6503")
 ghost_spawner = NodePath("GhostSpawner")
 ghost_scene = ExtResource("2_uqxwk")
+ghost_speed = 7.0
+ghost_demage = 5
 head = NodePath("head")
 nav_agent = NodePath("NavigationAgent3D")
 raycast_aim = NodePath("RayCast3D")
 melee_sceleton = ExtResource("2_bn86v")
 ranged_sceleton = ExtResource("3_p3ljj")
-max_health = 1
-boss_tiles = null
+boss_health_bar = NodePath("CanvasLayer/Control/MarginContainer/HealthGauge")
+label = NodePath("CanvasLayer/Control/MarginContainer/Label")
+max_health = 500
 boss_name = "Necro"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -81,6 +90,46 @@ mesh = SubResource("BoxMesh_xh1et")
 
 [node name="GhostSpawner" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer"]
+visible = false
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.52549)
+theme_override_fonts/font = ExtResource("6_lm4ul")
+theme_override_font_sizes/font_size = 55
+text = "Sling the slime sing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthGauge" parent="CanvasLayer/Control/MarginContainer" instance=ExtResource("7_ag53w")]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 1
 
 [connection signal="timeout" from="Node/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Node/WakeupTimer" to="." method="_on_wakeup_timer_timeout"]

@@ -12,7 +12,6 @@ var input: Vector2 = Vector2.ZERO
 @export var gravity : float
 @export var hand_controller: HandController
 var grab_items_area :int = 5
-@export var Mouse_Gobal_Position : Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	if Global.player == null:
@@ -21,24 +20,9 @@ func _ready() -> void:
 		self.free()
 
 func _physics_process(delta):
-	# Look at cursor
-	velocity = Vector3()
-	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var mouse_position: Vector2 = get_viewport().get_mouse_position()
-	rayOrigin = camera.project_ray_origin(mouse_position)
-	var ray_normal:= camera.project_ray_normal(mouse_position)
-	ray_normal = ray_normal.limit_length(1)
-	rayEnd = rayOrigin + ray_normal * 2000
-	
-	# Camera operations / Camera follow cursor / Camera offset from player
-	camera.position = position
-	camera.position += ray_normal*4
-	camera.position.y = 10
-	camera.position.z += 2
 
-	var ray_parameters: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(rayOrigin,rayEnd)
-	var intersection: Dictionary = space_state.intersect_ray(ray_parameters)
-	Mouse_Gobal_Position = ray_normal
+	velocity = Vector3()
+	var intersection: Dictionary = camera.get_intersection()
 
 	# cursor position 
 	if not intersection.is_empty():
