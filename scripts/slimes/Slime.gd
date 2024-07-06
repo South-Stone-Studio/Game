@@ -1,3 +1,5 @@
+@icon("res://custom icons/slime.png")
+
 class_name Slime
 
 extends CharacterBody3D
