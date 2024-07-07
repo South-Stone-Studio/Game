@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://c18m7wc6olo77"]
+
+[ext_resource type="Script" path="res://scripts/map/Map.gd" id="1_jxydp"]
+[ext_resource type="PackedScene" uid="uid://r2x5etmtm26a" path="res://component scene/map essentials/map_element.tscn" id="2_ev54v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adtjr"]
+albedo_color = Color(0.182631, 0.0906327, 0.061422, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_fhsm4"]
+material = SubResource("StandardMaterial3D_adtjr")
+
+[sub_resource type="Gradient" id="Gradient_tl2ag"]
+colors = PackedColorArray(0.879699, 0.0902021, 0.579491, 1, 0.929412, 0.517647, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h5bst"]
+gradient = SubResource("Gradient_tl2ag")
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_jxydp")
+element_scene = ExtResource("2_ev54v")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(932.947, 629.476)
+scale = Vector2(-4094.37, 2242.84)
+mesh = SubResource("QuadMesh_fhsm4")
+texture = SubResource("GradientTexture1D_h5bst")
