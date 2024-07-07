@@ -31,7 +31,9 @@ var hp_control : int = health
 @export var raycast_aim : RayCast3D
 
 @export var melee_sceleton : PackedScene
+@export var melee_sceleton_spawner : Marker3D
 @export var ranged_sceleton : PackedScene
+@export var ranged_sceleton_spawner : Marker3D
 
 var player : CharacterBody3D
 
@@ -56,13 +58,20 @@ func _physics_process(delta: float) -> void:
 			ghost_attack()
 			ghost_ready = !ghost_ready
 		
-		if (max_health - health)% 20 == 0:
+		if health > 0 and max_health != health and (max_health - health)% 20 == 0:
 			spawn_sceletons()
 		
 		look_at(player.position)
 
 func spawn_sceletons() -> void:
-	print('Spown')
+	var ranged = ranged_sceleton.instantiate()
+	var melee = melee_sceleton.instantiate()
+	
+	ranged.target = Global.player
+	melee.target = Global.player
+	
+	ranged_sceleton_spawner.add_child(ranged)
+	melee_sceleton_spawner.add_child(melee) 
 
 func catch_attack() -> void:
 	var catch : Area3D = catch_scene.instantiate()

@@ -5,6 +5,7 @@ extends Enemy
 @export var attack_timer : Timer
 @export var gravity : float
 var is_attacking : bool
+var target : CharacterBody3D
 
 @export_category("vision")
 @onready var player : CharacterBody3D
@@ -35,16 +36,21 @@ func _process(delta : float) -> void:
 	super._process(delta)
 	velocity = Vector3.ZERO
 	velocity.y -= gravity * delta
-	if hunt:	#hunting
-		move_to_pos(player.position)
-		attack()
-	elif !hunt and alarmed: 	#alarm
-		if position.distance_to(saved_player_position) >= 1:
-			move_to_pos(saved_player_position)
-		else:
-			alarmed = false
-	else:	# if not alarmed or hunting then selected type of patrol
-		do_patrol(delta)
+	if player != null:
+		if target != null:
+			look_at(target.position)
+			move_to_pos(target.position)
+			attack()
+		elif hunt:	#hunting
+			move_to_pos(player.position)
+			attack()
+		elif !hunt and alarmed: 	#alarm
+			if position.distance_to(saved_player_position) >= 1:
+				move_to_pos(saved_player_position)
+			else:
+				alarmed = false
+		else:	# if not alarmed or hunting then selected type of patrol
+			do_patrol(delta)
 
 func move_to_pos(pos : Vector3) -> void:
 	velocity = Vector3.ZERO

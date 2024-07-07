@@ -20,7 +20,7 @@ size = Vector3(0.2, 3, 0.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xh1et"]
 
-[node name="Necro" type="CharacterBody3D" node_paths=PackedStringArray("ghost_spawner", "head", "nav_agent", "raycast_aim", "boss_health_bar", "label")]
+[node name="Necro" type="CharacterBody3D" node_paths=PackedStringArray("ghost_spawner", "head", "nav_agent", "raycast_aim", "melee_sceleton_spawner", "ranged_sceleton_spawner", "boss_health_bar", "label")]
 script = ExtResource("1_rqcgo")
 speed = 5.0
 touch_demage = 10
@@ -34,13 +34,15 @@ stunn_delay_time = 2.0
 catch_scene = ExtResource("2_x6503")
 ghost_spawner = NodePath("GhostSpawner")
 ghost_scene = ExtResource("2_uqxwk")
-ghost_speed = 7.0
+ghost_speed = 4.0
 ghost_demage = 5
 head = NodePath("head")
 nav_agent = NodePath("NavigationAgent3D")
 raycast_aim = NodePath("RayCast3D")
 melee_sceleton = ExtResource("2_bn86v")
+melee_sceleton_spawner = NodePath("MeleeSpawner")
 ranged_sceleton = ExtResource("3_p3ljj")
+ranged_sceleton_spawner = NodePath("RangedSpawner")
 boss_health_bar = NodePath("CanvasLayer/Control/MarginContainer/HealthGauge")
 label = NodePath("CanvasLayer/Control/MarginContainer/Label")
 max_health = 500
@@ -130,6 +132,12 @@ visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 1
+
+[node name="MeleeSpawner" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+
+[node name="RangedSpawner" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 0)
 
 [connection signal="timeout" from="Node/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Node/WakeupTimer" to="." method="_on_wakeup_timer_timeout"]
