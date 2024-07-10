@@ -20,7 +20,7 @@ enum patrol {hold_position, prepared_patrol, bossfight}
 var hunt : bool = false
 var alarmed : bool = false
 
-@export_category("mele type")
+@export_category("melee type")
 @export var sword : Area3D
 @export var sword_demage : int
 @export var attack_speed : float

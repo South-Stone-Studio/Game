@@ -12,6 +12,7 @@ extends Boss
 var ghost_ready : bool = false
 var catch_player_ready : bool = false
 var hp_control : int = health
+var spawned : bool = false
 
 @export_category("Catch Attack")
 @export var catch_demage : int
@@ -39,9 +40,11 @@ var player : CharacterBody3D
 
 func _ready() -> void:
 	player = Global.player
-	spawn_sceletons()
 
 func _physics_process(delta: float) -> void:
+	if not spawned:
+		spawn_sceletons()
+
 	if active and player != null:
 		# position
 		if position.distance_to(player.position) > distance_to_player:
@@ -70,8 +73,9 @@ func spawn_sceletons() -> void:
 	ranged.target = Global.player
 	melee.target = Global.player
 	
-	ranged_sceleton_spawner.add_child(ranged)
-	melee_sceleton_spawner.add_child(melee) 
+	self.add_sibling(ranged)
+	self.add_sibling(melee) 
+	spawned = true
 
 func catch_attack() -> void:
 	var catch : Area3D = catch_scene.instantiate()
