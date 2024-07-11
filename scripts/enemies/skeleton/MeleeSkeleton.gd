@@ -16,9 +16,11 @@ var saved_player_position : Vector3
 @export_category("patrol")
 enum patrol {hold_position, prepared_patrol, bossfight}
 @export var patrol_mode : patrol
-@export var patrol_points : Array[Marker3D]
+@export var patrol_points : Array[Vector3]
 var hunt : bool = false
 var alarmed : bool = false
+var patrol_target_position : Vector3
+var patrol_target_reached : bool = true
 
 @export_category("melee type")
 @export var sword : Area3D
@@ -30,7 +32,7 @@ func _ready() -> void:
 	saved_player_position = position
 	player = Global.player
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	super._process(delta)
 	velocity = Vector3.ZERO
 	velocity.y -= gravity * delta
@@ -44,7 +46,7 @@ func _physics_process(delta: float) -> void:
 			attack()
 		elif !hunt and alarmed: 	#alarm
 			if position.distance_to(saved_player_position) >= 1:
-				move_to_pos(saved_player_position)
+				do_patrol(delta)
 			else:
 				alarmed = false
 		else:	# if not alarmed or hunting then selected type of patrol
@@ -63,9 +65,8 @@ func do_patrol(delta : float) -> void:
 		# do circle to hold position
 		rotate_y(-1 * delta)
 	elif patrol_mode == patrol.prepared_patrol:
-		# visit points seted at the start
-		pass
-
+		if patrol_target_reached :
+			patrol_target_position += patrol_points[0]
 # decide attack style 
 func attack() -> void:
 	sword.do_atc = true

@@ -52,7 +52,6 @@ func _physics_process(delta: float) -> void:
 			head.rotate_y(rotation_speed*delta)
 		elif position.distance_to(player.position) < distance_from_player:
 			move(Vector3())	 #move in opposite way from player 
-		
 		#attacks
 		if catch_player_ready:
 			catch_attack()

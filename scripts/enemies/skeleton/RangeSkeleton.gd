@@ -46,7 +46,8 @@ func _process(delta : float) -> void:
 			attack()
 		elif !hunt and alarmed: 	#alarm
 			if position.distance_to(saved_player_position) >= 1:
-				move_to_pos(saved_player_position)
+				print("where?")
+				do_patrol(delta)
 			else:
 				alarmed = false
 		else:	# if not alarmed or hunting then selected type of patrol

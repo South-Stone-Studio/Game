@@ -5,6 +5,7 @@ extends CharacterBody3D
 signal death
 
 @export_category("Stats")
+@export var touch_demage : int
 @export var hp : int  = 25
 var current_hp : int :
 	set(value):
@@ -27,3 +28,7 @@ func handle_heal(heal_value : int) -> void:
 
 func handle_demage(dem : int) -> void:
 	current_hp -= dem
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		body.handle_demage(touch_demage)
