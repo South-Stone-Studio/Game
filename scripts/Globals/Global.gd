@@ -2,6 +2,7 @@ extends  Node
 
 var player: PlayerMovement
 var run_script: Run
+var map: Map
 var current_room_root: Node3D
 var current_room_gnode: Gnode
 var current_boss: Boss
