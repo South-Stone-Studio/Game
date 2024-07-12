@@ -40,10 +40,12 @@ func _process(delta: float) -> void:
 		if target != null:
 			look_at(target.position)
 			move_to_pos(target.position)
-			attack()
+			if sword.do_atc == false :
+				attack()
 		elif hunt:	#hunting
 			move_to_pos(player.position)
-			attack()
+			if sword.do_atc == false :
+				attack()
 		elif !hunt and alarmed: 	#alarm
 			if position.distance_to(saved_player_position) >= 1:
 				do_patrol(delta)

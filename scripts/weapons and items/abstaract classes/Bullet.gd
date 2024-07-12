@@ -10,7 +10,7 @@ func _physics_process(delta):
 	
 
 func _on_body_entered(body):
-	if is_instance_of(body, Boss):
+	if is_instance_of(body, Boss) or is_instance_of(body, Enemy):
 		body.health -= damage
 	print("hit: " + body.name)
 	self.queue_free()

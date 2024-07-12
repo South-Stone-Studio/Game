@@ -8,7 +8,7 @@ var time : float
 
 func _physics_process(delta: float) -> void:
 	if time > 0:
-		translate(Vector3(0,0,-speed*delta))
+		translate(Vector3(0,speed*delta,-speed*delta))
 		time -= 1
 
 func _on_timer_timeout() -> void:

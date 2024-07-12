@@ -14,6 +14,7 @@ func _ready() -> void:
 	old_timer = timer
 
 func _process(delta: float) -> void:
+	print(do_atc)
 	if do_atc:
 		timer -= delta
 		if timer <= 0:
@@ -27,8 +28,10 @@ func _process(delta: float) -> void:
 					
 			if rotation_degrees.y <= -150:
 				left_to_right = false
+				do_atc = false
 			elif rotation_degrees.y >= 10:
 				left_to_right = true
+				do_atc = false
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
