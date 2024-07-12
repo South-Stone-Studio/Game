@@ -50,7 +50,6 @@ skeleton = NodePath("../..")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="vision_raycast_controller" type="Node3D" parent="." node_paths=PackedStringArray("raycasts")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 script = ExtResource("2_hcood")
 raycasts = [NodePath("RayCast3D"), NodePath("RayCast3D2"), NodePath("RayCast3D3"), NodePath("RayCast3D4"), NodePath("RayCast3D5"), NodePath("RayCast3D6"), NodePath("RayCast3D7")]
 

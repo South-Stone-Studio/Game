@@ -40,12 +40,10 @@ func _process(delta: float) -> void:
 		if target != null:
 			look_at(target.position)
 			move_to_pos(target.position)
-			if sword.do_atc == false :
-				attack()
+			attack()
 		elif hunt:	#hunting
 			move_to_pos(player.position)
-			if sword.do_atc == false :
-				attack()
+			attack()
 		elif !hunt and alarmed: 	#alarm
 			if position.distance_to(saved_player_position) >= 1:
 				do_patrol(delta)
@@ -71,7 +69,8 @@ func do_patrol(delta : float) -> void:
 			patrol_target_position += patrol_points[0]
 # decide attack style 
 func attack() -> void:
-	sword.do_atc = true
+	if not sword.do_atc:
+		sword.do_atc = true
 
 # on raycast see player
 func _on_vision_raycast_controller_player_seen() -> void:

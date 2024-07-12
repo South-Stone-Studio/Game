@@ -35,12 +35,13 @@ nav_agent = NodePath("NavigationAgent3D")
 vision_controller = NodePath("vision_raycast_controller")
 sword = NodePath("Sword")
 sword_demage = 10
-attack_speed = 2.0
+attack_speed = 5.0
 speed = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="vision_raycast_controller" type="Node3D" parent="." node_paths=PackedStringArray("raycasts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("2_yasu4")
 raycasts = [NodePath("RayCast3D"), NodePath("RayCast3D2"), NodePath("RayCast3D3"), NodePath("RayCast3D4"), NodePath("RayCast3D5"), NodePath("RayCast3D6"), NodePath("RayCast3D7")]
 
@@ -105,7 +106,7 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 5
 
 [node name="Sword" type="Area3D" parent="."]
-transform = Transform3D(-4.30473e-08, -0.984808, 0.173648, 1, -4.37114e-08, 0, 7.5904e-09, 0.173648, 0.984808, -0.207255, 1.29121, 0.000401646)
+transform = Transform3D(-4.30473e-08, -0.984808, 0.173648, 1, -4.37114e-08, 0, 7.5904e-09, 0.173648, 0.984808, -0.207255, 1.29121, -0.00263748)
 collision_mask = 11
 script = ExtResource("3_ij2o5")
 timer = 3.0
@@ -126,19 +127,13 @@ autostart = true
 transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 1, 0)
 shape = SubResource("ConvexPolygonShape3D_4atws")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-disable_mode = 2
-collision_layer = 4
-collision_mask = 15
-gravity_space_override = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.909091, 0, 0, 0, 1, 0, 0, 0, 0.909091, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_jav3w")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.1, 0, 0.5, -0.5)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.454545, 0, 0, 0, 0.5, 0, 0, 0, 0.0909091, 0, 0.5, -0.454545)
 mesh = SubResource("BoxMesh_igcpd")
 skeleton = NodePath("../..")
 

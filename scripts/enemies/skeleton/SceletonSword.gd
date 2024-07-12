@@ -14,7 +14,7 @@ func _ready() -> void:
 	old_timer = timer
 
 func _process(delta: float) -> void:
-	print(do_atc)
+	print(timer)
 	if do_atc:
 		timer -= delta
 		if timer <= 0:
