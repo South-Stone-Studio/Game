@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbdn3upbm7o46"]
+
+[ext_resource type="Script" path="res://scripts/weapons and items/abstaract classes/Bullet.gd" id="1_0nswr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r0hio"]
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efqo8"]
+albedo_color = Color(0.996078, 0, 0.231373, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_u405s"]
+material = SubResource("StandardMaterial3D_efqo8")
+radius = 0.2
+height = 0.4
+
+[node name="Bullet" type="Area3D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_0nswr")
+deal_damage_to = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_r0hio")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_u405s")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
