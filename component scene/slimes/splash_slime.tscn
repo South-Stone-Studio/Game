@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3dw3btn1jj6y"]
+
+[ext_resource type="Script" path="res://scripts/slimes/SplashySlime.gd" id="1_xvlc1"]
+[ext_resource type="PackedScene" uid="uid://cbdn3upbm7o46" path="res://component scene/weapons/projectiles/slimy_projectiles.tscn" id="2_ngblj"]
+[ext_resource type="Material" uid="uid://ds2vi468m3nug" path="res://materials/orange.tres" id="2_rycmv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x2ur3"]
+height = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_p4j21"]
+material = ExtResource("2_rycmv")
+radius = 0.75
+height = 1.5
+
+[node name="SplashSlime" type="CharacterBody3D"]
+script = ExtResource("1_xvlc1")
+splashy_projectile = ExtResource("2_ngblj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_x2ur3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_p4j21")
+
+[connection signal="landing" from="." to="." method="_on_landing"]

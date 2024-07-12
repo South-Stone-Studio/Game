@@ -1,3 +1,5 @@
+@icon("res://custom icons/slime.png")
+
 class_name Sling
 
 extends Boss
