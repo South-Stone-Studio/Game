@@ -1,40 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3lsh8nnts3op"]
+[gd_scene load_steps=8 format=3 uid="uid://d3lsh8nnts3op"]
 
 [ext_resource type="Script" path="res://scripts/generation/Portal.gd" id="1_s7i1f"]
-[ext_resource type="Material" uid="uid://dwm3jadqs7mck" path="res://materials/red.tres" id="2_growg"]
+[ext_resource type="Shader" path="res://shaders/Outline.gdshader" id="2_btjbk"]
+[ext_resource type="Texture2D" uid="uid://diewiixtjjmng" path="res://materials/imgs/Orange/texture_02.png" id="2_swaao"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u51py"]
 radius = 1.8
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ac6jn"]
+render_priority = 0
+shader = ExtResource("2_btjbk")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 2.0
+shader_parameter/constant_width = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuv2w"]
+next_pass = SubResource("ShaderMaterial_ac6jn")
+albedo_texture = ExtResource("2_swaao")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_i7bdy"]
-material = ExtResource("2_growg")
+material = SubResource("StandardMaterial3D_tuv2w")
 top_radius = 2.0
 bottom_radius = 2.0
 height = 0.2
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_fhsqx"]
-height = 0.2
-radius = 2.0
-
-[node name="Portal" type="Node3D" node_paths=PackedStringArray("mesh")]
+[node name="Portal" type="CharacterBody3D"]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_s7i1f")
-mesh = NodePath("Area3D/CollisionShape3D/MeshInstance3D")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_u51py")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("CylinderMesh_i7bdy")
-skeleton = NodePath("../..")
+skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("CylinderShape3D_fhsqx")
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="interact" from="." to="." method="_on_interact"]

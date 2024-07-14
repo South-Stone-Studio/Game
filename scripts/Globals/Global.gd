@@ -6,7 +6,7 @@ var map: Map
 var current_room_root: Node3D
 var current_room_gnode: Gnode
 var current_boss: Boss
-
+var possible_interaction: Array[Interactable]
 var normal_tiles: Array[PackedScene]
 var portal_tiles: Array[PackedScene]
 var spawn_tiles: Array[PackedScene]
