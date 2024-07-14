@@ -15,7 +15,7 @@ func pick_up_item(object:Node3D):
 		object.picked = true
 		weapon = object
 		object.reparent(hand)
-		object.disable_mode = 0
+		object.disable_mode = CollisionObject3D.DISABLE_MODE_REMOVE
 		object.disable_colision()
 		object.freeze = true
 		object.picked = true
@@ -25,7 +25,7 @@ func pick_up_item(object:Node3D):
 func drop_item():
 	var object := weapon
 	if object != null:
-		object.disable_mode = 1
+		object.disable_mode = CollisionObject3D.DISABLE_MODE_MAKE_STATIC
 		object.disable_colision()
 		object.freeze = false
 		object.picked = false

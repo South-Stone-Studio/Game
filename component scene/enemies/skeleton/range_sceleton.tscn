@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=3 uid="uid://br4fbsjq3j4as"]
+
+[ext_resource type="Script" path="res://scripts/enemies/skeleton/RangeSkeleton.gd" id="1_liokw"]
+[ext_resource type="Script" path="res://scripts/enemies/skeleton/SceletonVision.gd" id="2_hcood"]
+[ext_resource type="Script" path="res://scripts/enemies/skeleton/SceletonBone.gd" id="4_6jw4h"]
+[ext_resource type="PackedScene" uid="uid://c5vmhiypfpxv4" path="res://component scene/enemies/skeleton/Bone.tscn" id="5_fhwnv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8j4cn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h8k3"]
+albedo_color = Color(0.823343, 0, 0.201703, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jav3w"]
+material = SubResource("StandardMaterial3D_1h8k3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd8v2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_igcpd"]
+material = SubResource("StandardMaterial3D_yd8v2")
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("attack_timer", "nav_agent", "vision_controller", "bone_throw_point")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+top_level = true
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_liokw")
+attack_timer = NodePath("attack_timer")
+gravity = 10.0
+nav_agent = NodePath("NavigationAgent3D")
+vision_controller = NodePath("vision_raycast_controller")
+bone_throw_point = NodePath("Bone")
+bone_throw_speed = 5.0
+bone_heal = 10
+hp = 30
+speed = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8j4cn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_jav3w")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.1, 0, 0.5, -0.5)
+mesh = SubResource("BoxMesh_igcpd")
+skeleton = NodePath("../..")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="vision_raycast_controller" type="Node3D" parent="." node_paths=PackedStringArray("raycasts")]
+script = ExtResource("2_hcood")
+raycasts = [NodePath("RayCast3D"), NodePath("RayCast3D2"), NodePath("RayCast3D3"), NodePath("RayCast3D4"), NodePath("RayCast3D5"), NodePath("RayCast3D6"), NodePath("RayCast3D7")]
+
+[node name="vision_timer" type="Timer" parent="vision_raycast_controller"]
+wait_time = 0.05
+autostart = true
+
+[node name="RayCast3D" type="RayCast3D" parent="vision_raycast_controller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.544962)
+target_position = Vector3(0, 0, -12)
+collision_mask = 11
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="RayCast3D2" type="RayCast3D" parent="vision_raycast_controller"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, -0.544962)
+target_position = Vector3(0, 0, -12)
+collision_mask = 11
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="RayCast3D3" type="RayCast3D" parent="vision_raycast_controller"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, -0.544962)
+target_position = Vector3(0, 0, -12)
+collision_mask = 11
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="RayCast3D4" type="RayCast3D" parent="vision_raycast_controller"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, -0.544962)
+target_position = Vector3(0, 0, -12)
+collision_mask = 11
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="RayCast3D5" type="RayCast3D" parent="vision_raycast_controller"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -0.544962)
+target_position = Vector3(0, 0, -12)
+collision_mask = 11
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="RayCast3D6" type="RayCast3D" parent="vision_raycast_controller"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, -0.544962)
+target_position = Vector3(0, 0, -12)
+collision_mask = 11
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="RayCast3D7" type="RayCast3D" parent="vision_raycast_controller"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, -0.544962)
+target_position = Vector3(0, 0, -12)
+collision_mask = 11
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="Bone" type="Marker3D" parent="." node_paths=PackedStringArray("attack_timer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+script = ExtResource("4_6jw4h")
+bone_scene = ExtResource("5_fhwnv")
+attack_timer = NodePath("../attack_timer")
+
+[node name="attack_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="player_seen" from="vision_raycast_controller" to="." method="_on_vision_raycast_controller_player_seen"]
+[connection signal="timeout" from="vision_raycast_controller/vision_timer" to="." method="_on_vision_timer_timeout"]
+[connection signal="timeout" from="attack_timer" to="Bone" method="_on_attack_timer_timeout"]
