@@ -14,6 +14,7 @@ var input: Vector2 = Vector2.ZERO
 @export var hand_controller: HandController
 var grab_items_area :int = 5
 @export var Mouse_Gobal_Position : Vector3 = Vector3.ZERO
+@export var inventory : Control
 
 func _ready() -> void:
 	if Global.player == null:
@@ -51,8 +52,10 @@ func _physics_process(delta):
 		var obj_under_mouse: Node3D = intersection.collider
 		# check if pickable and pick up an weapon 
 		if Input.is_action_just_pressed("pick_up") and global_position.distance_to(obj_under_mouse.global_position) <= grab_items_area:
-			hand_controller.pick_up_item(obj_under_mouse)
-		
+			#hand_controller.pick_up_item(obj_under_mouse)
+			if obj_under_mouse.is_in_group("Item"):
+				obj_under_mouse.pick_up_item()
+
 		elif Input.is_action_just_pressed("drop"):
 			hand_controller.drop_item()
 

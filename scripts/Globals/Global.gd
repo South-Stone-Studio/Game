@@ -1,5 +1,7 @@
 extends  Node
 
+var inventory : Array = []
+
 var player: PlayerMovement
 var run_script: Run
 var map: Map
@@ -46,3 +48,8 @@ func load_assets(s: String) -> Array[PackedScene]:
 			print(s+file_name)
 			tab.append(load(s+file_name))
 	return tab
+
+
+
+
+

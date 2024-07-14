@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/PlayerMovement.gd" id="1_4kaxg"]
 [ext_resource type="Script" path="res://scripts/player/HandController.gd" id="2_10rkx"]
-[ext_resource type="PackedScene" uid="uid://clof1stxiujve" path="res://component scene/player/Inventory.tscn" id="3_wifjf"]
+[ext_resource type="PackedScene" uid="uid://clof1stxiujve" path="res://component scene/player/Inventory/Inventory.tscn" id="3_wifjf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fifl6"]
 
@@ -18,11 +18,12 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_gcbsr"]
 material = SubResource("StandardMaterial3D_jpbw6")
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand_controller")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand_controller", "inventory")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 disable_mode = 2
 script = ExtResource("1_4kaxg")
 hand_controller = NodePath("Body/HandController")
+inventory = NodePath("InteractUI/InventoryUI/InventoryUI")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_fifl6")
@@ -43,4 +44,8 @@ hand = NodePath("../../Hand")
 [node name="Hand" type="Marker3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.350032, 0.33, -0.487532)
 
-[node name="Inventory" parent="." instance=ExtResource("3_wifjf")]
+[node name="InteractUI" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" type="CanvasLayer" parent="InteractUI"]
+
+[node name="InventoryUI" parent="InteractUI/InventoryUI" instance=ExtResource("3_wifjf")]

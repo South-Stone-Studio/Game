@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c58hm2h8jcdj4"]
 
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="1_wd1gq"]
-[ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="2_bjfp0"]
+[ext_resource type="PackedScene" uid="uid://cb5ldt1eixae4" path="res://component scene/items/Example_Item.tscn" id="3_pbsni"]
 [ext_resource type="PackedScene" uid="uid://dbx6wt666bwdl" path="res://component scene/weapons/base/blaziken.tscn" id="4_mw8bh"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_n1qtd"]
@@ -55,11 +55,11 @@ transform = Transform3D(1, 0, 0, 0, 0.180759, 0.983527, 0, -0.983527, 0.180759, 
 [node name="Player" parent="." instance=ExtResource("1_wd1gq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.04901, 7.75862)
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 2.08616e-07, 1, 0, -1, 2.08616e-07, 0, 8, 0)
-script = ExtResource("2_bjfp0")
-target = NodePath("../Player")
-offset = Vector3(0, 10, 0)
-
 [node name="Weapon" parent="." instance=ExtResource("4_mw8bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05104, 0, 12.4744)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.08616e-07, 1, 0, -1, 2.08616e-07, 0, 20.6076, 0)
+
+[node name="ExampleItem" parent="." instance=ExtResource("3_pbsni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 11)

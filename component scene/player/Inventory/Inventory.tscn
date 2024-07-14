@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://clof1stxiujve"]
+
+[ext_resource type="Script" path="res://scripts/player/Inventory.gd" id="1_dwfvo"]
+
+[node name="InventoryUI" type="Control" node_paths=PackedStringArray("grid_container")]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dwfvo")
+grid_container = NodePath("GridContainer")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 714.0
+offset_bottom = 1080.0
+
+[node name="Header" type="Panel" parent="Background"]
+layout_mode = 0
+offset_right = 714.0
+offset_bottom = 70.0
+
+[node name="Label" type="Label" parent="Background/Header"]
+layout_mode = 0
+offset_right = 714.0
+offset_bottom = 70.0
+text = "inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -373.0
+offset_right = 714.0
+offset_bottom = 372.0
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 9
