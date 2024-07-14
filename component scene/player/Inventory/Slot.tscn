@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://t7vb1hjnj48n"]
+[gd_scene load_steps=2 format=3 uid="uid://t7vb1hjnj48n"]
+
+[ext_resource type="Texture2D" uid="uid://ug1db7ed5crq" path="res://component scene/items/Resources/Coins/coins_icon.jpg" id="1_hiccc"]
 
 [node name="Slot" type="Control"]
 layout_mode = 3
@@ -15,9 +17,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0325406, 0.183995, 0.264139, 1)
+color = Color(0, 0, 0, 1)
 
-[node name="background" type="ColorRect" parent="."]
+[node name="background" type="ColorRect" parent="Slot_background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,9 +34,49 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.259294, 0.259294, 0.259294, 1)
 
-[node name="ItemSprite" type="Sprite2D" parent="background"]
+[node name="ItemSprite" type="Sprite2D" parent="Slot_background/background"]
+position = Vector2(80, 80)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("1_hiccc")
 
-[node name="ItemQuantity" type="Label" parent="background"]
+[node name="ItemQuantity" type="Label" parent="Slot_background/background"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 30.0
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 31.0
+text = "1"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = -100.0
+offset_right = 300.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0335694, 0.0982561, 0.124688, 1)
+
+[node name="Name" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 294.0
+offset_bottom = 33.0
+text = "Name"
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="Type" type="Label" parent="Panel"]
+offset_left = 4.0
+offset_top = 33.0
+offset_right = 294.0
+offset_bottom = 61.0
+text = "Type
+"
+autowrap_mode = 2
+text_overrun_behavior = 2
