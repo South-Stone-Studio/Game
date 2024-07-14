@@ -33,18 +33,12 @@ func update_rays(chg: changed):
 			reposition()
 		changed.num:
 			create_rays()
-	pass
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-	object_enter.connect(test)
-	object_exit.connect(test)
-		
+
 func _enter_tree() -> void:
 	if !Engine.is_editor_hint():
 		return
 	create_rays()
-	
+
 func erase_rays():
 	if !Engine.is_editor_hint():
 		return
@@ -52,7 +46,7 @@ func erase_rays():
 	for ray in r:
 		ray.free()
 	rays.clear()
-	
+
 func create_rays():
 	if !Engine.is_editor_hint():
 		return
@@ -67,6 +61,7 @@ func create_rays():
 		rays.append(ray)
 		ray.target_position = Vector3(0,0,vision_distance)
 		ray.rotate_y(calc_degs(-half,half,float(i+0.5)/float(num_of_rays)))
+
 func reposition():
 	if !Engine.is_editor_hint():
 		return
@@ -76,7 +71,7 @@ func reposition():
 		ray.global_rotation_degrees = Vector3(0,0,0)
 		ray.rotate_y(calc_degs(-half,half,float(i+0.5)/float(num_of_rays)))
 		i+=1
-		
+
 func calc_degs(mi: float,mx: float,t: float) -> float:
 	return deg_to_rad(lerp(mi,mx,t))
 
@@ -96,6 +91,3 @@ func _physics_process(delta: float) -> void:
 		if obj not in ar:
 			object_exit.emit(obj)
 			objects_in_sight.erase(obj)
-	
-func test(i:Node3D):
-	print(i.name)
