@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 		interaction = null
 
 func filter_interactable(n:Node3D) -> bool:
-	return is_instance_of(n, Interactable)
+	return is_instance_of(n, Interactable) and !n.locked
 
 func make_interactable(interactions: Array[Node3D]):
 	var mi: Interactable
@@ -31,6 +31,7 @@ func make_interactable(interactions: Array[Node3D]):
 		mi = interactions[0]
 	mi.highlight()
 	if interaction != mi and interaction != null:
+		
 		interaction.lowlight()
 	interaction = mi
 

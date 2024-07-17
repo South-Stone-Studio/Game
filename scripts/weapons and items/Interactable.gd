@@ -5,6 +5,8 @@ extends CharacterBody3D
 signal interact
 var priority: bool = false
 var highlighted: bool
+@export var locked: bool
+
 func _mouse_enter() -> void:
 	priority = true
 
