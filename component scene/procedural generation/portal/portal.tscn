@@ -9,11 +9,11 @@
 radius = 1.8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ac6jn"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("2_btjbk")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/outline_width = 5.0
-shader_parameter/constant_width = true
+shader_parameter/enabled = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuv2w"]
 next_pass = SubResource("ShaderMaterial_ac6jn")
@@ -25,7 +25,7 @@ uv1_world_triplanar = true
 [sub_resource type="CylinderMesh" id="CylinderMesh_i7bdy"]
 material = SubResource("StandardMaterial3D_tuv2w")
 top_radius = 2.0
-bottom_radius = 2.0
+bottom_radius = 1.99
 height = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lmht8"]
@@ -45,19 +45,20 @@ material = SubResource("ShaderMaterial_lmht8")
 radius = 1.0
 height = 2.0
 
-[node name="Portal" type="CharacterBody3D" node_paths=PackedStringArray("mesh")]
+[node name="Portal" type="CharacterBody3D" node_paths=PackedStringArray("orb", "interactive_mesh")]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_s7i1f")
-mesh = NodePath("MeshInstance3D")
+orb = NodePath("MeshInstance3D")
 height = Vector2(0.5, 1)
+interactive_mesh = NodePath("CollisionShape3D/MeshInstance3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("CylinderShape3D_u51py")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00638509, -0.00424814, -0.00676346)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00174451, -0.00109488, -0.01152)
 mesh = SubResource("CylinderMesh_i7bdy")
 skeleton = NodePath("")
 
