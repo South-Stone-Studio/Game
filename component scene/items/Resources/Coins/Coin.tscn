@@ -15,6 +15,7 @@ points = PackedVector3Array(-0.214183, -0.948028, -0.451129, 0.0227317, 0.952146
 
 [node name="ExampleItem" type="RigidBody3D" groups=["Item"]]
 top_level = true
+collision_mask = 15
 script = ExtResource("1_37skh")
 item_name = "gold"
 item_sprite = ExtResource("2_g4l4b")

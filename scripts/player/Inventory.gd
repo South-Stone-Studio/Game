@@ -1,6 +1,7 @@
 extends Control
 
 @export var grid_container : GridContainer
+@export var slot_scene : PackedScene
 
 func add_item(item : Item) -> bool :
 	for i in range(Global.inventory.size()):
@@ -21,11 +22,11 @@ func increse_inv_size(size : int) -> void:
 	inv_update()
 
 func _ready() -> void:
-	Global.inventory.resize(3)
+	Global.inventory.resize(12)
+	inv_update()
 
 func _process(delta: float) -> void:
 	on_off_window()
-	print(Global.inventory)
 
 func on_off_window()->void:
 	if Input.is_action_just_pressed("inventory"):
@@ -34,6 +35,15 @@ func on_off_window()->void:
 
 func inv_update() -> void:
 	clear_grid_container()
+	for item in Global.inventory:
+		var slot : InventorySlot = slot_scene.instantiate()
+		grid_container.add_child(slot)
+		if item != null:
+			slot.set_item(item)
+		else:
+			slot.set_empty()
+		
+	print(Global.inventory)
 
 func clear_grid_container():
 	while grid_container.get_child_count() > 0:

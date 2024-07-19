@@ -4,16 +4,18 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g02pa"]
 
-[node name="Slot" type="Control" node_paths=PackedStringArray("item_details", "item_usage")]
+[node name="Slot" type="Control" node_paths=PackedStringArray("slot_details", "slot_usage", "slot_name", "slot_type", "slot_quantity", "slot_sprite")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 339.0
-offset_top = 563.0
-offset_right = 535.0
-offset_bottom = 763.0
+offset_right = 196.0
+offset_bottom = 200.0
 script = ExtResource("1_0dpsp")
-item_details = NodePath("ItemDetails")
-item_usage = NodePath("ItemUsage")
+slot_details = NodePath("ItemDetails")
+slot_usage = NodePath("ItemUsage")
+slot_name = NodePath("ItemDetails/Name")
+slot_type = NodePath("ItemDetails/Type")
+slot_quantity = NodePath("Slot_background/background/ItemQuantity")
+slot_sprite = NodePath("Slot_background/background/ItemSprite")
 
 [node name="Slot_background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -39,10 +41,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.259294, 0.259294, 0.259294, 1)
 
-[node name="ItemSprite" type="Sprite2D" parent="Slot_background/background"]
-position = Vector2(80, 80)
-scale = Vector2(0.79, 0.79)
-
 [node name="ItemQuantity" type="Label" parent="Slot_background/background"]
 layout_mode = 0
 offset_left = 5.0
@@ -51,7 +49,11 @@ offset_right = 155.0
 offset_bottom = 157.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "1"
+text = "0"
+
+[node name="ItemSprite" type="Sprite2D" parent="Slot_background/background"]
+position = Vector2(80, 80)
+scale = Vector2(0.79, 0.79)
 
 [node name="ItemDetails" type="Panel" parent="."]
 visible = false

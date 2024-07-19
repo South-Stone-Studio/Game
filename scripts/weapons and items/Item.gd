@@ -6,7 +6,7 @@ enum types_of_items {resource,weapon,consumable,armor}
 
 @export var item_type : types_of_items
 @export var item_name : String
-@export var item_sprite : Texture
+@export var item_sprite : Texture2D
 @export var item_quantity : int = 1
 @export var item_scene : RigidBody3D = self
 

@@ -1,3 +1,5 @@
+class_name InventorySlot
+
 extends Control
 
 @export var slot_details : Panel
@@ -11,25 +13,31 @@ extends Control
 
 var item : Item = null
 
-func set_empty() -> void:
-	slot_sprite.texture = null
-	slot_quantity.text = ""
-
-func set_item(item : Item) -> void:
-	slot_sprite.texture = item.item_sprite
-	slot_name.text = item.item_name
-	slot_type.text = item.item_type
-	slot_quantity.text = item.item_quantity
-
 func _on_button_mouse_exited() -> void:
-	#if item != null:
-		item_details.visible = false
+	if item != null:
+		slot_details.visible = false
 
 func _on_button_mouse_entered() -> void:
-	#if item != null:
-		item_details.visible = true
-		item_usage.visible = false
+	if item != null:
+		slot_details.visible = true
+		slot_usage.visible = false
 
 func _on_button_pressed() -> void:
-	#if item != null:
-		item_usage.visible = !item_usage.visible
+	if item != null:
+		slot_usage.visible = !slot_usage.visible
+		
+func set_empty() -> void:
+	slot_sprite.texture = null
+	slot_name.text = ""
+	slot_type.text = ""
+	slot_quantity.text = ""
+	item = null
+
+func set_item(new_item : Item) -> void:
+	slot_sprite.texture = new_item.item_sprite
+	slot_name.text = str(new_item.item_name)
+	slot_type.text = str(new_item.item_type)
+	slot_quantity.text = str(new_item.item_quantity)
+	item = new_item
+
+
