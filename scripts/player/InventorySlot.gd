@@ -1,25 +1,35 @@
 extends Control
 
-@export var item_details : Panel
-@export var item_usage : Panel
-@export var item_name : Label
-@export var item_type : Label
-@export var item_quantity : Label
-@export var item_sprite : Sprite2D
+@export var slot_details : Panel
+@export var slot_usage : Panel
+
+@export_category("Slot Info Nodes")
+@export var slot_name : Label
+@export var slot_type : Label
+@export var slot_quantity : Label
+@export var slot_sprite : Sprite2D
 
 var item : Item = null
 
+func set_empty() -> void:
+	slot_sprite.texture = null
+	slot_quantity.text = ""
+
+func set_item(item : Item) -> void:
+	slot_sprite.texture = item.item_sprite
+	slot_name.text = item.item_name
+	slot_type.text = item.item_type
+	slot_quantity.text = item.item_quantity
+
 func _on_button_mouse_exited() -> void:
-	if item != null:
-		if item_details.visible :  item_details.visible = !item_details.visible
-		if item_usage.visible: item_usage.visible = !item_usage.visible
+	#if item != null:
+		item_details.visible = false
 
 func _on_button_mouse_entered() -> void:
-	if item != null:
-		item_details.visible = !item_details.visible
-		if item_usage.visible: item_usage.visible = !item_usage.visible
+	#if item != null:
+		item_details.visible = true
+		item_usage.visible = false
 
 func _on_button_pressed() -> void:
-	if item != null:
-		item_details.visible = !item_details.visible
+	#if item != null:
 		item_usage.visible = !item_usage.visible

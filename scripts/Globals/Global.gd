@@ -1,6 +1,6 @@
 extends  Node
 
-var inventory : Array = []
+var inventory : Array[Item]
 
 var player: PlayerMovement
 var run_script: Run

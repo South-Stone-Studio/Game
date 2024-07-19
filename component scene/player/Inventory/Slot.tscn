@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://t7vb1hjnj48n"]
+[gd_scene load_steps=3 format=3 uid="uid://t7vb1hjnj48n"]
 
 [ext_resource type="Script" path="res://scripts/player/InventorySlot.gd" id="1_0dpsp"]
-[ext_resource type="Texture2D" uid="uid://ug1db7ed5crq" path="res://component scene/items/Resources/Coins/coins_icon.jpg" id="1_hiccc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g02pa"]
 
-[node name="Slot" type="Control" node_paths=PackedStringArray("item_details", "item_usage", "item_name", "item_type", "item_quantity", "item_sprite")]
+[node name="Slot" type="Control" node_paths=PackedStringArray("item_details", "item_usage")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 339.0
@@ -15,10 +14,6 @@ offset_bottom = 763.0
 script = ExtResource("1_0dpsp")
 item_details = NodePath("ItemDetails")
 item_usage = NodePath("ItemUsage")
-item_name = NodePath("ItemDetails/Name")
-item_type = NodePath("ItemDetails/Type")
-item_quantity = NodePath("Slot_background/background/ItemQuantity")
-item_sprite = NodePath("Slot_background/background/ItemSprite")
 
 [node name="Slot_background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -47,7 +42,6 @@ color = Color(0.259294, 0.259294, 0.259294, 1)
 [node name="ItemSprite" type="Sprite2D" parent="Slot_background/background"]
 position = Vector2(80, 80)
 scale = Vector2(0.79, 0.79)
-texture = ExtResource("1_hiccc")
 
 [node name="ItemQuantity" type="Label" parent="Slot_background/background"]
 layout_mode = 0
@@ -97,6 +91,7 @@ text_overrun_behavior = 2
 
 [node name="ItemUsage" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_top = -100.0
 offset_right = 300.0
 
