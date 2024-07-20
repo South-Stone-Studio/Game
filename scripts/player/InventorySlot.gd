@@ -18,14 +18,14 @@ func _on_button_mouse_exited() -> void:
 		slot_details.visible = false
 
 func _on_button_mouse_entered() -> void:
-	if item != null:
+	
 		slot_details.visible = true
 		slot_usage.visible = false
 
 func _on_button_pressed() -> void:
 	if item != null:
 		slot_usage.visible = !slot_usage.visible
-		
+
 func set_empty() -> void:
 	slot_sprite.texture = null
 	slot_name.text = ""

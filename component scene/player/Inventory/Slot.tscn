@@ -6,60 +6,61 @@
 
 [node name="Slot" type="Control" node_paths=PackedStringArray("slot_details", "slot_usage", "slot_name", "slot_type", "slot_quantity", "slot_sprite")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 196.0
-offset_bottom = 200.0
+anchor_right = 0.104
+anchor_bottom = 0.185
+offset_right = 0.319992
+offset_bottom = 0.199997
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_0dpsp")
 slot_details = NodePath("ItemDetails")
 slot_usage = NodePath("ItemUsage")
 slot_name = NodePath("ItemDetails/Name")
 slot_type = NodePath("ItemDetails/Type")
-slot_quantity = NodePath("Slot_background/background/ItemQuantity")
-slot_sprite = NodePath("Slot_background/background/ItemSprite")
+slot_quantity = NodePath("Slot_background/Item_Background/ItemQuantity")
+slot_sprite = NodePath("Slot_background/Item_Background/ItemSprite")
 
 [node name="Slot_background" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 200.0
+offset_bottom = 200.0
 color = Color(0, 0, 0, 1)
 
-[node name="background" type="ColorRect" parent="Slot_background"]
+[node name="Item_Background" type="ColorRect" parent="Slot_background"]
+clip_contents = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -80.0
-offset_right = 80.0
-offset_bottom = 80.0
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 190.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.259294, 0.259294, 0.259294, 1)
 
-[node name="ItemQuantity" type="Label" parent="Slot_background/background"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 106.0
-offset_right = 155.0
-offset_bottom = 157.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="ItemQuantity" type="Label" parent="Slot_background/Item_Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.056
+anchor_top = -0.056
+anchor_right = -0.056
+anchor_bottom = -0.056
+offset_left = 30.08
+offset_top = 150.08
+offset_right = 180.08
+offset_bottom = 200.08
+theme_override_colors/font_color = Color(0.826701, 0.843233, 0.841464, 1)
 theme_override_font_sizes/font_size = 30
 text = "0"
 
-[node name="ItemSprite" type="Sprite2D" parent="Slot_background/background"]
-position = Vector2(80, 80)
+[node name="ItemSprite" type="Sprite2D" parent="Slot_background/Item_Background"]
+position = Vector2(100, 100)
 scale = Vector2(0.79, 0.79)
 
 [node name="ItemDetails" type="Panel" parent="."]
 visible = false
 layout_mode = 0
-offset_top = -100.0
-offset_right = 300.0
+offset_top = -80.0
+offset_right = 200.0
 
 [node name="ColorRect" type="ColorRect" parent="ItemDetails"]
 layout_mode = 1
@@ -94,38 +95,41 @@ text_overrun_behavior = 2
 [node name="ItemUsage" type="Panel" parent="."]
 visible = false
 layout_mode = 0
-offset_top = -100.0
-offset_right = 300.0
+offset_top = -90.0
+offset_right = 200.0
 
 [node name="UseButton" type="Button" parent="ItemUsage"]
-custom_minimum_size = Vector2(250, 30)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 31.0
+anchors_preset = -1
+anchor_left = 0.115
+anchor_top = 0.1
+anchor_right = 0.865
+anchor_bottom = 0.444
+offset_right = -1.52588e-05
+offset_bottom = 0.0399971
 grow_horizontal = 2
 text = "Use"
 
 [node name="DropButton" type="Button" parent="ItemUsage"]
-custom_minimum_size = Vector2(250, 30)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
+anchors_preset = -1
+anchor_left = 0.115
+anchor_top = 0.578
+anchor_right = 0.865
+anchor_bottom = 0.922
+offset_top = -0.0200005
+offset_right = -1.52588e-05
+offset_bottom = 0.0199966
 grow_horizontal = 2
 grow_vertical = 2
 text = "Drop"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 200.0
+offset_bottom = 200.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_g02pa")
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]

@@ -6,50 +6,65 @@
 [node name="InventoryUI" type="Control" node_paths=PackedStringArray("grid_container")]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -540.0
-offset_right = 700.0
-offset_bottom = 540.0
+anchor_right = 0.445
+anchor_bottom = 1.0
+offset_right = -0.400024
 grow_vertical = 2
-size_flags_horizontal = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_dwfvo")
-grid_container = NodePath("GridContainer")
+grid_container = NodePath("Background/Grid_Background/GridContainer")
 slot_scene = ExtResource("2_t6r3i")
 
 [node name="Background" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(700, 1000)
+clip_contents = true
+custom_minimum_size = Vector2(900, 1000)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 1.054
 anchor_bottom = 1.0
+offset_right = -0.116028
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0728427, 0.0728426, 0.0728427, 0.498039)
 
 [node name="Label" type="Label" parent="Background"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -101.5
-offset_right = 101.5
-offset_bottom = 53.0
+anchors_preset = -1
+anchor_left = 0.388
+anchor_top = 0.015
+anchor_right = 0.613
+anchor_bottom = 0.064
+offset_left = -0.200012
+offset_top = -0.200001
+offset_right = 0.299988
+offset_bottom = -0.120003
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 35
 text = "INVENTORY"
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Grid_Background" type="Panel" parent="Background"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 0.894
+offset_bottom = -0.520081
+
+[node name="GridContainer" type="GridContainer" parent="Background/Grid_Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.043
+anchor_right = 0.949
+anchor_bottom = 0.959
+offset_left = -0.300003
+offset_top = -0.012001
+offset_right = -0.100037
+offset_bottom = 0.243958
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 170
-theme_override_constants/v_separation = 170
+mouse_force_pass_scroll_events = false
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 200
 columns = 4

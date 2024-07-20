@@ -43,7 +43,7 @@ func inv_update() -> void:
 		else:
 			slot.set_empty()
 		
-	print(Global.inventory)
+	print(Global.inventory)	 				# Print Inventory
 
 func clear_grid_container():
 	while grid_container.get_child_count() > 0:
