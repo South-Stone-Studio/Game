@@ -62,10 +62,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05104, 0, 12.4744)
 transform = Transform3D(1, 0, 0, 0, 2.08616e-07, 1, 0, -1, 2.08616e-07, 0, 20.6076, 0)
 
 [node name="ExampleItem" parent="." instance=ExtResource("3_g1d22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17091, 10)
 
-[node name="ExampleItem" parent="ExampleItem" instance=ExtResource("3_g1d22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55679, 2, 10)
+[node name="ExampleItem2" parent="." instance=ExtResource("3_g1d22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55679, 2.09617, 10)
 
-[node name="ExampleItem" parent="ExampleItem/ExampleItem" instance=ExtResource("3_g1d22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47365, 2, 11.5087)
+[node name="ExampleItem3" parent="." instance=ExtResource("3_g1d22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47365, 2.78721, 11.5087)

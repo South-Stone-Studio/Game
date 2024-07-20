@@ -18,7 +18,7 @@ func _on_button_mouse_exited() -> void:
 		slot_details.visible = false
 
 func _on_button_mouse_entered() -> void:
-	
+	if item != null:
 		slot_details.visible = true
 		slot_usage.visible = false
 
@@ -39,5 +39,3 @@ func set_item(new_item : Item) -> void:
 	slot_type.text = str(new_item.item_type)
 	slot_quantity.text = str(new_item.item_quantity)
 	item = new_item
-
-
