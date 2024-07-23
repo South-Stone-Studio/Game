@@ -8,8 +8,8 @@
 layout_mode = 3
 anchor_right = 0.104
 anchor_bottom = 0.185
-offset_right = 0.319992
-offset_bottom = 0.199997
+offset_right = -99.68
+offset_bottom = -99.8
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_0dpsp")
 slot_details = NodePath("ItemDetails")
@@ -21,8 +21,8 @@ slot_sprite = NodePath("Slot_background/Item_Background/ItemSprite")
 
 [node name="Slot_background" type="ColorRect" parent="."]
 layout_mode = 1
-offset_right = 200.0
-offset_bottom = 200.0
+offset_right = 100.0
+offset_bottom = 100.0
 color = Color(0, 0, 0, 1)
 
 [node name="Item_Background" type="ColorRect" parent="Slot_background"]
@@ -31,8 +31,8 @@ layout_mode = 1
 anchors_preset = -1
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 190.0
-offset_bottom = 190.0
+offset_right = 91.0
+offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.259294, 0.259294, 0.259294, 1)
@@ -44,16 +44,16 @@ anchor_left = -0.056
 anchor_top = -0.056
 anchor_right = -0.056
 anchor_bottom = -0.056
-offset_left = 12.08
-offset_top = 138.08
-offset_right = 162.08
-offset_bottom = 188.08
+offset_left = 4.536
+offset_top = 46.536
+offset_right = 86.536
+offset_bottom = 88.536
 theme_override_colors/font_color = Color(0.826701, 0.843233, 0.841464, 1)
 theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="ItemSprite" type="Sprite2D" parent="Slot_background/Item_Background"]
-position = Vector2(90, 90)
+position = Vector2(40, 40)
 scale = Vector2(0.79, 0.79)
 
 [node name="ItemDetails" type="Panel" parent="."]
@@ -128,10 +128,15 @@ text = "Drop"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-offset_right = 200.0
-offset_bottom = 200.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_g02pa")
 
+[connection signal="pressed" from="ItemUsage/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="ItemUsage/DropButton" to="." method="_on_drop_button_pressed"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

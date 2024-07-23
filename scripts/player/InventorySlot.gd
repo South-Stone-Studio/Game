@@ -10,7 +10,8 @@ extends Control
 @export var slot_type : Label
 @export var slot_quantity : Label
 @export var slot_sprite : Sprite2D
-
+var slot_item_scene : PackedScene  # To drop 
+var main_node : Control
 var item : Item = null
 
 func _on_button_mouse_exited() -> void:
@@ -39,3 +40,14 @@ func set_item(new_item : Item) -> void:
 	slot_type.text = str(new_item.item_type)
 	slot_quantity.text = str(new_item.item_quantity)
 	item = new_item
+
+func _on_drop_button_pressed() -> void:
+	if get_parent().get_parent().drop_item(item):
+		var object = item.item_scene.instantiate()
+		object.position = Global.player.position + Vector3(0,-0.5,1.5)
+		object.reparent(Global.current_room_root)
+		print("Droped")
+	
+
+func _on_use_button_pressed() -> void:
+	get_parent().use_item(item)

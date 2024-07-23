@@ -15,10 +15,21 @@ func add_item(item : Item) -> bool :
 			return true
 	return false
 
-func remove_item(item : Item) -> void:
+func use_item(item : Item) -> void:
+	pass
+
+func drop_item(item : Item) -> bool:
+	for i in range(Global.inventory.size()):
+		if Global.inventory[i] != null and Global.inventory[i].item_type == item.item_type and Global.inventory[i].item_name == item.item_name:
+			Global.inventory[i].item_quantity -= 1
+			if Global.inventory[i].item_quantity <= 0:
+				Global.inventory[i] = null
+			return true
+	return false
 	inv_update()
 
 func increse_inv_size(size : int) -> void:
+	Global.inventory.resize(len(Global.inventory)+size)
 	inv_update()
 
 func _ready() -> void:
@@ -42,6 +53,7 @@ func inv_update() -> void:
 			slot.set_item(item)
 		else:
 			slot.set_empty()
+		slot.main_node = self
 		
 	print(Global.inventory)	 				# Print Inventory
 

@@ -56,9 +56,6 @@ func _physics_process(delta):
 			if obj_under_mouse.is_in_group("Item"):
 				obj_under_mouse.pick_up_item()
 
-		elif Input.is_action_just_pressed("drop"):
-			hand_controller.drop_item()
-
 	player_movement(delta)
 
 func get_input():

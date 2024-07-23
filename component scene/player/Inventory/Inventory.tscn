@@ -5,15 +5,15 @@
 
 [node name="InventoryUI" type="Control" node_paths=PackedStringArray("grid_container")]
 process_mode = 3
+custom_minimum_size = Vector2(600, 900)
 layout_mode = 3
-anchor_right = 0.445
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = -0.400024
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_dwfvo")
-grid_container = NodePath("Background/Grid_Background/GridContainer")
+grid_container = NodePath("GridContainer")
 slot_scene = ExtResource("2_t6r3i")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -21,9 +21,11 @@ clip_contents = true
 custom_minimum_size = Vector2(900, 1000)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.054
+anchor_left = -0.223
+anchor_right = 1.277
 anchor_bottom = 1.0
-offset_right = -0.116028
+offset_left = -0.199997
+offset_right = -0.200012
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0728427, 0.0728426, 0.0728427, 0.498039)
@@ -49,22 +51,23 @@ anchors_preset = -1
 anchor_top = 0.075
 anchor_right = 1.0
 anchor_bottom = 0.894
-offset_bottom = -0.520081
+offset_left = 138.0
+offset_bottom = -0.52002
 
-[node name="GridContainer" type="GridContainer" parent="Background/Grid_Background"]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.047
 anchor_top = 0.043
 anchor_right = 0.949
 anchor_bottom = 0.959
-offset_left = -0.300003
-offset_top = -0.012001
-offset_right = -0.100037
-offset_bottom = 0.243958
+offset_left = 1.86197
+offset_top = 72.56
+offset_right = 2.06189
+offset_bottom = 72.816
 grow_horizontal = 2
 grow_vertical = 2
 mouse_force_pass_scroll_events = false
-theme_override_constants/h_separation = 210
-theme_override_constants/v_separation = 210
+theme_override_constants/h_separation = 105
+theme_override_constants/v_separation = 105
 columns = 4
