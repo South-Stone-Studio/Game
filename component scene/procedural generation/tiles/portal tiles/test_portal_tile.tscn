@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/room/PortalTile.gd" id="1_dm7o0"]
 [ext_resource type="PackedScene" uid="uid://d3lsh8nnts3op" path="res://component scene/procedural generation/portal/portal.tscn" id="2_53qj7"]
-[ext_resource type="Material" uid="uid://cuypv0s4si51q" path="res://materials/green.tres" id="2_ue6hw"]
+[ext_resource type="Material" uid="uid://bjefpc13xwss0" path="res://materials/green.tres" id="2_ue6hw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8d6v2"]
 material = ExtResource("2_ue6hw")
