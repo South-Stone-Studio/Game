@@ -6,17 +6,17 @@
 
 [node name="Slot" type="Control" node_paths=PackedStringArray("slot_details", "slot_usage", "slot_name", "slot_type", "slot_quantity", "slot_sprite")]
 layout_mode = 3
-anchor_right = 0.104
-anchor_bottom = 0.185
-offset_right = -99.68
-offset_bottom = -99.8
+anchor_right = 0.052
+anchor_bottom = 0.093
+offset_right = 0.160004
+offset_bottom = -0.440002
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_0dpsp")
 slot_details = NodePath("ItemDetails")
 slot_usage = NodePath("ItemUsage")
 slot_name = NodePath("ItemDetails/Name")
 slot_type = NodePath("ItemDetails/Type")
-slot_quantity = NodePath("Slot_background/Item_Background/ItemQuantity")
+slot_quantity = NodePath("Slot_background/Item_Background/ItemSprite/ItemQuantity")
 slot_sprite = NodePath("Slot_background/Item_Background/ItemSprite")
 
 [node name="Slot_background" type="ColorRect" parent="."]
@@ -37,24 +37,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.259294, 0.259294, 0.259294, 1)
 
-[node name="ItemQuantity" type="Label" parent="Slot_background/Item_Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.056
-anchor_top = -0.056
-anchor_right = -0.056
-anchor_bottom = -0.056
-offset_left = 4.536
-offset_top = 46.536
-offset_right = 86.536
-offset_bottom = 88.536
-theme_override_colors/font_color = Color(0.826701, 0.843233, 0.841464, 1)
-theme_override_font_sizes/font_size = 30
-text = "0"
-
 [node name="ItemSprite" type="Sprite2D" parent="Slot_background/Item_Background"]
 position = Vector2(40, 40)
 scale = Vector2(0.79, 0.79)
+
+[node name="ItemQuantity" type="Label" parent="Slot_background/Item_Background/ItemSprite"]
+anchors_preset = -1
+anchor_left = -0.123
+anchor_top = -0.111
+anchor_right = -0.123
+anchor_bottom = -0.111
+offset_left = -50.5099
+offset_top = 2.64265
+offset_right = 31.4901
+offset_bottom = 44.6426
+theme_override_colors/font_color = Color(0.826701, 0.843233, 0.841464, 1)
+theme_override_font_sizes/font_size = 30
+text = "0"
 
 [node name="ItemDetails" type="Panel" parent="."]
 visible = false
@@ -128,11 +127,8 @@ text = "Drop"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 100.0
+offset_bottom = 100.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_g02pa")
 
 [connection signal="pressed" from="ItemUsage/UseButton" to="." method="_on_use_button_pressed"]

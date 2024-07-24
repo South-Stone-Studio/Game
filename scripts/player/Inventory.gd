@@ -1,6 +1,8 @@
 extends Control
 
 @export var grid_container : GridContainer
+@export_category("grid settings")
+@export var quantity_of_slots : int
 @export var slot_scene : PackedScene
 
 func add_item(item : Item) -> bool :
@@ -18,9 +20,11 @@ func add_item(item : Item) -> bool :
 func use_item(item : Item) -> void:
 	pass
 
-func drop_item(item : Item) -> bool:
+func drop_item(obj : Item) -> bool:
 	for i in range(Global.inventory.size()):
-		if Global.inventory[i] != null and Global.inventory[i].item_type == item.item_type and Global.inventory[i].item_name == item.item_name:
+		if Global.inventory[i] != null and Global.inventory[i].item_type == obj.item_type and Global.inventory[i].item_name == obj.item_name:
+			var item_node : Item = obj.item_scene.instantiate()
+			item_node.reparent(Global.current_room_root)
 			Global.inventory[i].item_quantity -= 1
 			if Global.inventory[i].item_quantity <= 0:
 				Global.inventory[i] = null
@@ -33,7 +37,7 @@ func increse_inv_size(size : int) -> void:
 	inv_update()
 
 func _ready() -> void:
-	Global.inventory.resize(12)
+	Global.inventory.resize(quantity_of_slots)
 	inv_update()
 
 func _process(delta: float) -> void:
@@ -53,7 +57,6 @@ func inv_update() -> void:
 			slot.set_item(item)
 		else:
 			slot.set_empty()
-		slot.main_node = self
 		
 	print(Global.inventory)	 				# Print Inventory
 

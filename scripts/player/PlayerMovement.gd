@@ -3,7 +3,6 @@ class_name PlayerMovement
 
 extends CharacterBody3D
 
-# --------------------------- # MOVEMENT AND LOOKING # --------------------------- #
 @onready var camera: Camera3D = $"../Camera3D"
 var rayOrigin: Vector3 = Vector3()
 var rayEnd: Vector3 = Vector3()
