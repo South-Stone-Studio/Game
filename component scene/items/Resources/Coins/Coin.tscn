@@ -17,9 +17,9 @@ points = PackedVector3Array(-0.214183, -0.948028, -0.451129, 0.0227317, 0.952146
 top_level = true
 collision_mask = 15
 script = ExtResource("1_37skh")
-item_name = "gold"
+item_name = "coin"
 item_sprite = ExtResource("2_g4l4b")
-item_scene = null
+packed_item = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.1, 0, 0, 0, 0.25, 0, 0, 0)

@@ -7,69 +7,50 @@
 process_mode = 3
 visible = false
 layout_mode = 3
-anchor_right = 0.399
-anchor_bottom = 0.999
-offset_right = -166.08
-offset_bottom = -178.92
+anchor_right = 0.417
+anchor_bottom = 0.556
+offset_right = -0.640076
+offset_bottom = -0.480042
 size_flags_horizontal = 4
 size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
 script = ExtResource("1_dwfvo")
-grid_container = NodePath("Grid_Background/GridContainer")
-quantity_of_slots = 12
+grid_container = NodePath("GridContainer")
+quantity_of_slots = 20
 slot_scene = ExtResource("2_t6r3i")
 
-[node name="Background" type="ColorRect" parent="."]
-clip_contents = true
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.277
-anchor_bottom = 1.199
-offset_right = -0.199951
-offset_bottom = -0.0999756
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0728427, 0.0728426, 0.0728427, 0.498039)
 
-[node name="Label" type="Label" parent="Background"]
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.388
-anchor_top = 0.015
-anchor_right = 0.613
-anchor_bottom = 0.064
-offset_left = -0.200012
-offset_top = -0.200001
-offset_right = 0.299988
-offset_bottom = -0.120003
+anchor_left = 0.444
+anchor_top = 0.023
+anchor_right = 0.557
+anchor_bottom = 0.062
+offset_left = -0.200043
+offset_top = 0.199999
+offset_right = 0.399963
+offset_bottom = -0.200001
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 35
 text = "INVENTORY"
 
-[node name="Grid_Background" type="Panel" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.077
-anchor_right = 1.222
-anchor_bottom = 1.14
-offset_top = -0.300003
-offset_right = -0.200012
-offset_bottom = -0.00012207
-
-[node name="GridContainer" type="GridContainer" parent="Grid_Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.037
-anchor_top = 0.04
-anchor_right = 0.037
-anchor_bottom = 0.04
-offset_left = -0.0109997
-offset_top = -0.280003
-offset_right = 643.989
-offset_bottom = 880.72
-grow_horizontal = 2
-grow_vertical = 2
-mouse_force_pass_scroll_events = false
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 50.0
+offset_right = -16.0
+offset_bottom = -15.0
 theme_override_constants/h_separation = 110
 theme_override_constants/v_separation = 110
-columns = 4
+columns = 9

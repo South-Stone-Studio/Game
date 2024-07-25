@@ -23,8 +23,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 disable_mode = 2
 script = ExtResource("1_4kaxg")
 max_speed = null
-Mouse_Gobal_Position = null
 hand_controller = NodePath("Body/HandController")
+Mouse_Gobal_Position = null
 inventory = NodePath("InteractUI/InventoryUI/InventoryUI")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -51,4 +51,3 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.3500
 [node name="InventoryUI" type="CanvasLayer" parent="InteractUI"]
 
 [node name="InventoryUI" parent="InteractUI/InventoryUI" instance=ExtResource("3_wifjf")]
-quantity_of_slots = 12
