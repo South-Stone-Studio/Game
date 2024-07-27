@@ -1,6 +1,6 @@
 class_name RailGun
 
-extends BaseWeapon
+extends IWeapon
 
 @export var nozle: RayCast3D
 var active: bool
@@ -11,19 +11,10 @@ var cur_cut: float
 func _ready():
 	pass
 
-func primary(can: Callable, _start: bool = true):
-	if !active and can.call():
-		print("charging up!")
-		active = true
-		set_time_between_shot(time_between_shoots)
-		cur_cut = charge_up_time
-	
+
 
 func _process(delta):
-	super._process(delta)
-	if active:
-		if cur_cut != 0:
-			cur_cut -= delta
+	pass
 
 func _physics_process(_delta):
 	if active and cur_cut <= 0:

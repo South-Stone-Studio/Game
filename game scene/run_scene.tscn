@@ -38,3 +38,5 @@ min_width = 3
 max_height = 5
 min_height = 3
 spawn_room_tiles = Array[PackedScene]([ExtResource("5_xo228")])
+
+[node name="Timer" type="Timer" parent="."]

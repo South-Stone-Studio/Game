@@ -18,11 +18,9 @@ func _mouse_exit() -> void:
 	priority = false
 
 func highlight() -> void:
-	print("highlight")
 	highlighted = true
 	mat.set_shader_parameter("enabled", true)
 	
 func lowlight()->void:
-	print("lowlight")
 	highlighted = false
 	mat.set_shader_parameter("enabled", false)

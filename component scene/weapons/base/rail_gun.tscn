@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/weapons and items/Weapon.gd" id="1_0lakq"]
 [ext_resource type="Script" path="res://scripts/weapons and items/weapon types/RailGun.gd" id="2_xcfgh"]
-[ext_resource type="Script" path="res://scripts/weapons and items/ammo types/Bullets.gd" id="3_y2c7e"]
+[ext_resource type="Script" path="res://scripts/weapons and items/ammo types/BasicAmmo.gd" id="3_y2c7e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bke50"]
 size = Vector3(0.2, 0.2, 1)

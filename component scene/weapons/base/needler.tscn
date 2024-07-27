@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/weapons and items/Weapon.gd" id="1_3lr7w"]
 [ext_resource type="Script" path="res://scripts/weapons and items/weapon types/Needler.gd" id="2_jb5pc"]
 [ext_resource type="PackedScene" uid="uid://bg1kvt1gqewq3" path="res://component scene/weapons/projectiles/bullet_bomb.tscn" id="3_0p8nb"]
-[ext_resource type="Script" path="res://scripts/weapons and items/ammo types/Bullets.gd" id="3_ub4x5"]
+[ext_resource type="Script" path="res://scripts/weapons and items/ammo types/BasicAmmo.gd" id="3_ub4x5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gj341"]
 

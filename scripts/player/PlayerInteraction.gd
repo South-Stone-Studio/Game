@@ -1,7 +1,6 @@
-class_name InteractionZone
+class_name PlayerInteraction
 
 extends Area3D
-
 
 var interaction: Interactable
 @export var text: Label3D 
@@ -31,7 +30,5 @@ func make_interactable(interactions: Array[Node3D]):
 		mi = interactions[0]
 	mi.highlight()
 	if interaction != mi and interaction != null:
-		
 		interaction.lowlight()
 	interaction = mi
-

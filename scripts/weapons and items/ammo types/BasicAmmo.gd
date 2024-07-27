@@ -1,6 +1,6 @@
-class_name Bullets
+class_name BasicAmmo
 
-extends Ammo
+extends IAmmo
 
 var current: int
 @export var mags: int
