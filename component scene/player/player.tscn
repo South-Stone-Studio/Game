@@ -50,7 +50,7 @@ script = ExtResource("5_37rbi")
 script = ExtResource("5_2fxco")
 input_component = NodePath("../InputComponent")
 friction = 10.0
-max_speed = 10.0
+speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IMovement"]
 shape = SubResource("CapsuleShape3D_06kby")
