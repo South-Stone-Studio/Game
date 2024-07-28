@@ -33,6 +33,8 @@ func drop_item(item : Item) -> bool:
 			var item_node : Item = item.item_scene.instantiate()
 			item_node.reparent(Global.current_room_root)
 			Global.inventory[i].item_quantity -= 1
+			if Global.inventory[i].item_quantity == 0:
+				Global.inventory[i] = null
 			return true
 	return false
 	inv_update()

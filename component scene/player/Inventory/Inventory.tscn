@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://clof1stxiujve"]
+[gd_scene load_steps=3 format=3 uid="uid://cxcnopvc61we0"]
 
 [ext_resource type="Script" path="res://scripts/player/Inventory.gd" id="1_dwfvo"]
-[ext_resource type="PackedScene" uid="uid://t7vb1hjnj48n" path="res://component scene/player/Inventory/Slot.tscn" id="2_t6r3i"]
+[ext_resource type="PackedScene" path="res://component scene/player/Inventory/Slot.tscn" id="2_t6r3i"]
 
 [node name="InventoryUI" type="Control" node_paths=PackedStringArray("grid_container")]
 process_mode = 3
