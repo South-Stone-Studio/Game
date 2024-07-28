@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="1_3n8nh"]
 
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_01e6t"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_aqx02"]
@@ -25,7 +24,6 @@ skeleton = NodePath("../StaticBody3D")
 transform = Transform3D(1, 0, 0, 0, -0.594823, 0.803857, 0, -0.803857, -0.594823, 0.925197, 12.7064, -14.3697)
 
 [node name="Player" parent="." instance=ExtResource("1_3n8nh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.595216, 0.803566, 0, -0.803566, 0.595216, 0, 12.0819, 10.5182)

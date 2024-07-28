@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlwf4wjctmft"]
+[gd_scene load_steps=7 format=3 uid="uid://dt4m63xyh8sta"]
 
-[ext_resource type="Material" uid="uid://bjefpc13xwss0" path="res://materials/green.tres" id="1_2xhu2"]
+[ext_resource type="Material" path="res://materials/green.tres" id="1_2xhu2"]
 [ext_resource type="PackedScene" uid="uid://d3dw3btn1jj6y" path="res://component scene/slimes/splash_slime.tscn" id="3_bnrqy"]
 [ext_resource type="PackedScene" uid="uid://co2gwnk3ha8rx" path="res://component scene/slimes/spawny_slime.tscn" id="3_ut2i1"]
 
