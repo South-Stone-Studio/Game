@@ -28,7 +28,7 @@ func shoot():
 		get_tree().current_scene.add_child(_bullet)
 		_bullet.global_position = nozle.global_position
 		_bullet.global_transform.basis = nozle.global_transform.basis
-		_bullet.damage = damage
+		_bullet.damage_value = damage_value
 		_bullet.v = bullet_velocity
 
 func _timeout() -> void:

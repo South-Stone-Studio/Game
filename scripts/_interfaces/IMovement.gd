@@ -7,11 +7,13 @@ signal on_land
 signal on_movement_start
 signal on_movement_stop
 
-var current_speed_cap: float
-@export var base_speed_cap: float
+@export var speed: float
 
-func move() -> void:
+func move(_delta: float, _position: Vector3) -> void:
 	pass
 	
 func jump() -> void:
+	pass
+
+func stand(_delta: float) -> void:
 	pass

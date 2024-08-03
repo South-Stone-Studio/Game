@@ -9,7 +9,6 @@ var orbs: Array[BulletBomb] = []
 var bullet: Node3D
 func _ready():
 	timer.wait_time = time_between_shoots
-	timer
 	bullet = bullet_scene.instantiate()
 
 	

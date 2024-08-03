@@ -23,9 +23,9 @@ func filter_interactable(n:Node3D) -> bool:
 
 func make_interactable(interactions: Array[Node3D]):
 	var mi: Interactable
-	for interaction in interactions:
-		if interaction.priority:
-			mi = interaction
+	for i in interactions:
+		if i.priority:
+			mi = i
 	if mi == null:
 		mi = interactions[0]
 	mi.highlight()

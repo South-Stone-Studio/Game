@@ -10,7 +10,7 @@ signal on_alternative
 
 @export var time_between_shoots: float
 @export var bullet_velocity: float
-@export var damage: int
+@export var damage_value: int
 @export var ammo: IAmmo
 var timer: Timer # to time between shots
 
