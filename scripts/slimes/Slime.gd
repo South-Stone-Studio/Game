@@ -17,5 +17,5 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if pathfinding.is_navigation_finished():
 		movement.stand(delta)
-		return
-	movement.move(delta, pathfinding.get_next_path_position())
+	else:
+		movement.move(delta, pathfinding.get_next_path_position())

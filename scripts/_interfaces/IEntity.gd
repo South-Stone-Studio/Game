@@ -4,6 +4,8 @@ extends Node3D
 
 
 var health: int
+enum State {standing, patroling, aware, agressive}
+var state: State
 @export var max_health: int
 
 func take_damage(_dmg: damage) -> void:

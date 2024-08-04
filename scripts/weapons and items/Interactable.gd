@@ -11,6 +11,7 @@ var highlighted: bool
 
 func _ready() -> void:
 	mat = interactive_mesh.mesh.material.next_pass
+	
 func _mouse_enter() -> void:
 	priority = true
 

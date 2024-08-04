@@ -1,16 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy7cfx4m6sq"]
+[gd_scene load_steps=12 format=3 uid="uid://dy7cfx4m6sq"]
 
 [ext_resource type="Script" path="res://scripts/slimes/Slime.gd" id="1_8q6n4"]
+[ext_resource type="Script" path="res://scripts/atacks/BodySlam.gd" id="2_63g8m"]
+[ext_resource type="Script" path="res://scripts/enemy/Vision.gd" id="2_082wf"]
 [ext_resource type="Script" path="res://scripts/movement component/SlimeMovement.gd" id="2_puw0m"]
 [ext_resource type="Material" uid="uid://bjefpc13xwss0" path="res://materials/green.tres" id="3_nvr1w"]
+[ext_resource type="Material" uid="uid://dwm3jadqs7mck" path="res://materials/red.tres" id="6_b0mkc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cu324"]
 radius = 0.25
 
-[sub_resource type="SphereMesh" id="SphereMesh_nsisl"]
-material = ExtResource("3_nvr1w")
+[sub_resource type="SphereShape3D" id="SphereShape3D_bwfdx"]
+radius = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6o5ew"]
 radius = 0.9
-height = 1.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_dxk5t"]
+material = ExtResource("3_nvr1w")
+
+[sub_resource type="BoxMesh" id="BoxMesh_b3al3"]
+material = ExtResource("6_b0mkc")
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Slime" type="Node3D" node_paths=PackedStringArray("movement", "pathfinding")]
 script = ExtResource("1_8q6n4")
@@ -21,7 +32,7 @@ pathfinding = NodePath("SlimeCharacter/NavigationAgent3D")
 script = ExtResource("2_puw0m")
 speed = 3.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SlimeCharacter"]
+[node name="CharacterCollision" type="CollisionShape3D" parent="SlimeCharacter"]
 shape = SubResource("SphereShape3D_cu324")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="SlimeCharacter"]
@@ -30,8 +41,76 @@ avoidance_enabled = true
 debug_enabled = true
 debug_path_custom_color = Color(0.924759, 0.479857, 0.603357, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SlimeCharacter"]
-mesh = SubResource("SphereMesh_nsisl")
+[node name="Vision" type="Node3D" parent="SlimeCharacter" node_paths=PackedStringArray("rays")]
+script = ExtResource("2_082wf")
+rays = [NodePath("@RayCast3D@75167"), NodePath("@RayCast3D@75168"), NodePath("@RayCast3D@75169"), NodePath("@RayCast3D@75170"), NodePath("@RayCast3D@75171"), NodePath("@RayCast3D@75172"), NodePath("@RayCast3D@75173"), NodePath("@RayCast3D@75174"), NodePath("@RayCast3D@75175"), NodePath("@RayCast3D@75176"), NodePath("@RayCast3D@75177")]
+num_of_rays = 11
+radius = 150.0
+
+[node name="@RayCast3D@75167" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.371662, 0, -0.928368, 0, 1, 0, 0.928368, 0, 0.371662, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75168" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.580057, 0, -0.814576, 0, 1, 0, 0.814576, 0, 0.580057, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75169" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.75575, 0, -0.654861, 0, 1, 0, 0.654861, 0, 0.75575, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75170" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.888835, 0, -0.458227, 0, 1, 0, 0.458227, 0, 0.888835, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75171" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.971812, 0, -0.235759, 0, 1, 0, 0.235759, 0, 0.971812, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75172" type="RayCast3D" parent="SlimeCharacter/Vision"]
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75173" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.971812, 0, 0.235759, 0, 1, 0, -0.235759, 0, 0.971812, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75174" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.888835, 0, 0.458227, 0, 1, 0, -0.458227, 0, 0.888835, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75175" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.75575, 0, 0.654861, 0, 1, 0, -0.654861, 0, 0.75575, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75176" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.580057, 0, 0.814576, 0, 1, 0, -0.814576, 0, 0.580057, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@75177" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.371662, 0, 0.928368, 0, 1, 0, -0.928368, 0, 0.371662, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="Hitbox" type="CharacterBody3D" parent="SlimeCharacter"]
+collision_layer = 0
+collision_mask = 2048
+
+[node name="hitbox collision" type="CollisionShape3D" parent="SlimeCharacter/Hitbox"]
+shape = SubResource("SphereShape3D_bwfdx")
+
+[node name="ContactAttack" type="Area3D" parent="SlimeCharacter"]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("2_63g8m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlimeCharacter/ContactAttack"]
+shape = SubResource("SphereShape3D_6o5ew")
+
+[node name="Appearence" type="MeshInstance3D" parent="SlimeCharacter"]
+mesh = SubResource("SphereMesh_dxk5t")
+
+[node name="visor" type="MeshInstance3D" parent="SlimeCharacter/Appearence"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.452329, 0.467599)
+mesh = SubResource("BoxMesh_b3al3")
 skeleton = NodePath("../..")
 
 [connection signal="on_land" from="SlimeCharacter" to="." method="_on_slime_movement_on_land"]
