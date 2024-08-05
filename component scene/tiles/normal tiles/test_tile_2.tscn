@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://04m4i24d3133"]
+
+[ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_l8agi"]
+[ext_resource type="Material" uid="uid://bjefpc13xwss0" path="res://materials/green.tres" id="2_ti5tv"]
+[ext_resource type="Script" path="res://scripts/room/PlaceHolder.gd" id="3_le2xs"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2326k"]
+material = ExtResource("2_ti5tv")
+size = Vector2(10, 10)
+
+[node name="TestTile2" type="Node3D" node_paths=PackedStringArray("objects")]
+script = ExtResource("1_l8agi")
+objects = [NodePath("PlaceHolder"), NodePath("PlaceHolder2"), NodePath("PlaceHolder3"), NodePath("PlaceHolder4")]
+max_objects = 2
+min_objects = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_2326k")
+
+[node name="PlaceHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+script = ExtResource("3_le2xs")
+size_of_object = 1
+
+[node name="PlaceHolder2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+script = ExtResource("3_le2xs")
+
+[node name="PlaceHolder3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+script = ExtResource("3_le2xs")
+
+[node name="PlaceHolder4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+script = ExtResource("3_le2xs")
+size_of_object = 1

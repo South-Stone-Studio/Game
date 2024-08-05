@@ -1,12 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlwf4wjctmft"]
+[gd_scene load_steps=9 format=3 uid="uid://dlwf4wjctmft"]
 
 [ext_resource type="Material" uid="uid://bjefpc13xwss0" path="res://materials/green.tres" id="1_2xhu2"]
-[ext_resource type="PackedScene" uid="uid://d3dw3btn1jj6y" path="res://component scene/slimes/splash_slime.tscn" id="3_bnrqy"]
-[ext_resource type="PackedScene" uid="uid://co2gwnk3ha8rx" path="res://component scene/slimes/spawny_slime.tscn" id="3_ut2i1"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_oiv1f"]
-material = ExtResource("1_2xhu2")
-size = Vector2(10, 10)
+[ext_resource type="PackedScene" uid="uid://bj2b7tm8qdsrt" path="res://component scene/dummy/dummy.tscn" id="3_ft4u0"]
+[ext_resource type="PackedScene" uid="uid://dy7cfx4m6sq" path="res://component scene/slimes/Slime.tscn" id="3_ut2i1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3l42"]
 size = Vector3(10, 1, 10)
@@ -14,10 +10,18 @@ size = Vector3(10, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ywwa"]
 size = Vector3(1, 10, 10)
 
-[node name="TestEnemy" type="Node3D"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_a1vyq"]
+vertices = PackedVector3Array(1, 0.322487, -1, 1.25, 0.322487, 0, 4.5, 0.322487, 0, 4.5, 0.322487, -4.5, -4.5, 0.322487, 0, -1, 0.322487, 0, -0.75, 0.322487, -1, -4.5, 0.322487, -4.5, -0.75, 0.322487, -1, 1, 0.322487, -1, 4.5, 0.322487, -4.5, -4.5, 0.322487, -4.5, 4.5, 0.322487, 0, 1.25, 0.322487, 0, 0.75, 0.322487, 1.25, 4.5, 0.322487, 4.5, -0.75, 0.322487, 1.25, -1, 0.322487, 0, -4.5, 0.322487, 0, -4.5, 0.322487, 4.5, 0.75, 0.322487, 1.25, -0.75, 0.322487, 1.25, -4.5, 0.322487, 4.5, 4.5, 0.322487, 4.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(20, 23, 21), PackedInt32Array(21, 23, 22)]
+agent_height = 0.5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_oiv1f")
+[sub_resource type="PlaneMesh" id="PlaneMesh_oiv1f"]
+material = ExtResource("1_2xhu2")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m5k8u"]
+
+[node name="TestEnemy" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -53,17 +57,23 @@ transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0,
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999995, -0.00268096, 0.00170812, -0.000388755, 0.430164, 0.902751, -0.00315501, -0.902747, 0.430161, 0, 7.26477, 0)
 
-[node name="SplashSlime" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_bnrqy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98208, 0, -2.62367)
-collision_layer = 4
-collision_mask = 11
-jumps_to_atack = 2
-num_of_prjectiles = 13
-target = NodePath("../Marker2")
+[node name="Slime" parent="." instance=ExtResource("3_ut2i1")]
+transform = Transform3D(-0.151261, 0, 0.988494, 0, 1, 0, -0.988494, 0, -0.151261, -3.03077, 1, 2.51844)
+max_health = 100
 
-[node name="SpawnySlime" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_ut2i1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54445, 0, 2.99411)
-collision_layer = 4
-collision_mask = 11
-jumps_till_spawn = 1
-target = NodePath("../Marker")
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(0.813416, -0.581683, 0, 0.581683, 0.813416, 0, 0, 0, 1, -0.861558, -1.2884, -2.27366)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_a1vyq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = SubResource("PlaneMesh_oiv1f")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322487, 0)
+mesh = SubResource("BoxMesh_m5k8u")
+
+[node name="Dummy" parent="." instance=ExtResource("3_ft4u0")]
+transform = Transform3D(-0.876668, 0, -0.481096, 0, 1, 0, 0.481096, 0, -0.876668, 0.159868, 0.690062, 2.08846)

@@ -2,7 +2,7 @@ class_name Explosion
 
 extends Area3D
 
-var damage: int
+var damage_value: int
 @export var col: CollisionShape3D
 @export var mes: MeshInstance3D
 @export var max_radius: float = 5
@@ -21,5 +21,5 @@ func _process(delta):
 		
 func _on_body_entered(body):
 	if is_instance_of(body, Boss):
-		body.health -= damage
+		body.health -= damage_value
 	print(body)

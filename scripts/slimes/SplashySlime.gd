@@ -1,6 +1,6 @@
 class_name SplashSlime
 
-extends Slime
+extends IEntity
 
 var current_landing: int = 0
 var temp_swap: Node3D

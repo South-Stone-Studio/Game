@@ -1,6 +1,6 @@
 class_name Needler
 
-extends BaseWeapon
+extends IWeapon
 var orbs: Array[BulletBomb] = []
 @export var nozle: Node3D
 @export var bullet_scene: PackedScene
@@ -8,19 +8,16 @@ var orbs: Array[BulletBomb] = []
 
 var bullet: Node3D
 func _ready():
-	var v: Weapon = self.get_parent()
-	v.force_reload.connect(explosion)
+	timer.wait_time = time_between_shoots
 	bullet = bullet_scene.instantiate()
 
 	
-func primary(can:Callable, start: bool = true):
-	if cur <= 0 and start:
-		if can.call():
-			set_time_between_shot(time_between_shoots)
-			shoot()
-		else:
-			explosion()
+func primary() -> void:
+	pass
 
+func alternative() -> void:
+	pass
+	
 func shoot():
 	var _bullet: Node3D = bullet.duplicate()
 	get_tree().current_scene.add_child(_bullet)

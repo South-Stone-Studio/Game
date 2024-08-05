@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl84hsqo81gm1"]
+[gd_scene load_steps=10 format=3 uid="uid://bl84hsqo81gm1"]
 
 [ext_resource type="Script" path="res://scripts/player/PlayerMovement.gd" id="1_4kaxg"]
-[ext_resource type="Script" path="res://scripts/player/HandController.gd" id="2_10rkx"]
-[ext_resource type="Script" path="res://scripts/player/InteractionZone.gd" id="3_65hqf"]
+[ext_resource type="Script" path="res://scripts/player/PlayerInteraction.gd" id="2_dphsn"]
 [ext_resource type="Script" path="res://scripts/player/StaticRotation.gd" id="4_jep2h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fifl6"]
@@ -21,11 +20,10 @@ material = SubResource("StandardMaterial3D_jpbw6")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0fco3"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand_controller")]
+[node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 disable_mode = 2
 script = ExtResource("1_4kaxg")
-hand_controller = NodePath("Body/HandController")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_fifl6")
@@ -39,32 +37,22 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8, -0.3)
 mesh = SubResource("BoxMesh_gcbsr")
 skeleton = NodePath("")
 
-[node name="HandController" type="Node" parent="Body" node_paths=PackedStringArray("hand")]
-script = ExtResource("2_10rkx")
-hand = NodePath("../../Hand")
-
-[node name="Hand" type="Marker3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.350032, 0.33, -0.487532)
-
-[node name="InteractionZone" type="Area3D" parent="." node_paths=PackedStringArray("text")]
+[node name="PlayerInteraction" type="Area3D" parent="." node_paths=PackedStringArray("text")]
 collision_layer = 16
 collision_mask = 16
-script = ExtResource("3_65hqf")
+script = ExtResource("2_dphsn")
 text = NodePath("Arm/Label3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerInteraction"]
 shape = SubResource("CylinderShape3D_0fco3")
 
-[node name="Arm" type="Node3D" parent="InteractionZone"]
+[node name="Arm" type="Node3D" parent="PlayerInteraction"]
 script = ExtResource("4_jep2h")
 
-[node name="Label3D" type="Label3D" parent="InteractionZone/Arm"]
+[node name="Label3D" type="Label3D" parent="PlayerInteraction/Arm"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 0, -0.5)
 pixel_size = 0.0008
 fixed_size = true
 render_priority = 1
 outline_render_priority = 0
 text = "F to interact"
-
-[connection signal="body_entered" from="InteractionZone" to="InteractionZone" method="_on_body_entered"]
-[connection signal="body_exited" from="InteractionZone" to="InteractionZone" method="_on_body_exited"]

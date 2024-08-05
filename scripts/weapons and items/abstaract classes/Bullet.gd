@@ -3,7 +3,7 @@ class_name Bullet
 extends Area3D
 enum who{enemy, player}
 var v: float
-var damage: int
+var damage_value: int
 @export var deal_damage_to: who = who.enemy
 var exception: Array[Node3D] = []
 
@@ -17,7 +17,7 @@ func _on_body_entered(body):
 	match deal_damage_to:
 		who.enemy:
 			if is_instance_of(body, Boss):
-				body.health -= damage
+				body.health -= damage_value
 		who.player:
 			if is_instance_of(body, PlayerMovement):
 				pass

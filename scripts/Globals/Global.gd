@@ -19,14 +19,14 @@ var base_weapons: Array[PackedScene]
 var first_bosses: Array[PackedScene]
 
 var path_to_first_bosses: String = "res://component scene/boss/first_floor/"
-var path_to_normal: String = "res://component scene/procedural generation/tiles/normal tiles/"
-var path_to_portal: String = "res://component scene/procedural generation/tiles/portal tiles/"
-var path_to_spawn: String = "res://component scene/procedural generation/tiles/spawn tiles/"
-var path_to_small_objects: String = "res://component scene/props/placable/small/"
-var path_to_medium_objects: String = "res://component scene/props/placable/medium/"
-var path_to_large_objects: String = "res://component scene/props/placable/large/"
-var path_to_base_weapons: String = "res://component scene/weapons/base/"
-var wall: PackedScene = preload("res://component scene/props/wall/wall.tscn")
+var path_to_normal: String = "res://component scene/tiles/normal tiles/"
+var path_to_portal: String = "res://component scene/tiles/portal tiles/"
+var path_to_spawn: String = "res://component scene/tiles/spawn tiles/"
+var path_to_small_objects: String = "res://component scene/placable/small/"
+var path_to_medium_objects: String = "res://component scene/placable/medium/"
+var path_to_large_objects: String = "res://component scene/placable/large/"
+var path_to_base_weapons: String = "res://component scene/weapons/"
+var wall: PackedScene = preload("res://component scene/wall/wall.tscn")
 
 func _ready() -> void:
 	normal_tiles = load_assets(path_to_normal)
