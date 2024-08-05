@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b2qop06ln8rht" path="res://component scene/boss/components/sling components/shock_wave.tscn" id="2_xj8oj"]
 [ext_resource type="PackedScene" uid="uid://0yi2j3am5bo2" path="res://component scene/boss/components/sling components/slimy_projectile.tscn" id="3_05c8d"]
 [ext_resource type="PackedScene" uid="uid://b8eotq8mq00t0" path="res://component scene/boss/components/sling components/show_slimy_danger.tscn" id="4_qrbw0"]
-[ext_resource type="PackedScene" uid="uid://gmuatd0bne5r" path="res://component scene/procedural generation/tiles/boss tiles/plane_boss_tile.tscn" id="5_h5sws"]
+[ext_resource type="PackedScene" uid="uid://gmuatd0bne5r" path="res://component scene/tiles/boss tiles/plane_boss_tile.tscn" id="5_h5sws"]
 [ext_resource type="PackedScene" uid="uid://bw3a2y8i36yc6" path="res://ui/health_bar.tscn" id="5_wf1ij"]
 [ext_resource type="FontFile" uid="uid://5wmwgirffx66" path="res://fonts/wizzta.ttf" id="7_tlidf"]
 

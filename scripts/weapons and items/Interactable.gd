@@ -6,7 +6,7 @@ signal interact
 var priority: bool = false
 var highlighted: bool
 @export var locked: bool
-@export var mat: ShaderMaterial
+var mat: ShaderMaterial
 @export var interactive_mesh: MeshInstance3D
 
 func _ready() -> void:

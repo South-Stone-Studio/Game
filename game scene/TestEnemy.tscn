@@ -62,7 +62,7 @@ target = NodePath("../Marker3D")
 max_health = 100
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(0.813416, -0.581683, 0, 0.581683, 0.813416, 0, 0, 0, 1, 2.13844, 0.711601, 0.726341)
+transform = Transform3D(0.813416, -0.581683, 0, 0.581683, 0.813416, 0, 0, 0, 1, -0.861558, -1.2884, -2.27366)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_a1vyq")

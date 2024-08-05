@@ -38,6 +38,8 @@ mesh = SubResource("BoxMesh_gcbsr")
 skeleton = NodePath("")
 
 [node name="PlayerInteraction" type="Area3D" parent="." node_paths=PackedStringArray("text")]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("2_dphsn")
 text = NodePath("Arm/Label3D")
 

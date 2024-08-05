@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://db5ika5isdcs0"]
 
 [ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_kofyw"]
-[ext_resource type="PackedScene" uid="uid://dvjl2kpxaqtnv" path="res://component scene/props/placable/static/chest.tscn" id="2_iwjc2"]
-[ext_resource type="Material" uid="uid://cuypv0s4si51q" path="res://materials/green.tres" id="3_nnynp"]
+[ext_resource type="PackedScene" uid="uid://dvjl2kpxaqtnv" path="res://component scene/placable/static/chest.tscn" id="2_iwjc2"]
+[ext_resource type="Material" uid="uid://bjefpc13xwss0" path="res://materials/green.tres" id="3_nnynp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ri2sv"]
 material = ExtResource("3_nnynp")

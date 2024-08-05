@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvjl2kpxaqtnv"]
+
+[ext_resource type="Script" path="res://scripts/chests/Chest.gd" id="1_bma2n"]
+[ext_resource type="Material" uid="uid://cuvii4dpkhwf3" path="res://materials/interactable.tres" id="2_udfqq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3gl8x"]
+material = ExtResource("2_udfqq")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ub5wp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2wnc"]
+size = Vector3(2, 1, 2)
+
+[node name="Chest" type="CharacterBody3D" node_paths=PackedStringArray("interactive_mesh")]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_bma2n")
+interactive_mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3gl8x")
+skeleton = NodePath("../..")
+
+[node name="Collider" type="StaticBody3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Collider"]
+shape = SubResource("BoxShape3D_ub5wp")
+
+[node name="InteractionZone" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_m2wnc")
+
+[connection signal="interact" from="." to="." method="_on_interact"]

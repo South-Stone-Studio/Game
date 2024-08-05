@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3lsh8nnts3op"]
 
 [ext_resource type="Script" path="res://scripts/generation/Portal.gd" id="1_s7i1f"]
-[ext_resource type="Material" uid="uid://cxdwmbgss411v" path="res://materials/interactable.tres" id="2_lr1hr"]
-[ext_resource type="Shader" path="res://component scene/procedural generation/portal/portal.gdshader" id="4_lcgrm"]
+[ext_resource type="Material" uid="uid://cuvii4dpkhwf3" path="res://materials/interactable.tres" id="2_lr1hr"]
+[ext_resource type="Shader" path="res://component scene/portal/portal.gdshader" id="4_lcgrm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u51py"]
 radius = 1.8
