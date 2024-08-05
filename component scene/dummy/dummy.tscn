@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj2b7tm8qdsrt"]
+
+[ext_resource type="Script" path="res://scripts/dummy/Dummy.gd" id="1_stwxl"]
+[ext_resource type="Material" uid="uid://dwm3jadqs7mck" path="res://materials/red.tres" id="2_cr1mb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lanxp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lm2bl"]
+material = ExtResource("2_cr1mb")
+
+[node name="Dummy" type="Node3D"]
+script = ExtResource("1_stwxl")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_lanxp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_lm2bl")

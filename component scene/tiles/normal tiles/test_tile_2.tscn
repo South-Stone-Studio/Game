@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://04m4i24d3133"]
 
 [ext_resource type="Script" path="res://scripts/room/Tile.gd" id="1_l8agi"]
-[ext_resource type="Material" uid="uid://cuypv0s4si51q" path="res://materials/green.tres" id="2_ti5tv"]
+[ext_resource type="Material" uid="uid://bjefpc13xwss0" path="res://materials/green.tres" id="2_ti5tv"]
 [ext_resource type="Script" path="res://scripts/room/PlaceHolder.gd" id="3_le2xs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2326k"]

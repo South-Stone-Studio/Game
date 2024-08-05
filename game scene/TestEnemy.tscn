@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlwf4wjctmft"]
+[gd_scene load_steps=9 format=3 uid="uid://dlwf4wjctmft"]
 
 [ext_resource type="Material" uid="uid://bjefpc13xwss0" path="res://materials/green.tres" id="1_2xhu2"]
+[ext_resource type="PackedScene" uid="uid://bj2b7tm8qdsrt" path="res://component scene/dummy/dummy.tscn" id="3_ft4u0"]
 [ext_resource type="PackedScene" uid="uid://dy7cfx4m6sq" path="res://component scene/slimes/Slime.tscn" id="3_ut2i1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3l42"]
@@ -56,9 +57,8 @@ transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0,
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999995, -0.00268096, 0.00170812, -0.000388755, 0.430164, 0.902751, -0.00315501, -0.902747, 0.430161, 0, 7.26477, 0)
 
-[node name="Slime" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_ut2i1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03187, 1, 2.19392)
-target = NodePath("../Marker3D")
+[node name="Slime" parent="." instance=ExtResource("3_ut2i1")]
+transform = Transform3D(-0.151261, 0, 0.988494, 0, 1, 0, -0.988494, 0, -0.151261, -3.03077, 1, 2.51844)
 max_health = 100
 
 [node name="Marker3D" type="Marker3D" parent="."]
@@ -74,3 +74,6 @@ skeleton = NodePath("../..")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322487, 0)
 mesh = SubResource("BoxMesh_m5k8u")
+
+[node name="Dummy" parent="." instance=ExtResource("3_ft4u0")]
+transform = Transform3D(-0.876668, 0, -0.481096, 0, 1, 0, 0.481096, 0, -0.876668, 0.159868, 0.690062, 2.08846)

@@ -7,7 +7,6 @@ var is_jump: bool
 
 func move(delta:float, target_position: Vector3) -> void:
 	var direction = (target_position - global_position).normalized()
-	self.look_at(Vector3(-direction.x*10,self.global_position.y, -direction.z*10))
 	if check_floor(delta):
 		direction.x = snapped(direction.x, 0.001)
 		direction.z = snapped(direction.z, 0.001)

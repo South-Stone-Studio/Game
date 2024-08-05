@@ -23,10 +23,11 @@ material = ExtResource("3_nvr1w")
 material = ExtResource("6_b0mkc")
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="Slime" type="Node3D" node_paths=PackedStringArray("movement", "pathfinding")]
+[node name="Slime" type="Node3D" node_paths=PackedStringArray("movement", "pathfinding", "vision")]
 script = ExtResource("1_8q6n4")
 movement = NodePath("SlimeCharacter")
 pathfinding = NodePath("SlimeCharacter/NavigationAgent3D")
+vision = NodePath("SlimeCharacter/Vision")
 
 [node name="SlimeCharacter" type="CharacterBody3D" parent="."]
 script = ExtResource("2_puw0m")
@@ -42,52 +43,109 @@ debug_enabled = true
 debug_path_custom_color = Color(0.924759, 0.479857, 0.603357, 1)
 
 [node name="Vision" type="Node3D" parent="SlimeCharacter" node_paths=PackedStringArray("rays")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.584035)
 script = ExtResource("2_082wf")
-rays = [NodePath("@RayCast3D@17503"), NodePath("@RayCast3D@17504"), NodePath("@RayCast3D@17505"), NodePath("@RayCast3D@17506"), NodePath("@RayCast3D@17507"), NodePath("@RayCast3D@17508"), NodePath("@RayCast3D@17509"), NodePath("@RayCast3D@17510"), NodePath("@RayCast3D@17511"), NodePath("@RayCast3D@17512"), NodePath("@RayCast3D@17513")]
-num_of_rays = 11
-radius = 150.0
+rays = [NodePath("@RayCast3D@66674"), NodePath("@RayCast3D@66675"), NodePath("@RayCast3D@66676"), NodePath("@RayCast3D@66677"), NodePath("@RayCast3D@66678"), NodePath("@RayCast3D@66679"), NodePath("@RayCast3D@66680"), NodePath("@RayCast3D@66681"), NodePath("@RayCast3D@66682"), NodePath("@RayCast3D@66683"), NodePath("@RayCast3D@66684"), NodePath("@RayCast3D@66685"), NodePath("@RayCast3D@66686"), NodePath("@RayCast3D@66687"), NodePath("@RayCast3D@66688"), NodePath("@RayCast3D@66689"), NodePath("@RayCast3D@66690"), NodePath("@RayCast3D@66691"), NodePath("@RayCast3D@66692"), NodePath("@RayCast3D@66693"), NodePath("@RayCast3D@66694"), NodePath("@RayCast3D@66695"), NodePath("@RayCast3D@66696"), NodePath("@RayCast3D@66697"), NodePath("@RayCast3D@66698")]
+num_of_rays = 25
+radius = 160.0
 
-[node name="@RayCast3D@17503" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.371662, 0, -0.928368, 0, 1, 0, 0.928368, 0, 0.371662, 0, 0, 0)
+[node name="@RayCast3D@66674" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.228351, 0, -0.973579, 0, 1, 0, 0.973579, 0, 0.228351, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17504" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.580057, 0, -0.814576, 0, 1, 0, 0.814576, 0, 0.580057, 0, 0, 0)
+[node name="@RayCast3D@66675" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.335452, 0, -0.942057, 0, 1, 0, 0.942057, 0, 0.335452, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17505" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.75575, 0, -0.654861, 0, 1, 0, 0.654861, 0, 0.75575, 0, 0, 0)
+[node name="@RayCast3D@66676" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.438371, 0, -0.898794, 0, 1, 0, 0.898794, 0, 0.438371, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17506" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.888835, 0, -0.458227, 0, 1, 0, 0.458227, 0, 0.888835, 0, 0, 0)
+[node name="@RayCast3D@66677" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.535827, 0, -0.844328, 0, 1, 0, 0.844328, 0, 0.535827, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17507" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.971812, 0, -0.235759, 0, 1, 0, 0.235759, 0, 0.971812, 0, 0, 0)
+[node name="@RayCast3D@66678" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.626604, 0, -0.779338, 0, 1, 0, 0.779338, 0, 0.626604, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17508" type="RayCast3D" parent="SlimeCharacter/Vision"]
+[node name="@RayCast3D@66679" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.709571, 0, -0.704634, 0, 1, 0, 0.704634, 0, 0.709571, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17509" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.971812, 0, 0.235759, 0, 1, 0, -0.235759, 0, 0.971812, 0, 0, 0)
+[node name="@RayCast3D@66680" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.783693, 0, -0.621148, 0, 1, 0, 0.621148, 0, 0.783693, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17510" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.888835, 0, 0.458227, 0, 1, 0, -0.458227, 0, 0.888835, 0, 0, 0)
+[node name="@RayCast3D@66681" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.848048, 0, -0.529919, 0, 1, 0, 0.529919, 0, 0.848048, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17511" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.75575, 0, 0.654861, 0, 1, 0, -0.654861, 0, 0.75575, 0, 0, 0)
+[node name="@RayCast3D@66682" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.901833, 0, -0.432086, 0, 1, 0, 0.432086, 0, 0.901833, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17512" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.580057, 0, 0.814576, 0, 1, 0, -0.814576, 0, 0.580057, 0, 0, 0)
+[node name="@RayCast3D@66683" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.944376, 0, -0.328867, 0, 1, 0, 0.328867, 0, 0.944376, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
-[node name="@RayCast3D@17513" type="RayCast3D" parent="SlimeCharacter/Vision"]
-transform = Transform3D(0.371662, 0, 0.928368, 0, 1, 0, -0.928368, 0, 0.371662, 0, 0, 0)
+[node name="@RayCast3D@66684" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.975149, 0, -0.221548, 0, 1, 0, 0.221548, 0, 0.975149, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66685" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.993768, 0, -0.111469, 0, 1, 0, 0.111469, 0, 0.993768, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66686" type="RayCast3D" parent="SlimeCharacter/Vision"]
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66687" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.993768, 0, 0.111469, 0, 1, 0, -0.111469, 0, 0.993768, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66688" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.975149, 0, 0.221548, 0, 1, 0, -0.221548, 0, 0.975149, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66689" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.944376, 0, 0.328867, 0, 1, 0, -0.328867, 0, 0.944376, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66690" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.901833, 0, 0.432086, 0, 1, 0, -0.432086, 0, 0.901833, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66691" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.848048, 0, 0.529919, 0, 1, 0, -0.529919, 0, 0.848048, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66692" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.783693, 0, 0.621148, 0, 1, 0, -0.621148, 0, 0.783693, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66693" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.709571, 0, 0.704634, 0, 1, 0, -0.704634, 0, 0.709571, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66694" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.626604, 0, 0.779338, 0, 1, 0, -0.779338, 0, 0.626604, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66695" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.535827, 0, 0.844328, 0, 1, 0, -0.844328, 0, 0.535827, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66696" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.438371, 0, 0.898794, 0, 1, 0, -0.898794, 0, 0.438371, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66697" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.335452, 0, 0.942057, 0, 1, 0, -0.942057, 0, 0.335452, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="@RayCast3D@66698" type="RayCast3D" parent="SlimeCharacter/Vision"]
+transform = Transform3D(0.228351, 0, 0.973579, 0, 1, 0, -0.973579, 0, 0.228351, 0, 0, 0)
 target_position = Vector3(0, 0, 10)
 
 [node name="Hitbox" type="CharacterBody3D" parent="SlimeCharacter"]
@@ -114,3 +172,5 @@ mesh = SubResource("BoxMesh_b3al3")
 skeleton = NodePath("../..")
 
 [connection signal="on_land" from="SlimeCharacter" to="." method="_on_slime_movement_on_land"]
+[connection signal="object_enter" from="SlimeCharacter/Vision" to="." method="_on_vision_object_enter"]
+[connection signal="object_exit" from="SlimeCharacter/Vision" to="." method="_on_vision_object_exit"]

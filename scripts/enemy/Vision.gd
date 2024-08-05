@@ -3,8 +3,8 @@ class_name Vision
 
 extends Node3D
 
-signal object_enter(Node3D)
-signal object_exit(Node3D)
+signal object_enter(obj:Node3D)
+signal object_exit(obj:Node3D)
 var objects_in_sight: Array[Node3D]
 
 enum changed{num, distance, radius}
@@ -75,7 +75,7 @@ func reposition():
 func calc_degs(mi: float,mx: float,t: float) -> float:
 	return deg_to_rad(lerp(mi,mx,t))
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	var ar: Array[Node3D] = []
