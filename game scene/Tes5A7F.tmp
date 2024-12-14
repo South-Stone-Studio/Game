@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpjkkop1ao4q3"]
+
+[ext_resource type="PackedScene" uid="uid://vq48fj03520x" path="res://component scene/enemies/slime/slime.tscn" id="1_gcy0t"]
+[ext_resource type="PackedScene" uid="uid://bl84hsqo81gm1" path="res://component scene/player/player.tscn" id="2_mdxb0"]
+[ext_resource type="Script" path="res://scripts/player/PlayerCamera.gd" id="3_j8vla"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8dmdb"]
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_2juu2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3xwuf"]
+
+[node name="TestSlime" type="Node3D"]
+
+[node name="Slime" parent="." instance=ExtResource("1_gcy0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51657, 1.44321, -0.237673)
+
+[node name="Player" parent="." instance=ExtResource("2_mdxb0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.25359, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.57289, 0.819632, 0, -0.819632, 0.57289, 0, 5.24279, 6.36964)
+script = ExtResource("3_j8vla")
+target = NodePath("../Player")
+offset = Vector3(0, 10, 5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.580973, -0.775578, 0.246878, 0, 0.303318, 0.952889, -0.813923, -0.553603, 0.17622, 5, 1.27334, 5.72889)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_8dmdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("HeightMapShape3D_2juu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_3xwuf")
